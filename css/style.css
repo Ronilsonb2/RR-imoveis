@@ -246,7 +246,10 @@ img {
   color: white;
 }
 
-#btn-comprar {
+#btn-comprar:hover, 
+#btn-alugar:hover,
+#btn-codigo:hover,
+#btn-buscar:hover  {
   background: #e6d8d8;
   color: #744b4b;
 }
