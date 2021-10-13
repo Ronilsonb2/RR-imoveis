@@ -1,0 +1,83 @@
+
+@media (min-width: 780px){
+#nav-bar-toggle{
+    display: none;
+}
+
+.nav-bar{
+    width: 68%;
+    height: auto;
+    top: 0;
+    right: 10px;
+    margin: 5px 0;
+    box-shadow: none;
+    text-align: right;
+    border-radius:0;
+    float: right;
+    position: relative;
+    background: transparent;
+}
+
+.nav-bar ul {
+    padding: 0;
+}
+
+.nav-bar ul li{
+    display: inline;
+    border:none;
+    margin: 0;
+    padding:  0px 10px;
+}
+
+.nav-bar ul li a:hover{
+    color: #e2c9c9;
+}
+
+.nav-bar ul li:hover{
+    border-bottom: 2px solid #e2c9c9;
+}
+
+/* #destaques-mobile{
+    display: none;
+} */
+
+.btn{
+    width: 180px;
+    height: 50px;
+    margin-right: 30px;
+}
+.opc-imoveis{
+    margin-right: 10px;
+    width: 27%;
+}
+
+input.opc-imoveis{
+    width: 53%;
+}
+
+#btn-buscar{
+    width: 180px;
+}
+
+.espaco-branco{
+    width: 100%;
+    height: 20px;
+}
+
+.btn-opcoes {
+    margin: 30px 0 20px 0;
+}
+
+.destaques{
+    width: 50%;
+}
+
+.destaques-ofertas img{
+    max-height:400px;
+}
+
+.text-xs-center .btn-2{
+    padding: 12px 40px;
+}
+
+}

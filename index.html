@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Roboto:wght@400&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5842351b58.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class="header bg-header">
+        <div class="content">
+            <button class="fazer-login" type="submit">Entrar</button>
+            <div class="menu" id="nav-bar-toggle">
+                <div class="menu-line" id="menu-line1"></div>
+                <div class="menu-line" id="menu-line2"></div>
+                <div class="menu-line" id="menu-line3"></div>
+            </div>
+
+            <div class="nav-bar">
+                <ul>
+                    <li>
+                        <a href="">HOME</a>
+                    </li>
+                    <li>
+                        <a href="">DESTAQUES</a>
+                    </li>
+                    <li>
+                        <a href="">SERVICOS</a>
+                    </li>
+                    <li>
+                        <a href="">DEPOIMENTOS</a>
+                    </li>
+                    <li>
+                        <a href="">CONTATO</a>
+                    </li>
+                    <li>
+                        <a href="">DÚVIDAS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="content-conteudo">
+        <div class="banner-logo">
+            <img src="img/logo2.jpeg" alt="Logo ">
+        </div>
+
+        <div class="btn-opcoes">
+            <button class="btn" id="btn-comprar" type="submit">Comprar</button>
+            <button class="btn" id="btn-alugar" type="submit">Alugar</button>
+            <button class="btn" id="btn-codigo" type="submit">Código</button>
+            <div class="espaco-branco"></div>
+
+            <select class="opc-imoveis" name="" id="tipo-imovel">
+                <option value="">Apartamento</option>
+                <option value="">Cobertura</option>
+                <option value="">Casa</option>
+                <option value="">Sobrado</option>
+            </select>
+            <input class="opc-imoveis" type="text" placeholder="Digite condomínio, região, bairro ou cidade">
+
+            <button class="btn" id="btn-buscar" type="submit"><i class="fa fa-search" id="icon-search"
+                    aria-hidden="true"></i>Buscar</button>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="destaques" id="destaques-mobile">
+            <p>Oportunidades de Negócio</p>
+            <div class="destaques-ofertas">
+                <div class="box-oferta oferta-01 _open" id="oferta-01">
+                    <!-- <a href="#oferta-02">Voltar</a> -->
+                    <img src="img/casa1.jpeg" alt="">
+                    <div class="desc-oferta">
+                        <h2>Jardim das Oliveiras</h2>
+                        <h4>Jardim Mitzuni - São Paulo</h4>
+                        <h4>Apartamento de 65 m² Jardim Maria Rosa - Taboão da Serra, à venda por R$ 345.000</h4>
+                        <h3>Venda R$ 320.000</h3>
+                    </div>
+                </div>
+
+                <div class="box-oferta oferta-02" id="oferta-02">
+                    <!-- <a href="#oferta-01">Voltar</a> -->
+                    <img src="img/casa2.jpeg" alt="">
+                    <div class="desc-oferta">
+                        <h2>Jardim Imperador</h2>
+                        <h4>Jardim salete - São Paulo</h4>
+                        <h4>Apartamento de 65 m² Jardim Maria Rosa - Taboão da Serra, à venda por R$ 345.000</h4>
+                        <h3>Venda R$ 20.000</h3>
+                    </div>
+                </div>
+
+                <div class="box-oferta oferta-03" id="oferta-03">
+                    <!-- <a href="#oferta-02">Voltar</a> -->
+                    <img src="img/casa3.jpeg" alt="">
+                    <div class="desc-oferta">
+                        <h2>Jardim Imperador</h2>
+                        <h4>Jardim salete - São Paulo</h4>
+                        <h4>Apartamento de 65 m² Jardim Maria Rosa - Taboão da Serra, à venda por R$ 345.000</h4>
+                        <h3>Venda R$ 20.000</h3>
+                    </div>
+                </div>
+
+                <div class="box-oferta oferta-04" id="oferta-04">
+                    <!-- <a href="#oferta-01">Voltar</a> -->
+                    <img src="img/casa4.jpeg" alt="">
+                    <div class="desc-oferta">
+                        <h2>Jardim Imperador</h2>
+                        <h4>Jardim salete - São Paulo</h4>
+                        <h4>Apartamento de 65 m² Jardim Maria Rosa - Taboão da Serra, à venda por R$ 345.000</h4>
+                        <h3>Venda R$ 20.000</h3>
+                    </div>
+                </div>
+
+                <div class="box-oferta oferta-05" id="oferta-05">
+                    <!-- <a href="#oferta-01">Voltar</a> -->
+                    <img src="img/casa5.jpeg" alt="">
+                    <div class="desc-oferta">
+                        <h2>Jardim Imperador</h2>
+                        <h4>Jardim salete - São Paulo</h4>
+                        <h4>Apartamento de 65 m² Jardim Maria Rosa - Taboão da Serra, à venda por R$ 345.000</h4>
+                        <h3>Venda R$ 20.000</h3>
+                    </div>
+                </div>
+
+                <!-- Botoes troca de slide -->
+                <div class="sp-buttons">
+                    <a href="#oferta-01">
+                        <div class="sp-button"></div>
+                    </a>
+
+                    <a href="#oferta-02">
+                        <div class="sp-button"></div>
+                    </a>
+
+                    <a href="#oferta-03">
+                        <div class="sp-button"></div>
+                    </a>
+
+                    <a href="#oferta-04">
+                        <div class="sp-button"></div>
+                    </a>
+
+                    <a href="#oferta-05">
+                        <div class="sp-button"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="text-xs-center">
+                <a href="" class="btn-2" style="margin-top: 20px;">Veja mais </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="faixa"></div>
+
+    <section class="content-conteudo">
+        <div class="doc-indent">
+            CRECI: 00.000-0
+        </div>
+    </section>
+
+    <div class="redes-sociais">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-google-plus-g"></i>
+        <i class="fab fa-instagram"></i>
+    </div>
+
+    <section class="content">
+        <div class="footer">
+            <div>
+                <p>Rua Almirante Barroso, 256 - Jardins</p>
+                <p>São Paulo - SP</p>
+                <p>Email - contato@contato.com.br</p>
+                <p>Whatsaap</p>
+            </div>
+            <p style="text-align: center; margin-top: 30px;">&copy; Outubro 2021</p>
+            <span></span>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $('#nav-bar-toggle').click(function () {
+            $('.menu-line').toggleClass('_open');
+            $('.nav-bar').toggleClass('_open');
+        })
+
+        let headerHeight = $('.header').height();
+        console.log("Height do header: " + headerHeight);
+
+
+
+        window.onload = function () {
+            $('.banner-logo').css('margin-top', headerHeight + 25);
+        };
+
+        window.location = "#oferta-01";
+        // window.location = "#oferta-01";
+    </script>
+</body>
+
+</html>

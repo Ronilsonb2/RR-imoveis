@@ -1,0 +1,421 @@
+/*
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.7.0
+*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+q:before,
+q:after {
+  content: '';
+}
+
+abbr,
+acronym {
+  border: 0;
+}
+
+/* Menu navegacao e header */
+
+body {
+  font-family: 'Birthstone', cursive;
+  font-family: 'Roboto', sans-serif;
+}
+
+.text-xs-center {
+  text-align: center !important;
+}
+
+img {
+  width: 100%;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: auto;
+  color: #fff;
+  z-index: 9999;
+  background: #907fb9;
+  padding: 10px 0px;
+
+}
+
+.content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.fazer-login {
+  margin-left: 20px;
+  width: 100px;
+  max-width: 300px;
+  height: 35px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+}
+
+.fazer-login:hover {
+  background-color: white;
+  color: black;
+}
+
+.nav-bar {
+  z-index: 999;
+  top: 60px;
+  position: fixed;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background: #907fb9;
+  transition: 1s;
+
+  -webkit-border-radius: 0px 0px 40px 40px;
+  -moz-border-radius: 0px 0px 40px 40px;
+  border-radius: 0px 0px 40px 40px;
+
+  -webkit-box-shadow: 0px 10px 10px -5px rgba(144, 127, 185, 0.81);
+  box-shadow: 0px 10px 10px -5px rgba(144, 127, 185, 0.81);
+}
+
+.nav-bar._open {
+  height: 270px;
+  transition: 0.5s linear;
+  border-radius: 0;
+}
+
+.nav-bar ul li {
+  margin: 0px 0px 10px 0;
+  display: block;
+  padding-bottom: 3px;
+  border-bottom: 2px solid #fff;
+}
+
+.nav-bar ul {
+  padding: 20px 20px;
+}
+
+.nav-bar ul li a {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.menu {
+  width: 50px;
+  height: auto;
+  position: relative;
+  float: right;
+  right: 15px;
+}
+
+.menu-line {
+  height: 5px;
+  background-color: white;
+  margin: 3px 3px;
+  float: right;
+  transition: all 0.7s linear;
+  border-radius: 10%;
+}
+
+#menu-line1 {
+  width: 40px;
+}
+
+#menu-line2 {
+  width: 40px;
+}
+
+#menu-line3 {
+  width: 40px;
+}
+
+#menu-line1._open {
+  width: 40px;
+}
+
+#menu-line2._open {
+  width: 34px;
+}
+
+#menu-line3._open {
+  width: 28px;
+}
+
+
+
+.content-conteudo {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.banner-logo img {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.btn-opcoes {
+  margin: 30px 0 10px 0;
+}
+
+.btn {
+  width: 100px;
+  height: 40px;
+  background: #907fb9;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+}
+
+#btn-comprar {
+  background: #e6d8d8;
+  color: #744b4b;
+}
+
+.opc-imoveis {
+  color: #3d3d3d;
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px 5px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, .15);
+}
+
+input.opc-imoveis {
+  padding: 12px 0px 12px 10px;
+  width: 96%;
+}
+
+#btn-buscar {
+  width: 100%;
+  margin: 10px 0 15px 0;
+  padding: 12px 5px;
+  height: auto;
+}
+
+#icon-search {
+  margin-right: 5px;
+}
+
+/*===== Ofertas em destaque ===========*/
+.destaques {
+  background-color: #f0eded;
+  padding-bottom: 40px;
+}
+
+.destaques p {
+  padding: 38px 0 18px;
+  text-align: center;
+}
+
+.destaques-ofertas {
+  position: relative;
+}
+
+.destaques-ofertas img {
+  max-height: 250px;
+}
+
+.desc-oferta {
+  margin-top: -5px;
+  padding: 20px 15px;
+  font-size: 14px;
+  color: white;
+  background: #907fb9;
+  font-weight: 400;
+}
+
+.desc-oferta h4,
+h3,
+h2 {
+  margin-bottom: 15px;
+}
+
+.desc-oferta h2 {
+  font-size: 18px;
+}
+
+.box-oferta {
+  display: none;
+}
+
+.box-oferta:target {
+  display: block;
+}
+
+.destaques-ofertas .sp-buttons {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  width: auto;
+}
+
+.sp-buttons {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.sp-button {
+  background: #2c3a3e;
+}
+
+.sp-button._open {
+  background: white;
+}
+
+.sp-button {
+  border: none;
+  opacity: .7;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 1vw .8vw 0 0;
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.text-xs-center .btn-2 {
+  color: #30428F;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border-color: #30428F;
+  background-color: transparent;
+  border: 1px solid #30428F;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 18px;
+}
+
+.text-xs-center .btn-2:hover{
+  background-color: #30428F;
+  color: #fff;
+}
+
+.faixa {
+  width: 100%;
+  height: 20px;
+  margin-top: 20px;
+  background: #907fb9;
+}
+
+.doc-indent {
+  font-size: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .15);
+  text-align: center;
+}
+
+.redes-sociais {
+  text-align: center;
+  padding: 10px;
+}
+
+.redes-sociais .fab {
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.footer {
+  height: auto;
+  padding: 30px 0 50px 15px;
+  margin-top: 30px;
+  background: #bca2a28a;
+}
+
+.footer p {
+  line-height: 1.7;
+  color: #3d3d3d;
+  font-size: 16px;
+}
+
+
