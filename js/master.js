@@ -4,7 +4,7 @@
 // Responsivo
 
 if($(window).width() > 1000){
-  $('.carousel').slick({
+  $('.carousel, .destaques-ofertas').slick({
     dots: true,
     infinite: true,
     speed: 500,
@@ -14,7 +14,7 @@ if($(window).width() > 1000){
   });
 }
 else{
-  $('.carousel').slick({
+  $('.carousel, .destaques-ofertas').slick({
     dots: true,
     infinite: true,
     speed: 500,
