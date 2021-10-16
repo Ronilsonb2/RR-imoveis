@@ -6,6 +6,24 @@
     .mobile{
         display: block !important;
     }
+
+    .box-dicas{
+        width: 98%;
+        margin-bottom: 0;
+        /* padding: 20px 0px; */
+        padding: 0;
+    }
+
+    .box-dicas p {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    #box-dicas1, #box-dicas2{
+        float: none;
+    }
+
+
 }
 
 
