@@ -32,22 +32,19 @@
             <div class="nav-bar">
                 <ul>
                     <li>
-                        <a href="">HOME</a>
+                        <a href="#inicio">INICÍO</a>
                     </li>
                     <li>
-                        <a href="">DESTAQUES</a>
+                        <a href="#destaques">DESTAQUES</a>
                     </li>
                     <li>
-                        <a href="">SERVICOS</a>
+                        <a href="#dicas">NOSSAS DICAS</a>
                     </li>
                     <li>
-                        <a href="">DEPOIMENTOS</a>
+                        <a href="#siga-nos">SIGA-NÓS</a>
                     </li>
                     <li>
                         <a href="">CONTATO</a>
-                    </li>
-                    <li>
-                        <a href="">DÚVIDAS</a>
                     </li>
                 </ul>
             </div>
@@ -55,7 +52,7 @@
     </section>
 
     <section class="content-conteudo">
-        <div class="banner-logo">
+        <div class="banner-logo" id="inicio">
             <img class="logo-mobile mobile" src="img/logo2.jpeg" alt="Logo ">
 
             <div class="carousel desc">
@@ -164,7 +161,7 @@
                     aria-hidden="true"></i>Buscar</button>
         </div>
 
-        <div class="carousel mobile">
+        <div class="carousel mobile" id="destaques">
             <div class="slide">
                 <div class="desc-slide">
                     <img src="img/slide/slide1.jpeg" alt="">
@@ -315,9 +312,9 @@
         </div>
     </section>
 
-    <section class="content-conteudo">
+    <section class="content" id="dicas">
         <div class="nossas-dicas">
-           <h3 style="padding: 30px 0 2%;;border-bottom: 3px solid #f0eded;margin-bottom: 25px;">VEJA VEJA NOSSAS DICAS</h3>
+           <h3 style="padding: 50px 0 2%;;border-bottom: 3px solid #8d6161; margin-bottom: 0;">VEJA NOSSAS DICAS</h3>
            <div class="box-dicas" id="box-dicas1">
               <h3>Afim de comprar?</h3> 
               <p>Analise seu perfil e o imovel que melhor atende a sua familia e você.</p>
@@ -345,7 +342,7 @@
         </div>
     </section>
 
-    <div class="redes-sociais">
+    <div class="redes-sociais" id="siga-nos">
         <i class="fab fa-facebook-f"></i>
         <i class="fab fa-google-plus-g"></i>
         <i class="fab fa-instagram"></i>
@@ -369,24 +366,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
     <script src="js/master.js"></script>
         
-    <script>
-        $('#nav-bar-toggle').click(function () {
-            $('.menu-line').toggleClass('_open');
-            $('.nav-bar').toggleClass('_open');
-        })
-
-        let headerHeight = $('.header').height();
-        console.log("Height do header: " + headerHeight);
-
-
-
-        window.onload = function () {
-            $('.banner-logo').css('margin-top', headerHeight + 25);
-        };
-
-        // window.location = "#oferta-01";
-        // window.location = "#oferta-01";
-    </script>
 </body>
 
 </html>

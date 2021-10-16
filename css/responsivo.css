@@ -8,7 +8,7 @@
     }
 
     .box-dicas{
-        width: 98%;
+        width: 100%;
         margin-bottom: 0;
         /* padding: 20px 0px; */
         padding: 0;
@@ -19,9 +19,12 @@
         margin-bottom: 12px;
     }
 
-    #box-dicas1, #box-dicas2{
-        float: none;
+    #box-dicas2{
+        padding-bottom: 20px;
+        margin-bottom: 20px;
     }
+
+
 
 
 }

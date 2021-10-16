@@ -1,6 +1,21 @@
-// 1 item por vez
-// $('.carousel').slick();
+$('#nav-bar-toggle').click(function () {
+  $('.menu-line').toggleClass('_open');
+  $('.nav-bar').toggleClass('_open');
+})
 
+$('.nav-bar li').click(function(){ 
+  $('.menu-line').removeClass('_open');
+  $('.nav-bar').removeClass('_open');
+});
+
+let headerHeight = $('.header').height();
+console.log("Height do header: " + headerHeight);
+
+
+
+window.onload = function () {
+  $('.banner-logo').css('margin-top', headerHeight + 25);
+};
 // Responsivo
 
 if($(window).width() > 1000){
