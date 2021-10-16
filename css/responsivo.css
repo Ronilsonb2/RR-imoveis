@@ -1,7 +1,24 @@
 
+@media (max-width: 780px){
+    .desc{
+        display: none !important;
+    }
+    .mobile{
+        display: block !important;
+    }
+}
+
+
 @media (min-width: 780px){
 #nav-bar-toggle{
     display: none;
+}
+
+.desc{
+    display: block !important;
+}
+.mobile{
+    display: none !important;
 }
 
 img.logo-mobile{

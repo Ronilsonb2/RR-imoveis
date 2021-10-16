@@ -42,7 +42,7 @@ img {
 }
 
 body{
-  background-color: #756856;
+  /* background-color: #756856; */
 }
 
 address,
@@ -98,6 +98,8 @@ body {
   font-family: 'Birthstone', cursive;
   font-family: 'Roboto', sans-serif;
 }
+
+
 
 .text-xs-center {
   text-align: center !important;
