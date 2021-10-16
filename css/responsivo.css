@@ -4,6 +4,10 @@
     display: none;
 }
 
+img.logo-mobile{
+    display: none;
+}
+
 .nav-bar{
     width: 68%;
     height: auto;
