@@ -343,9 +343,19 @@ input.opc-imoveis {
   max-height: 250px;
 }
 
+
 .desc-oferta {
+  /* margin-top: -5px; */
+  padding: 10px 15px 1px 15px;
+  font-size: 14px;
+  color: white;
+  background: #907fb9;
+  font-weight: 400;
+}
+
+.desc-oferta-carousel {
   margin-top: -5px;
-  padding: 20px 15px;
+  padding: 15px 30px;
   font-size: 14px;
   color: white;
   background: #907fb9;
@@ -355,7 +365,7 @@ input.opc-imoveis {
 .desc-oferta h4,
 h3,
 h2 {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .desc-oferta h2 {

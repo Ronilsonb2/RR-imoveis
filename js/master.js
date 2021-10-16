@@ -4,7 +4,7 @@
 // Responsivo
 
 if($(window).width() > 1000){
-  $('.carousel, .destaques-ofertas').slick({
+  $('.destaques-ofertas').slick({
     dots: true,
     infinite: true,
     speed: 500,
@@ -14,7 +14,7 @@ if($(window).width() > 1000){
   });
 }
 else{
-  $('.carousel, .destaques-ofertas').slick({
+  $('.destaques-ofertas').slick({
     dots: true,
     infinite: true,
     speed: 500,
@@ -23,3 +23,13 @@ else{
     slidesToScroll: 1
   });
 }
+
+  $('.carousel').slick({
+    dots: true,
+    infinite: true,
+    speed: 500,
+    cssEase: 'linear',
+    slidesToShow: 1,
+    slidesToScroll: 1
+  });
+
