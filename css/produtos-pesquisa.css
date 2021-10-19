@@ -1,0 +1,77 @@
+
+body{
+    background: #f0eae4;
+}
+
+.box-produtos img {
+    max-height: 400px;
+}
+.form-lateral{
+    width: 23%;
+    position: relative;
+    float: left;
+    background-color: #fff;
+}
+
+.list-group{
+    position: relative;
+    display: block;
+    padding: 15px 10px 25px;
+    border-color: #f0eae4;
+    border: 1px solid #ddd;
+}
+
+.box-produtos{
+    width: 75%;
+    display: flex;
+    position: relative;
+    float: right;
+}
+
+.list-group .opc-imoveis{
+    width: 90%;
+    font-size: 12px;
+}
+
+.list-group label{
+    font-size: 14px;
+}
+
+.group-duplo {
+    display: flex;
+}
+
+.duplo{
+    float: left;
+    width: 50%;
+}
+
+#preco-min{
+    width: 75%;
+}
+
+#preco-max{
+    width: 75%;    
+}
+
+.qtd{
+    display: flex;
+}
+.gtd-op{
+    font-size: 12px;
+    width: 15%;
+    border: 1px solid #3a3836;
+    background-color: transparent;
+    margin: 6px 10px 0 0;
+    text-align: center;
+    padding: 9px 0px;
+    border-radius: 3px;
+}
+
+/* .linha{
+    width: 94%;
+    height: 1px;
+    background-color: rgb(153, 138, 138);
+    display: block;
+    margin: 14px auto;
+} */

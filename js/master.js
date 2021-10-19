@@ -11,8 +11,6 @@ $('.nav-bar li').click(function(){
 let headerHeight = $('.header').height();
 console.log("Height do header: " + headerHeight);
 
-
-
 window.onload = function () {
   $('.banner-logo').css('margin-top', headerHeight + 25);
 };

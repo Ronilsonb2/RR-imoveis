@@ -422,12 +422,13 @@ version: 2.7.0
   .redes-sociais {
     text-align: center;
     padding: 10px;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
   }
 
   .redes-sociais .fab {
     text-align: center;
     padding: 10px;
-    font-size: 25px;
+    font-size: 30px;
   }
 
   .footer {

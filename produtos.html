@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imobiliária</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="stylesheet" href="css/produtos-pesquisa.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css">
+
+    <script src="https://kit.fontawesome.com/5842351b58.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class="header bg-header">
+        <div class="content">
+            <button class="fazer-login" type="submit">Entrar</button>
+            <div class="menu" id="nav-bar-toggle">
+                <div class="menu-line" id="menu-line1"></div>
+                <div class="menu-line" id="menu-line2"></div>
+                <div class="menu-line" id="menu-line3"></div>
+            </div>
+
+            <div class="nav-bar">
+                <ul>
+                    <li>
+                        <a href="#inicio">INICÍO</a>
+                    </li>
+                    <li>
+                        <a href="#destaques">DESTAQUES</a>
+                    </li>
+                    <li>
+                        <a href="#dicas">NOSSAS DICAS</a>
+                    </li>
+                    <li>
+                        <a href="#siga-nos">SIGA-NÓS</a>
+                    </li>
+                    <li>
+                        <a href="contato.html">CONTATO</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-conteudo">
+        <div class="banner-logo" id="inicio">
+            <img class="logo-mobile mobile" src="img/logo2.jpeg" alt="Logo ">
+        </div>
+
+        <div class="btn-opcoes">
+            <button class="btn" id="btn-comprar" type="submit">Comprar</button>
+            <button class="btn" id="btn-alugar" type="submit">Alugar</button>
+            <button class="btn" id="btn-codigo" type="submit">Código</button>
+            <div class="espaco-branco"></div>
+
+            
+
+            <button class="btn" id="btn-buscar" type="submit"><i class="fa fa-search" id="icon-search"
+                    aria-hidden="true"></i>Buscar</button>
+        </div>
+
+        <div class="content">
+            <div class="form-lateral">
+                <div class="list-group">
+                    <label for="">Localidade</label><br>
+                    <input class="opc-imoveis" type="text" placeholder="Digite código, condomínio, região, bairro ou cidade">
+                </div>
+
+                <div class="list-group">
+                    <label for="">Preço</label><br>
+                    <div class="group-duplo">
+                        <div class="duplo">
+                            <input class="opc-imoveis " id="preco-min" type="text" placeholder="Min">
+                        </div>
+                        <div class="duplo">
+                            <input class="opc-imoveis" id="preco-max" type="text" placeholder="Max">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-group">
+                    <label for="">Tipo</label><br>
+                    <select class="opc-imoveis" name="" id="tipo-imovel">
+                        <option value="">Apartamento</option>
+                        <option value="">Cobertura</option>
+                        <option value="">Casa</option>
+                        <option value="">Sobrado</option>
+                    </select>
+                </div>
+
+                <div class="list-group">
+                    <label for="">Quartos</label><br>
+                    <div class="qtd">
+                        
+                        <div class="gtd-op">
+                            +1
+                        </div>
+                        <div class="gtd-op">
+                            +2
+                        </div>
+                        <div class="gtd-op">
+                            +3
+                        </div>
+                        <div class="gtd-op">
+                            +4
+                        </div>
+                        <div class="gtd-op">
+                            +5
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-group">
+                    <label for="">Suites</label><br>
+                    <div class="qtd">
+                        
+                        <div class="gtd-op">
+                            +1
+                        </div>
+                        <div class="gtd-op">
+                            +2
+                        </div>
+                        <div class="gtd-op">
+                            +3
+                        </div>
+                        <div class="gtd-op">
+                            +4
+                        </div>
+                        <div class="gtd-op">
+                            +5
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-group">
+                    <label for="">Banheiros</label><br>
+                    <div class="qtd">
+                        
+                        <div class="gtd-op">
+                            +1
+                        </div>
+                        <div class="gtd-op">
+                            +2
+                        </div>
+                        <div class="gtd-op">
+                            +3
+                        </div>
+                        <div class="gtd-op">
+                            +4
+                        </div>
+                        <div class="gtd-op">
+                            +5
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-group">
+                    <label for="">Vagas</label><br>
+                    <div class="qtd">
+                        
+                        <div class="gtd-op">
+                            +1
+                        </div>
+                        <div class="gtd-op">
+                            +2
+                        </div>
+                        <div class="gtd-op">
+                            +3
+                        </div>
+                        <div class="gtd-op">
+                            +4
+                        </div>
+                        <div class="gtd-op">
+                            +5
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-group">
+                    <label for="">Aréa</label><br>
+                    <div class="group-duplo">
+                        <div class="duplo">
+                            <input class="opc-imoveis " id="area-min" type="text" placeholder="Min">
+                        </div>
+                        <div class="duplo">
+                            <input class="opc-imoveis" id="area-max" type="text" placeholder="Max">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="box-produtos">
+            <img src="img/casa1.jpeg" alt="">
+            <img src="img/casa2.jpeg" alt="">
+            <!-- <img src="img/casa3.jpeg" alt="">
+            <img src="img/casa4.jpeg" alt=""> -->
+        </div>
+    </section>
+
+
+    <div class="faixa"></div>
+
+    <section class="content-conteudo">
+        <div class="doc-indent">
+            CRECI: 00.000-0
+        </div>
+    </section>
+
+    <div class="redes-sociais" id="siga-nos">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-google-plus-g"></i>
+        <i class="fab fa-instagram"></i>
+    </div>
+
+    <section class="content">
+        <div class="footer">
+            <div>
+                <p>Rua Almirante Barroso, 256 - Jardins</p>
+                <p>São Paulo - SP</p>
+                <p>Email - contato@contato.com.br</p>
+                <p>Whatsaap</p>
+            </div>
+            <p style="text-align: center; margin-top: 30px;">&copy; Outubro 2021</p>
+            <span></span>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="whats">
+            <i class="fa fa-whatsapp"></i>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
+    <script src="js/master.js"></script>
+        
+</body>
+
+</html>
