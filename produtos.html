@@ -59,7 +59,9 @@
             <img class="logo-mobile mobile" src="img/logo2.jpeg" alt="Logo ">
         </div>
 
-        
+        <div class="filtro">Filtro</div>
+
+        </div>
             <div class="form-lateral">
                     <div class="menu-opcoes">
                         <a href="" class="select-opcao" id="opcoes-compras">Comprar</a>
@@ -285,6 +287,12 @@
     <script src="js/master.js"></script>
     <script src="js/produtos.js"></script>
         
+
+    <script>
+        $('.filtro').click(function () {
+    $('.form-lateral').toggleClass('_open');
+})
+    </script>
 </body>
 
 </html>

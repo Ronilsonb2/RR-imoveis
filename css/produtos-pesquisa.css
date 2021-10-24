@@ -88,6 +88,10 @@ body{
 
 /*========== Produtos =======*/
 
+.filtro{
+    display: none;
+}
+
 #opcoes-compras{
     border-right: 3px solid #fff;
 }
@@ -128,6 +132,26 @@ body{
 
 
 @media (max-width: 780px) {
+
+    .filtro{
+        display: block;
+        padding: 5px 10px;
+        text-align: center;
+        width: 42px;
+        background: #fff;
+        border: 1px solid black;
+        /* padding: initial; */
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .form-lateral{
+        display: none;
+    }
+    .form-lateral._open{
+        display: block;
+    }
 
     .box-produtos{
         display: grid;
