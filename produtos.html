@@ -33,7 +33,7 @@
             <div class="nav-bar">
                 <ul>
                     <li>
-                        <a href="#inicio">INICÍO</a>
+                        <a href="index.html">HOME</a>
                     </li>
                     <li>
                         <a href="#destaques">DESTAQUES</a>
@@ -52,25 +52,20 @@
         </div>
     </section>
 
+    <div class="desc" style="width: 100%; height: 100px;"></div>
+
     <section class="content-conteudo">
         <div class="banner-logo" id="inicio">
             <img class="logo-mobile mobile" src="img/logo2.jpeg" alt="Logo ">
         </div>
 
-        <div class="btn-opcoes">
-            <button class="btn" id="btn-comprar" type="submit">Comprar</button>
-            <button class="btn" id="btn-alugar" type="submit">Alugar</button>
-            <button class="btn" id="btn-codigo" type="submit">Código</button>
-            <div class="espaco-branco"></div>
-
-            
-
-            <button class="btn" id="btn-buscar" type="submit"><i class="fa fa-search" id="icon-search"
-                    aria-hidden="true"></i>Buscar</button>
-        </div>
-
-        <div class="content">
+        
             <div class="form-lateral">
+                    <div class="menu-opcoes">
+                        <a href="" class="select-opcao" id="opcoes-compras">Comprar</a>
+                        <a href="" class="select-opcao" id="opcoes-alugar">Alugar</a>
+                    </div>
+              
                 <div class="list-group">
                     <label for="">Localidade</label><br>
                     <input class="opc-imoveis" type="text" placeholder="Digite código, condomínio, região, bairro ou cidade">
@@ -80,10 +75,10 @@
                     <label for="">Preço</label><br>
                     <div class="group-duplo">
                         <div class="duplo">
-                            <input class="opc-imoveis " id="preco-min" type="text" placeholder="Min">
+                            <input class="opc-imoveis " id="preco-min" type="text" maxlength="20" placeholder="Min">
                         </div>
                         <div class="duplo">
-                            <input class="opc-imoveis" id="preco-max" type="text" placeholder="Max">
+                            <input class="opc-imoveis" id="preco-max" type="text" maxlength="20" placeholder="Max">
                         </div>
                     </div>
                 </div>
@@ -123,7 +118,6 @@
                 <div class="list-group">
                     <label for="">Suites</label><br>
                     <div class="qtd">
-                        
                         <div class="gtd-op">
                             +1
                         </div>
@@ -190,33 +184,67 @@
                     <label for="">Aréa</label><br>
                     <div class="group-duplo">
                         <div class="duplo">
-                            <input class="opc-imoveis " id="area-min" type="text" placeholder="Min">
+                            <input class="opc-imoveis " id="area-min" type="text" maxlength="10" placeholder="Min">
                         </div>
                         <div class="duplo">
-                            <input class="opc-imoveis" id="area-max" type="text" placeholder="Max">
+                            <input class="opc-imoveis" id="area-max" type="text" maxlength="10" placeholder="Max">
                         </div>
                     </div>
                 </div>
-
+                <div class="list-group">
+                    <button class="btn" id="btn-buscar" type="submit"><i class="fa fa-search" id="icon-search" aria-hidden="true"></i>Buscar</button>
+                </div>
             </div>
-        </div>
-
-
-
-
-
-
-
-
+        
 
         <div class="box-produtos">
-            <img src="img/casa1.jpeg" alt="">
-            <img src="img/casa2.jpeg" alt="">
-            <!-- <img src="img/casa3.jpeg" alt="">
-            <img src="img/casa4.jpeg" alt=""> -->
+            <div class="box-produtos-item">
+                <div class="carousel">
+                    <img src="img/casa1.jpeg" alt="">
+                    <img src="img/casa2.jpeg" alt="">
+                    <img src="img/casa3.jpeg" alt="">
+                    <img src="img/casa4.jpeg" alt="">
+                </div>
+                <div class="box-produtos-desc">
+                    <h3>Casa de Luxo, requinte e beleza</h3>
+                    <p>Localizada em bairro nobre de São Paulo</p>
+                    <p>Para mais informações, Clique e saiba Mais!</p>
+
+                    <div class="text-xs-center">
+                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Detalhes </a>
+                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Contato</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-produtos-item">
+                <div class="carousel">
+                    <img src="img/casa1.jpeg" alt="">
+                    <img src="img/casa2.jpeg" alt="">
+                    <img src="img/casa3.jpeg" alt="">
+                    <img src="img/casa4.jpeg" alt="">
+                </div>
+                <div class="box-produtos-desc">
+                    <h3>Casa de Luxo, requinte e beleza</h3>
+                    <p>Localizada em bairro nobre de São Paulo</p>
+                    <p>Para mais informações, Clique e saiba Mais!</p>
+
+                    <div class="text-xs-center">
+                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Detalhes </a>
+                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Contato</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-produtos-item">
+                
+            </div>
+
+            <div class="box-produtos-item">
+                
+            </div>
         </div>
     </section>
-
 
     <div class="faixa"></div>
 
@@ -255,6 +283,7 @@
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
     <script src="js/master.js"></script>
+    <script src="js/produtos.js"></script>
         
 </body>
 
