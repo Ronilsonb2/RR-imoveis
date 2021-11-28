@@ -386,11 +386,20 @@ input.opc-imoveis {
 }
 
 /* Dicas para compra e locação */
-
-.nossas-dicas{
+#dicas{
   background-color: #f0eded;
+}
+.tit-dicas{
   margin-top: 20px;
+  padding: 50px 0 2%;
+  border-bottom: 3px solid #8d6161;
+  margin-bottom: 0;
+  text-align: center;
+}
+.nossas-dicas{
   width: 100%;
+  display: flex;
+  margin-bottom: 20px;
 
   h3{
     font-weight: 900;
@@ -401,14 +410,11 @@ input.opc-imoveis {
   }
 
   .box-dicas{
-    margin-bottom: 50px;
-    background-color: #f0eded;
     width: 50%;
     height: auto;
     position: relative;
-    padding: 30px 0px;
+    padding: 20px 0 20px;
     line-height: 1.5;
-    float: left;
 
     p{
       padding: 0px 17px 0 20px;
@@ -490,19 +496,46 @@ input.opc-imoveis {
 .doc-indent {
   font-size: 16px;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, .15);
+  border-bottom: 2px solid $color-bg;
   text-align: center;
 }
 
 .redes-sociais {
   text-align: center;
-  padding: 10px;
-  animation: name duration timing-function delay iteration-count direction fill-mode;
+  margin: 20px 0;
+
+  p{
+    padding-bottom: 10px;
+    font-size: 16px;
+  }
 
   .fab {
+    font-weight: 600;
     text-align: center;
     padding: 10px;
-    font-size: 30px;
+    font-size: 25px;
+    margin: 0 5px;
+  }
+
+  .fa-facebook-f{
+    background-color: #4064ac;
+    border-radius: 50%;
+    padding: 7px 12px;
+    color: #fff;
+  }
+  .fa-google-plus-g{
+    background-color: #cc5f56;
+    border-radius: 50%;
+    padding: 8px 5px;
+    color: #fff;
+  }
+  .fa-instagram{
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+    border-radius: 50%;
+    padding: 7px 9px;
+    color: #fff;
   }
 }
 
@@ -522,24 +555,18 @@ input.opc-imoveis {
 .whats{
   position: fixed;
   right: 10px;
-  bottom: 30px;
+  bottom: 10px;
 
   .fa-whatsapp {
     background-color: #25d366;
     color: #fff;
-    font-size: 35px;
+    font-size: 28px;
     border-radius: 50%;
     padding: 11px;
   }
 }
 
 @media screen and (max-width: 770px) {
-  .box-dicas {
-    width: 100% !important;
-    margin-bottom: 0 !important;
-    padding: 0 !important;
-  }
-
   .desc{
     display: none !important;
   }
@@ -551,11 +578,9 @@ input.opc-imoveis {
     font-size: 15px;
     margin-bottom: 12px;
   }
-
   .desc-oferta h3{
       font-size: 18px;
   }
-
   .carousel .desc-oferta p,  
   .carousel .desc-oferta h4 {
       font-size: 12px;
@@ -565,9 +590,12 @@ input.opc-imoveis {
       font-size: 18px;
   }
 
-  #box-dicas2{
-      padding-bottom: 20px;
-      margin-bottom: 20px;
+  .nossas-dicas{
+    display: block;
+
+    .box-dicas{
+      width: 100%;
+    }
   }
 
   .formulario{
@@ -647,11 +675,11 @@ input.opc-imoveis {
         a {
           font-size: 15px;
           color: #fff;
-          font-weight: 400;
+          font-weight: 600;
 
           &:hover{
             color: #e2c9c9;
-            border-bottom: 3px solid #fff;
+            border-bottom: 3px solid #e2c9c9;
           }
         }
       }
