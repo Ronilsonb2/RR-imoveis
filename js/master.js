@@ -8,6 +8,11 @@ $('.nav-bar li').click(function(){
   $('.nav-bar').removeClass('_open');
 });
 
+window.addEventListener('scroll', function(e) {
+  $('.menu-line').removeClass('_open');
+  $('.nav-bar').removeClass('_open');
+});
+
 let headerHeight = $('.header').height();
 console.log("Height do header: " + headerHeight);
 
@@ -45,4 +50,5 @@ else{
     slidesToShow: 1,
     slidesToScroll: 1
   });
+
 
