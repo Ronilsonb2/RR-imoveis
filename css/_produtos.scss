@@ -125,8 +125,8 @@ body{
 /*========== Produtos =======*/
 .box-produtos{
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-column-gap: 10px;
+    grid-template-columns: 49% 49%;
+    grid-column-gap: 2%;
     grid-row-gap: 1em;
     padding-left: 25px;
 
@@ -187,6 +187,19 @@ body{
         grid-template-columns: 100%;
         grid-column-gap: 0;
         padding: 0;
+
+        .box-produtos-item .box-produtos-desc h3{
+            font-size: 16px;
+        }
+
+        .box-produtos-item .box-produtos-desc p{
+            font-size: 14px;
+        }
+
+        .box-produtos-item .box-produtos-desc .text-xs-center .btn-2{
+            font-size: 14px;
+            padding: 5px 10px;
+        }
     }
 
     .list-group #btn-buscar {
