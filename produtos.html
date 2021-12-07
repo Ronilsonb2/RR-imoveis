@@ -50,21 +50,29 @@
             </div>
         </div>
     </section>
-
-    <div class="desc" style="width: 100%; height: 100px;"></div>
-
     <section class="content-conteudo">
         <div class="banner-logo" id="inicio">
             <img class="logo-mobile mobile" src="img/logo-marca.png" alt="Logo ">
         </div>
 
-        <div class="filtro">Filtro</div>
+        <div class="qtd-imoveis-disponiveis">
+            <p><b>000</b>  Imóveis à venda</p>
+        </div>
 
+        <select class="prioridade-resultados" name="">
+            <option value="menor_valor">Menor valor</option>
+            <option value="maior_valor">Maior valor</option>
+            <option value="recentes">Recentes</option>
+        </select>
+    </section>
+
+    <section class="content-conteudo">
+        <div class="filtro">Filtro</div>
         </div>
             <div class="form-lateral">
                     <div class="menu-opcoes">
-                        <a href="" class="select-opcao" id="opcoes-compras">Comprar</a>
-                        <a href="" class="select-opcao" id="opcoes-alugar">Alugar</a>
+                        <div class="select-opcao" id="opcoes-compras">Comprar</div>
+                        <div class="select-opcao" id="opcoes-alugar">Alugar</div>
                     </div>
               
                 <div class="list-group">
@@ -339,7 +347,7 @@
             </div>
 
             <div class="logo-empresa">
-                <img src="img/logo-marca.png" alt="Logo ">
+                <img src="img/logo-marca-footer.png" alt="Logo ">
             </div>
 
             <div class="info-devs">
@@ -367,8 +375,9 @@
 
     <script>
         $('.filtro').click(function () {
-    $('.form-lateral').toggleClass('_open');
-})
+            $('.form-lateral').toggleClass('_open');
+        })
+
     </script>
 </body>
 

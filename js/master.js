@@ -18,6 +18,7 @@ console.log("Height do header: " + headerHeight);
 
 window.onload = function () {
   $('.banner-logo').css('margin-top', headerHeight + 25);
+  $('.qtd-imoveis-disponiveis').css('margin-top', headerHeight + 25);
 };
 // Responsivo
 

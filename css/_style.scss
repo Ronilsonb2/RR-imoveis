@@ -1,4 +1,3 @@
-
 $small: 300px;
 $medium-min: 779px;
 $medium-max: 780px;
@@ -6,10 +5,10 @@ $medium-max: 780px;
 $color-bg: #a7a0a0;
 
 // cores do CTAs
-  $color-btn-bg: #a7a0a0;
-  $color-btn: #fff;
-  $color-btn-bg-hover: #e6d8d8;
-  $color-btn-hover: #a7a0a0;
+$color-btn-bg: #a7a0a0;
+$color-btn: #fff;
+$color-btn-bg-hover: #e6d8d8;
+$color-btn-hover: #a7a0a0;
 
 
 
@@ -22,10 +21,33 @@ version: 2.7.0
 ======RESET===========
 */
 
-*{
+* {
   // outline: 1px solid black;
 }
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
   margin: 0;
   padding: 0;
 }
@@ -40,7 +62,15 @@ img {
   border: 0;
 }
 
-address,caption,cite,code,dfn,em,strong,th,var {
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
   font-style: normal;
   font-weight: normal;
 }
@@ -76,8 +106,8 @@ body {
   font-family: 'Roboto', sans-serif;
 
   img {
-      width: 100%;
-    }
+    width: 100%;
+  }
 }
 
 .header {
@@ -92,101 +122,101 @@ body {
   z-index: 9999;
   background-color: $color-bg;
   padding: 10px 0px;
-  
+
   .fazer-login {
-      margin-left: 20px;
-      width: 100px;
-      max-width: 300px;
-      height: 35px;
-      background-color: transparent;
-      border: 1px solid $color-btn;
-      border-radius: 4px;
-      color: $color-btn;
+    margin-left: 20px;
+    width: 100px;
+    max-width: 300px;
+    height: 35px;
+    background-color: transparent;
+    border: 1px solid $color-btn;
+    border-radius: 4px;
+    color: $color-btn;
 
-      &:hover {
-          background-color: $color-btn-bg-hover;
-          border: none;
-          color: $color-btn-hover;
-        }
+    &:hover {
+      background-color: $color-btn-bg-hover;
+      border: none;
+      color: $color-btn-hover;
     }
+  }
 
-    .nav-bar {
-      z-index: 999;
-      top: 60px;
-      position: fixed;
-      width: 100%;
-      height: 0;
-      overflow: hidden;
-      background:  $color-bg;
-      transition: 1s;
+  .nav-bar {
+    z-index: 999;
+    top: 60px;
+    position: fixed;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background: $color-bg;
+    transition: 0.8s;
 
-      border-radius: 0px 0px 40px 40px;
-      box-shadow: 0px 10px 10px -5px rgba(144, 127, 185, 0.81);
+    border-radius: 0px 0px 40px 40px;
+    box-shadow: 0px 10px 10px -5px rgba(167 160 160);
 
-      ul {
-        padding: 20px 20px;
+    ul {
+      padding: 20px 20px;
 
-        li {
-          margin: 0px 0px 10px 0;
-          display: block;
-          padding-bottom: 3px;
-          border-bottom: 2px solid #fff;
+      li {
+        margin: 0px 0px 10px 0;
+        display: block;
+        padding-bottom: 3px;
+        border-bottom: 2px solid #fff;
 
-          a {
-            font-size: 15px;
-            color: #fff;
-            font-weight: 400;
-          }
+        a {
+          font-size: 15px;
+          color: #fff;
+          font-weight: 400;
         }
       }
     }
+  }
 
-    .nav-bar._open {
-      height: 240px;
-      transition: 0.5s linear;
-      border-radius: 0;
-    }
+  .nav-bar._open {
+    height: 240px;
+    transition: 0.5s linear;
+    border-radius: 0;
+  }
 
-    .menu {
-      width: 50px;
-      height: auto;
-      position: relative;
+  .menu {
+    width: 50px;
+    height: auto;
+    position: relative;
+    float: right;
+    right: 15px;
+
+    .menu-line {
+      height: 5px;
+      background-color: white;
+      margin: 3px 3px;
       float: right;
-      right: 15px;
-
-      .menu-line {
-        height: 5px;
-        background-color: white;
-        margin: 3px 3px;
-        float: right;
-        transition: all 0.7s linear;
-        border-radius: 10%;
-      }
-
-      #menu-line1 {
-        width: 40px;
-      }
-    
-      #menu-line2 {
-        width: 40px;
-      }
-    
-      #menu-line3 {
-        width: 40px;
-      }
-    
-      #menu-line1._open {
-        width: 40px;
-      }
-    
-      #menu-line2._open {
-        width: 34px;
-      }
-    
-      #menu-line3._open {
-        width: 28px;
-      }
+      transition: all 0.7s linear;
+      border-radius: 10%;
     }
+
+    #menu-line1 {
+      width: 40px;
+    }
+
+    #menu-line2 {
+      width: 40px;
+    }
+
+    #menu-line3 {
+      width: 40px;
+    }
+
+    #menu-line1._open {
+      width: 40px;
+    }
+
+    #menu-line2._open {
+      width: 34px;
+    }
+
+    #menu-line3._open {
+      width: 28px;
+    }
+  }
 }
 
 .content {
@@ -204,21 +234,28 @@ body {
   }
 }
 
-.banner-logo img {
-  width: 100%;
-  margin: 0 auto;
-  display: block;
+.banner-logo {
+  @media (min-width: $medium-min){
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
 }
 
 /*========== CARROSEL ===========*/
 .carousel {
   margin: 0 auto;
 
-  .desc-slide{
+  .desc-slide {
     margin: 2px;
   }
 
-  .slick-prev:before, .slick-next:before{
+  .slick-prev:before,
+  .slick-next:before {
     font-size: 30px !important;
   }
 
@@ -226,21 +263,26 @@ body {
     margin-bottom: 50px !important;
   }
 
-  .desc-oferta-carousel{
+  .desc-oferta-carousel {
     line-height: 1.5;
 
-    .btn-2{
+    .btn-2 {
       color: $color-btn;
       border: 1px solid $color-btn;
     }
   }
 
-  .desc-oferta{
-    p, h3, h4{
+  .desc-oferta {
+
+    p,
+    h3,
+    h4 {
       font-size: 16px;
     }
 
-    h3, h4, h2{
+    h3,
+    h4,
+    h2 {
       margin-bottom: 10px;
     }
   }
@@ -249,6 +291,7 @@ body {
 .slick-next {
   right: 15px !important;
 }
+
 .slick-prev {
   z-index: 99;
   left: 5px !important;
@@ -260,39 +303,51 @@ body {
   .btn {
     width: 32%;
     height: 40px;
-    background:  $color-btn-bg;
+    background: $color-btn-bg;
     border: none;
     border-radius: 4px;
     color: $color-btn;
-    -webkit-box-shadow: 0px 3px 7px 2px rgba(167,160,160,0.82); 
-    box-shadow: 0px 3px 7px 2px rgba(167,160,160,0.82);
-    }
+    -webkit-box-shadow: 0px 3px 7px 2px rgba(167, 160, 160, 0.82);
+    box-shadow: 0px 3px 7px 2px rgba(167, 160, 160, 0.82);
+  }
 
-    @media screen and (min-width: $medium-max) {
-      .btn{
-        cursor: pointer;
-        width: 180px;
-        height: 50px;
-        margin-right: 15px;
+  @media screen and (min-width: $medium-max) {
+    .btn {
+      cursor: pointer;
+      width: 180px;
+      height: 50px;
+      margin-right: 15px;
     }
 
 
 
   }
 
-  #btn-comprar:hover, 
+  #btn-comprar:hover,
   #btn-alugar:hover,
   #btn-codigo:hover,
-  #btn-buscar:hover  {
+  #btn-buscar:hover,
+  #buscar:hover {
     background: $color-btn-bg-hover;
     color: $color-btn-hover;
   }
 
   #btn-buscar {
-    width: 100%;
-    margin: 10px 0 15px 0;
+    width: 180px;
     padding: 12px 5px;
     height: auto;
+    margin: 0;
+  }
+
+  #buscar {
+    width: 180px;
+    margin: 15px 0 5px;
+    padding: 12px 5px;
+    height: auto;
+
+    @media (max-width: 520px) {
+      width: 100%;
+    }
   }
 
   #icon-search {
@@ -329,27 +384,30 @@ input.opc-imoveis {
   .destaques-ofertas {
     position: relative;
 
-    .box-oferta{
+    .box-oferta {
       margin: 2px;
 
       .desc-oferta {
         padding: 10px 15px 1px 15px;
         font-size: 14px;
         color: white;
-        background:  $color-bg;
+        background: $color-bg;
         font-weight: 400;
 
-        h2{
+        h2 {
           font-size: 18px;
         }
 
-        h2, h3, h4{
+        h2,
+        h3,
+        h4 {
           margin-bottom: 10px;
         }
       }
     }
 
-    .slick-prev:before, .slick-next:before{
+    .slick-prev:before,
+    .slick-next:before {
       font-size: 26px;
     }
   }
@@ -361,7 +419,7 @@ input.opc-imoveis {
   padding: 15px 30px;
   font-size: 14px;
   color: white;
-  background:  $color-bg;
+  background: $color-bg;
   font-weight: 400;
 }
 
@@ -377,9 +435,10 @@ input.opc-imoveis {
   cursor: pointer;
   display: inline-block;
   padding: 7px 10px;
+  line-height: 1.2;
   font-size: 18px;
 
-  &:hover{
+  &:hover {
     background-color: $color-btn-bg-hover;
     color: $color-btn-hover;
     border: 1px solid $color-btn-hover;
@@ -394,16 +453,17 @@ input.opc-imoveis {
   width: 100%;
   height: 20px;
   margin-top: 20px;
-  background:  $color-bg;
+  background: $color-bg;
   clear: both;
   position: relative;
 }
 
 /* Dicas para compra e locação */
-#dicas{
+#dicas {
   background-color: #f0eded;
 }
-.tit-dicas{
+
+.tit-dicas {
   font-size: 25px;
   margin-top: 20px;
   padding: 50px 0 2%;
@@ -411,12 +471,13 @@ input.opc-imoveis {
   margin-bottom: 0;
   text-align: center;
 }
-.nossas-dicas{
+
+.nossas-dicas {
   width: 100%;
   display: flex;
   margin-bottom: 20px;
 
-  h3{
+  h3 {
     font-weight: 900;
     padding: 30px 0 0;
     text-align: center;
@@ -424,20 +485,24 @@ input.opc-imoveis {
     font-size: 20px;
   }
 
-  .box-dicas{
+  .box-dicas {
     width: 50%;
     height: auto;
     position: relative;
     padding: 20px 0 20px;
     line-height: 1.5;
 
-    p{
+    p {
       font-size: 18px;
       padding: 0px 17px 0 20px;
       margin-bottom: 20px;
+
+      @media (max-width: 520px) {
+        font-size: 16px;
+      }
     }
 
-    p::before{
+    p::before {
       margin-right: 12px;
       content: '';
       width: 150px;
@@ -450,80 +515,109 @@ input.opc-imoveis {
   }
 }
 
-.formulario{
-  display: grid;
-  position: relative;
-  padding: 10px 20px;
-  background-color: #f0eded;
-  clear: both;
+.box-contato {
+  display: flex;
+  width: 100%;
 
-  p{
-    font-size: 25px;
-    margin: 15px 0;
+  @media (max-width: 520px) {
+    display: block;
   }
 
-  .list-form{
+  .formulario {
+    width: 50%;
     position: relative;
-    font-size: 18px;
-    padding: 10px 0;
-    width: 100%;
-    display: grid;
+    padding: 10px 20px;
+    background-color: #f0eded;
 
-    input{
-      width: 50%;
-      padding: 10px 10px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid $color-bg;
+    @media (max-width: 520px) {
+      width: auto;
+    }
 
-      &:focus{
-        border: none;
+    p {
+      font-size: 25px;
+      margin: 15px 0;
+
+      @media (max-width: 520px) {
+        font-size: 20px;
       }
     }
 
-    textarea{
-      width: 50%;
-      padding: 5px 10px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid $color-bg;
+    .list-form {
+      position: relative;
+      font-size: 18px;
+      padding: 10px 0;
+      width: 100%;
+      display: grid;
+
+      input {
+        width: auto;
+        padding: 10px 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid $color-bg;
+
+        &:focus {
+          border: none;
+        }
+      }
+
+      textarea {
+        width: auto;
+        padding: 5px 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid $color-bg;
+
+      }
+
+      .btn {
+        cursor: pointer;
+        width: 180px;
+        padding: 10px 10px;
+      }
+
     }
 
-    .btn{
-      cursor: pointer;
-      width: 180px;
-      padding: 10px 10px;
-    }
+    #list-form-btn {
+      display: flex;
 
+      #enviar-form {
+        border: none;
+        color: white;
+        background-color: #28a745;
+        margin-right: 10px;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: #2b8d41;
+        }
+      }
+
+      #cancelar-form {
+        border: none;
+        color: white;
+        background-color: #ed5948;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: #c14a3d;
+        }
+      }
+    }
   }
 
-  #list-form-btn{
-    display: flex;
+  .anuncio {
+    width: 50%;
+    position: relative;
+    display: block;
+    background-color: blue;
 
-    #enviar-form{
-      border: none;
-      color: white;
-      background-color: #28a745;
-      margin-right: 10px;
-      border-radius: 5px;
-
-      &:hover{
-        background-color: #2b8d41;
-      }
-    }
-
-    #cancelar-form{
-      border: none;
-      color: white;
-      background-color: #ed5948;
-      border-radius: 5px;
-
-      &:hover{
-        background-color: #c14a3d;
-      }
+    @media (max-width: 520px) {
+      width: 100%;
     }
   }
 }
+
 /*========== FOOTER ============*/
 
 .doc-indent {
@@ -537,7 +631,7 @@ input.opc-imoveis {
   text-align: center;
   margin: 20px 0;
 
-  p{
+  p {
     padding-bottom: 10px;
     font-size: 16px;
   }
@@ -550,22 +644,24 @@ input.opc-imoveis {
     margin: 0 5px;
   }
 
-  .fa-facebook-f{
+  .fa-facebook-f {
     background-color: #4064ac;
     border-radius: 50%;
     padding: 7px 12px;
     color: #fff;
   }
-  .fa-google-plus-g{
+
+  .fa-google-plus-g {
     background-color: #cc5f56;
     border-radius: 50%;
     padding: 8px 5px;
     color: #fff;
   }
-  .fa-instagram{
+
+  .fa-instagram {
     background: #d6249f;
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-    box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
     border-radius: 50%;
     padding: 7px 9px;
     color: #fff;
@@ -574,24 +670,24 @@ input.opc-imoveis {
 
 .footer {
   display: grid;
-  grid-template-columns: 40% 20% 40%;
+  grid-template-columns: 35% 30% 35%;
   grid-template-rows: auto 50px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  grid-template-areas: "endereco logo-empresa info-devs" "desc-ano desc-ano desc-ano";
+  grid-template-areas: "endereco logo-empresa info-devs""desc-ano desc-ano desc-ano";
   height: auto;
   padding: 30px 0 50px 0px;
   margin-top: 30px;
   background: #bca2a28a;
 
-  @media (max-width: 520px){
+  @media (max-width: 520px) {
     padding: 30px 0 20px 0px;
-    grid-template-columns: 100% ;
+    grid-template-columns: 100%;
     grid-template-rows: auto;
-    grid-template-areas:"endereco" "info-devs" "desc-ano";
+    grid-template-areas: "endereco""info-devs""desc-ano";
   }
 
-  .endereco{
+  .endereco {
     line-height: 35px;
     padding-left: 30px;
     grid-area: endereco;
@@ -602,21 +698,21 @@ input.opc-imoveis {
       font-size: 16px;
     }
   }
-  
-  .logo-empresa{
+
+  .logo-empresa {
     padding: 10px;
     grid-area: logo-empresa;
 
-    @media (max-width: 520px){
+    @media (max-width: 520px) {
       display: none;
     }
 
-    img{
+    img {
       width: 100%;
     }
   }
 
-  .info-devs{
+  .info-devs {
     height: 100px;
     padding: 10px;
     grid-area: info-devs;
@@ -625,13 +721,13 @@ input.opc-imoveis {
     display: none;
   }
 
-  .desc-ano{
+  .desc-ano {
     grid-area: desc-ano;
   }
-  
+
 }
 
-.whats{
+.whats {
   position: fixed;
   right: 10px;
   bottom: 10px;
@@ -647,69 +743,67 @@ input.opc-imoveis {
 }
 
 @media screen and (max-width: 770px) {
-  .desc{
+  .desc {
     display: none !important;
   }
-  .mobile{
-      display: block !important;
+
+  .mobile {
+    display: block !important;
   }
 
   .box-dicas p {
     font-size: 15px;
     margin-bottom: 12px;
   }
-  .desc-oferta h3{
-      font-size: 18px;
+
+  .desc-oferta h3 {
+    font-size: 18px;
   }
-  .carousel .desc-oferta p,  
+
+  .carousel .desc-oferta p,
   .carousel .desc-oferta h4 {
-      font-size: 12px;
+    font-size: 12px;
   }
 
-  .carousel .desc-oferta h3{
-      font-size: 18px;
+  .carousel .desc-oferta h3 {
+    font-size: 18px;
   }
 
-  .nossas-dicas{
+  .nossas-dicas {
     display: block;
 
-    .box-dicas{
+    .box-dicas {
       width: 100%;
     }
   }
 
-  .formulario{
+  .formulario {
     display: block;
-  
-    p{
-      font-size: 22px;
-      margin: 15px 0;
-    }
-  
-    .list-form{
+
+    .list-form {
       font-size: 16px;
       padding: 8px 0;
-  
-      input{
+
+      input {
         width: auto;
         padding: 10px 7px;
-  
-        &:focus{
+
+        &:focus {
           border: none;
         }
       }
-  
-      textarea{
+
+      textarea {
         width: auto;
         padding: 5px 8px;
       }
-  
-      .btn{
+
+      .btn {
         width: 50%;
         padding: 8px 10px;
       }
     }
-  
+
   }
 
 }
@@ -719,14 +813,15 @@ input.opc-imoveis {
     margin: 60px 0 20px 0;
   }
 
-  .desc{
+  .desc {
     display: block !important;
   }
-  .mobile{
-      display: none !important;
+
+  .mobile {
+    display: none !important;
   }
 
-  .header .nav-bar{
+  .header .nav-bar {
     width: 68%;
     height: auto;
     top: 0;
@@ -734,7 +829,7 @@ input.opc-imoveis {
     margin: 5px 0;
     box-shadow: none;
     text-align: right;
-    border-radius:0;
+    border-radius: 0;
     float: right;
     position: relative;
     background: transparent;
@@ -748,7 +843,7 @@ input.opc-imoveis {
         margin: 0;
         padding: 0px 10px;
 
-        &:hover{
+        &:hover {
           border-bottom: 2px solid #fff;
         }
 
@@ -757,7 +852,7 @@ input.opc-imoveis {
           color: #fff;
           font-weight: 600;
 
-          &:hover{
+          &:hover {
             color: #e2c9c9;
             border-bottom: 3px solid #e2c9c9;
           }
@@ -770,33 +865,36 @@ input.opc-imoveis {
     display: none;
   }
 
-  img.logo-mobile{
+  img.logo-mobile {
     display: none;
   }
-  .opc-imoveis{
-      margin-right: 10px;
-      width: 27%;
+
+  .opc-imoveis {
+    margin-right: 10px;
+    width: 27%;
   }
 
-  input.opc-imoveis{
-      width: 53%;
+  input.opc-imoveis {
+    width: 53%;
   }
 
-  #btn-buscar{
-      width: 180px !important;
+  #btn-buscar {
+    width: 100%;
+    padding: 12px 5px;
+    height: auto;
   }
 
-  .espaco-branco{
-      width: 100%;
-      height: 20px;
+  .espaco-branco {
+    width: 100%;
+    height: 20px;
   }
 
-  .destaques-ofertas img{
-      max-height:400px;
+  .destaques-ofertas img {
+    max-height: 400px;
   }
 
-  .text-xs-center .btn-2{
-      padding: 10px 32px;
+  .text-xs-center .btn-2 {
+    padding: 10px 32px;
   }
 
 }

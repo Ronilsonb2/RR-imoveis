@@ -1,6 +1,8 @@
 
 
 $('.select-opcao').click(function () {
-    var auz =  $(this).parents('div').attr('id');
-    console.log(aux);
+  // var aux = $(this).parents('div:eq(0)').attr('id');
+  //   console.log(aux);
+
+    $('.select-opcao').css('background-color', '#d4d4e1');
   })
