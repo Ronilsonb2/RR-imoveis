@@ -21,9 +21,9 @@ version: 2.7.0
 ======RESET===========
 */
 
-* {
-  // outline: 1px solid black;
-}
+// * {
+//   outline: 1px solid black;
+// }
 
 body,
 div,
@@ -123,10 +123,18 @@ body {
   background-color: $color-bg;
   padding: 10px 0px;
 
+  .logo-desc{
+    display: none;
+
+    @media (min-width: $medium-min){
+      display: block;
+      width: 28%;
+    }
+  }
   .fazer-login {
     margin-left: 20px;
     width: 100px;
-    max-width: 300px;
+    max-width: 200px;
     height: 35px;
     background-color: transparent;
     border: 1px solid $color-btn;
@@ -138,13 +146,22 @@ body {
       border: none;
       color: $color-btn-hover;
     }
+
+    @media (min-width: $medium-min){
+      right: 8px;
+      position: absolute;
+      width: 10%;
+      top: 10px;
+    }
+
+
   }
 
   .nav-bar {
     z-index: 999;
     top: 60px;
     position: fixed;
-    width: 100%;
+    width: 60%;
     height: 0;
     overflow: hidden;
     background: $color-bg;
@@ -822,7 +839,7 @@ input.opc-imoveis {
   }
 
   .header .nav-bar {
-    width: 68%;
+    width: 60%;
     height: auto;
     top: 0;
     right: 10px;
