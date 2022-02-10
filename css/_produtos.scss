@@ -110,13 +110,20 @@ body{
 
             .gtd-op{
                 font-size: 12px;
-                width: 15%;
                 border: 1px solid #3a3836;
                 background-color: transparent;
                 margin: 6px 10px 0 0;
                 text-align: center;
-                padding: 9px 0px;
-                border-radius: 3px;
+                padding: 10px;
+                border-radius: 20px;
+
+                @media (max-width: 1200px) {
+                    padding: 5px;
+                }
+
+                .gtd-op.check{
+                    background-color: #cc5f56;
+                }
             }
             
             .gtd-op::selection{
@@ -137,13 +144,9 @@ body{
             text-align: center;
             width: 50%;
             padding: 15px 0;
-            background-color: #f0eae4;
+            background-color: transparent;
             color: black;
             font-size: 14px;
-    
-            .select-opcao._open{
-                background: #fff;
-            }
         }
         #opcoes-compras{
             border-right: 3px solid #fff;
@@ -161,7 +164,7 @@ body{
 
     .box-produtos-item{
         padding: 7px;
-        background: #fff;
+        background: #eaecef;
 
         .box-produtos-desc{
             position: relative;
@@ -199,6 +202,11 @@ body{
         margin-bottom: 10px;
         border-radius: 4px;
     }
+
+    .filtro._open{
+        background-color: #ffffff94;
+    }
+
 
     .form-lateral{
         display: none;

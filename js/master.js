@@ -13,13 +13,25 @@ window.addEventListener('scroll', function(e) {
   $('.nav-bar').removeClass('_open');
 });
 
-let headerHeight = $('.header').height();
-console.log("Height do header: " + headerHeight);
+// let headerHeight = $('.header').height();
+// console.log("Height do header: " + headerHeight);
 
-window.onload = function () {
-  $('.banner-logo').css('margin-top', headerHeight + 25);
+// window.onload = function () {
+//   $('.banner-logo').css('margin-top', headerHeight);
+//   $('.qtd-imoveis-disponiveis').css('margin-top', headerHeight + 25);
+// };
+
+function initPosition(){
+  let headerHeight = $('.header').height();
+  $('.banner-logo').css('margin-top', headerHeight);
   $('.qtd-imoveis-disponiveis').css('margin-top', headerHeight + 25);
-};
+
+  setTimeout(function(){$('#body').addClass('_open'); }, 300);
+}
+
+$(document).ready(function() {
+  setTimeout(function(){initPosition(); }, 500);
+});
 // Responsivo
 
 if($(window).width() > 1000){
@@ -52,4 +64,12 @@ else{
     slidesToScroll: 1
   });
 
+  $('#quartos div').click(function(){
+    let id = ($(this).attr('id'));
+    let aux = ("#"+id);
+    console.log("o id clicado foi:"+ aux);
 
+    $(aux).css('background-color', '#fff');
+
+    $(aux).css('background-color', '#cc5f56');
+  })

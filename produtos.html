@@ -19,40 +19,51 @@
     <script src="https://kit.fontawesome.com/5842351b58.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body id="body">
     <section class="header bg-header">
-        <div class="content">
-            <button class="fazer-login" type="submit">Entrar</button>
-            <div class="menu" id="nav-bar-toggle">
-                <div class="menu-line" id="menu-line1"></div>
-                <div class="menu-line" id="menu-line2"></div>
-                <div class="menu-line" id="menu-line3"></div>
-            </div>
+        <div class="content content-header">
 
-            <div class="nav-bar">
-                <ul>
-                    <li>
-                        <a href="index.html">HOME</a>
-                    </li>
-                    <li>
-                        <a href="#destaques">DESTAQUES</a>
-                    </li>
-                    <li>
-                        <a href="#dicas">NOSSAS DICAS</a>
-                    </li>
-                    <li>
-                        <a href="#siga-nos">SIGA-NÓS</a>
-                    </li>
-                    <li>
-                        <a href="contato.html">CONTATO</a>
-                    </li>
-                </ul>
+            <div class="grid-logo">
+                <img class="logo-desc" src="img/logo-marca-footer.png" alt="Logo ">
             </div>
+            <div class="grid-menu">
+                <div class="btn-login">
+                    <button class="fazer-login" type="submit">Entrar</button>
+                </div>
+                
+            
+                <div class="menu" id="nav-bar-toggle">
+                    <div class="menu-line" id="menu-line1"></div>
+                    <div class="menu-line" id="menu-line2"></div>
+                    <div class="menu-line" id="menu-line3"></div>
+                </div>
+    
+                <div class="nav-bar">
+                    <ul>
+                        <li>
+                            <a href="index.html">HOME</a>
+                        </li>
+                        <li>
+                            <a href="#destaques">DESTAQUES</a>
+                        </li>
+                        <li>
+                            <a href="#dicas">NOSSAS DICAS</a>
+                        </li>
+                        <li>
+                            <a href="#siga-nos">SIGA-NÓS</a>
+                        </li>
+                        <li>
+                            <a href="#contato">CONTATO</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+           
         </div>
     </section>
     <section class="content-conteudo">
         <div class="banner-logo" id="inicio">
-            <img class="logo-mobile mobile" src="img/logo-marca.png" alt="Logo ">
+            <img class="logo-mobile mobile" src="img/logo-marca-footer.png" alt="Logo ">
         </div>
 
         <div class="qtd-imoveis-disponiveis">
@@ -70,7 +81,7 @@
         <div class="filtro">Filtro</div>
         </div>
             <div class="form-lateral">
-                    <div class="menu-opcoes">
+                    <div class="menu-opcoes" id="menu-opcoes">
                         <div class="select-opcao" id="opcoes-compras">Comprar</div>
                         <div class="select-opcao" id="opcoes-alugar">Alugar</div>
                     </div>
@@ -104,21 +115,21 @@
 
                 <div class="list-group">
                     <label for="">Quartos</label><br>
-                    <div class="qtd">
+                    <div class="qtd" id="quartos">
                         
-                        <div class="gtd-op">
+                        <div class="gtd-op quarto" id="quarto1">
                             +1
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op quarto" id="quarto2">
                             +2
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op quarto" id="quarto3">
                             +3
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op quarto" id="quarto4">
                             +4
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op quarto" id="quarto5">
                             +5
                         </div>
                     </div>
@@ -126,20 +137,20 @@
 
                 <div class="list-group">
                     <label for="">Suites</label><br>
-                    <div class="qtd">
-                        <div class="gtd-op">
+                    <div class="qtd" id="suite">
+                        <div class="gtd-op suite" id="suite1">
                             +1
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op suite" id="suite2">
                             +2
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op suite" id="suite3">
                             +3
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op suite" id="suite4">
                             +4
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op suite" id="suite5">
                             +5
                         </div>
                     </div>
@@ -147,21 +158,21 @@
 
                 <div class="list-group">
                     <label for="">Banheiros</label><br>
-                    <div class="qtd">
+                    <div class="qtd" id="banheiro">
                         
-                        <div class="gtd-op">
+                        <div class="gtd-op banheiro" id="banheiro1">
                             +1
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op banheiro" id="banheiro2">
                             +2
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op banheiro" id="banheiro3">
                             +3
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op banheiro" id="banheiro4">
                             +4
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op banheiro" id="banheiro5">
                             +5
                         </div>
                     </div>
@@ -169,21 +180,21 @@
 
                 <div class="list-group">
                     <label for="">Vagas</label><br>
-                    <div class="qtd">
+                    <div class="qtd" id="vagas">
                         
-                        <div class="gtd-op">
+                        <div class="gtd-op vaga" id="vaga1">
                             +1
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op vaga" id="vaga2">
                             +2
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op vaga" id="vaga3">
                             +3
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op vaga" id="vaga4">
                             +4
                         </div>
-                        <div class="gtd-op">
+                        <div class="gtd-op vaga" id="vaga5">
                             +5
                         </div>
                     </div>
@@ -337,12 +348,12 @@
         <i class="fab fa-instagram"></i>
     </div>
 
-    <section class="content">
+    <section class="content-footer">
         <div class="footer">
             <div class="endereco">
                 <p>Rua Almirante Barroso, 256 - Jardins</p>
                 <p>São Paulo - SP</p>
-                <p>Email:  <a href=mailto:<nowiki>ronilson-b2@hotmail.com</a></p>
+                <p>Email:  <a href=mailto:<nowiki>contato@contato.com</a></p>
                 <p>Fone: (+55) 00 0000-0000</p>
             </div>
 
@@ -351,12 +362,13 @@
             </div>
 
             <div class="info-devs">
-                <p>aréa a ser preechida futuramente</p>
+                <p>Em producão...</p>
             </div>
 
             <div class="desc-ano">
                 <p style="text-align: center; margin-top: 30px;">&copy; Outubro 2021</p>
             </div>
+
         </div>
     </section>
 
@@ -374,9 +386,9 @@
         
 
     <script>
-        $('.filtro').click(function () {
-            $('.form-lateral').toggleClass('_open');
-        })
+
+
+
 
     </script>
 </body>

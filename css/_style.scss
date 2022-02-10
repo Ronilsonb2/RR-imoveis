@@ -2,11 +2,14 @@ $small: 300px;
 $medium-min: 779px;
 $medium-max: 780px;
 
-$color-bg: #a7a0a0;
+$color-bg: #051736;
+$color-branco: #fff;
+
+$color-header-menu: #293b59;
 
 // cores do CTAs
-$color-btn-bg: #a7a0a0;
-$color-btn: #fff;
+$color-btn-bg: #051736;
+$color-btn: $color-branco;
 $color-btn-bg-hover: #e6d8d8;
 $color-btn-hover: #a7a0a0;
 
@@ -105,37 +108,95 @@ body {
   font-family: 'Birthstone', cursive;
   font-family: 'Roboto', sans-serif;
 
+  background-color: $color-branco !important;
+
   img {
     width: 100%;
   }
 }
-
+#body{
+  opacity: 0;
+}
+#body._open{
+  opacity: 1;
+}
 .header {
   position: fixed;
   display: flex;
   align-items: center;
   top: 0;
   width: 100%;
-  height: auto;
+  height: 70px;
   min-height: 60px;
-  color: #fff;
+  color: $color-branco;
   z-index: 9999;
-  background-color: $color-bg;
-  padding: 10px 0px;
+  background-color: $color-header-menu;
 
-  .logo-desc{
+  @media (min-width: $medium-min){
+    height: auto;
+    border: nones;
+  }
+
+  .grid-logo{
     display: none;
 
     @media (min-width: $medium-min){
       display: block;
-      width: 28%;
+      width: 80%;
     }
   }
+
+  .content-header{
+    display: grid;
+    grid-template-areas: "grid-logo grid-menu";
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 1fr;
+
+    @media (max-width: 780px) {
+      display: block;
+    }
+
+    // align-content: space-around;
+    // align-items: baseline;
+
+    .grid-logo{
+      grid-area: grid-logo;
+    }
+
+    .grid-menu{
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 2fr;
+      grid-area: grid-menu;
+      grid-template-areas: "fazer-login nav-bar";
+      justify-items: right;
+
+      @media (max-width: 780px) {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn-login{
+        grid-area: btn-login;
+        grid-area: 1;
+
+        padding: 10px;
+      }
+      .nav-bar{
+        grid-area: nav-bar;
+        grid-area: 2;
+      }
+    }
+  }
+
+
+
   .fazer-login {
     margin-left: 20px;
     width: 100px;
     max-width: 200px;
     height: 35px;
+    position: relative !important;
     background-color: transparent;
     border: 1px solid $color-btn;
     border-radius: 4px;
@@ -148,10 +209,8 @@ body {
     }
 
     @media (min-width: $medium-min){
-      right: 8px;
+      
       position: absolute;
-      width: 10%;
-      top: 10px;
     }
 
 
@@ -159,13 +218,14 @@ body {
 
   .nav-bar {
     z-index: 999;
-    top: 60px;
+    top: 70px;
     position: fixed;
-    width: 60%;
+    width: 100%;
     height: 0;
     overflow: hidden;
-    background: $color-bg;
+    background: $color-header-menu;
     transition: 0.8s;
+    border-top: 3px solid #f0eae4;
 
     border-radius: 0px 0px 40px 40px;
     box-shadow: 0px 10px 10px -5px rgba(167 160 160);
@@ -177,11 +237,11 @@ body {
         margin: 0px 0px 10px 0;
         display: block;
         padding-bottom: 3px;
-        border-bottom: 2px solid #fff;
+        border-bottom: 2px solid $color-branco;
 
         a {
           font-size: 15px;
-          color: #fff;
+          color: $color-branco;
           font-weight: 400;
         }
       }
@@ -198,8 +258,7 @@ body {
     width: 50px;
     height: auto;
     position: relative;
-    float: right;
-    right: 15px;
+    padding: 15px;
 
     .menu-line {
       height: 5px;
@@ -252,6 +311,8 @@ body {
 }
 
 .banner-logo {
+  background-color: $color-bg;
+
   @media (min-width: $medium-min){
     display: none;
   }
@@ -544,7 +605,7 @@ input.opc-imoveis {
     width: 50%;
     position: relative;
     padding: 10px 20px;
-    background-color: #f0eded;
+    background-color: #86898c;
 
     @media (max-width: 520px) {
       width: auto;
@@ -665,14 +726,14 @@ input.opc-imoveis {
     background-color: #4064ac;
     border-radius: 50%;
     padding: 7px 12px;
-    color: #fff;
+    color: $color-branco;
   }
 
   .fa-google-plus-g {
     background-color: #cc5f56;
     border-radius: 50%;
     padding: 8px 5px;
-    color: #fff;
+    color: $color-branco;
   }
 
   .fa-instagram {
@@ -681,68 +742,76 @@ input.opc-imoveis {
     box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
     border-radius: 50%;
     padding: 7px 9px;
-    color: #fff;
+    color: $color-branco;
   }
 }
 
-.footer {
-  display: grid;
-  grid-template-columns: 35% 30% 35%;
-  grid-template-rows: auto 50px;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  grid-template-areas: "endereco logo-empresa info-devs""desc-ano desc-ano desc-ano";
-  height: auto;
-  padding: 30px 0 50px 0px;
-  margin-top: 30px;
-  background: #bca2a28a;
+.content-footer{
+  width: 100%;
 
-  @media (max-width: 520px) {
-    padding: 30px 0 20px 0px;
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-    grid-template-areas: "endereco""info-devs""desc-ano";
-  }
+  .footer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto 0;
+    position: relative;
 
-  .endereco {
-    line-height: 35px;
-    padding-left: 30px;
-    grid-area: endereco;
-
-    p {
-      line-height: 1.7;
-      color: #3d3d3d;
-      font-size: 16px;
-    }
-  }
-
-  .logo-empresa {
-    padding: 10px;
-    grid-area: logo-empresa;
-
+    display: grid;
+    grid-template-columns: 35% 30% 35%;
+    grid-template-rows: auto 50px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    grid-template-areas: "endereco logo-empresa info-devs""desc-ano desc-ano desc-ano";
+    height: auto;
+    padding: 30px 0 50px 0px;
+    justify-items: center;
+  
     @media (max-width: 520px) {
-      display: none;
+      padding: 30px 0 20px 0px;
+      grid-template-columns: 100%;
+      grid-template-rows: auto;
+      grid-template-areas: "endereco""info-devs""desc-ano";
     }
-
-    img {
-      width: 100%;
+  
+    .endereco {
+      line-height: 35px;
+      grid-area: endereco;
+  
+      p {
+        line-height: 1.7;
+        color: #3d3d3d;
+        font-size: 16px;
+      }
     }
+  
+    .logo-empresa {
+      padding: 10px;
+      grid-area: logo-empresa;
+  
+      @media (max-width: 520px) {
+        display: none;
+      }
+  
+      img {
+        width: 100%;
+      }
+    }
+  
+    .info-devs {
+      height: 100px;
+      padding: 10px;
+      grid-area: info-devs;
+  
+  
+      // display: none;
+    }
+  
+    .desc-ano {
+      grid-area: desc-ano;
+    }
+  
   }
-
-  .info-devs {
-    height: 100px;
-    padding: 10px;
-    grid-area: info-devs;
-
-
-    display: none;
-  }
-
-  .desc-ano {
-    grid-area: desc-ano;
-  }
-
 }
+
 
 .whats {
   position: fixed;
@@ -752,7 +821,7 @@ input.opc-imoveis {
 
   .fa-whatsapp {
     background-color: #25d366;
-    color: #fff;
+    color: $color-branco;
     font-size: 28px;
     border-radius: 50%;
     padding: 11px;
@@ -839,16 +908,16 @@ input.opc-imoveis {
   }
 
   .header .nav-bar {
-    width: 60%;
+    width: 100%;
     height: auto;
     top: 0;
-    right: 10px;
-    margin: 5px 0;
+    margin: 0px 0 20px;
+
     box-shadow: none;
     text-align: right;
     border-radius: 0;
-    float: right;
     position: relative;
+    border: none;
     background: transparent;
 
     ul {
@@ -861,12 +930,12 @@ input.opc-imoveis {
         padding: 0px 10px;
 
         &:hover {
-          border-bottom: 2px solid #fff;
+          border-bottom: 2px solid $color-branco;
         }
 
         a {
           font-size: 20px;
-          color: #fff;
+          color: $color-branco;
           font-weight: 600;
 
           &:hover {
