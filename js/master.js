@@ -64,12 +64,4 @@ else{
     slidesToScroll: 1
   });
 
-  $('#quartos div').click(function(){
-    let id = ($(this).attr('id'));
-    let aux = ("#"+id);
-    console.log("o id clicado foi:"+ aux);
 
-    $(aux).css('background-color', '#fff');
-
-    $(aux).css('background-color', '#cc5f56');
-  })

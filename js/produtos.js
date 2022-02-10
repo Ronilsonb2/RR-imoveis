@@ -6,15 +6,13 @@ $('.filtro').click(function () {
 
 $('.select-opcao').click(function(){
 
-  $('#opcoes-compras').css('background-color', '#fff');
-  $('#opcoes-alugar').css('background-color', '#fff');
+  $('#opcoes-compras').css({'background-color': 'transparent', 'color': '#fff'});
+  $('#opcoes-alugar').css({'background-color': 'transparent', 'color': '#fff'});
 
   let id = ($(this).attr('id'));
   let aux = ("#"+id);
 
-  $(aux).css('background-color', '#fff');
-
-  $(aux).css('background-color', '#f0eae3');
+  $(aux).css({'background-color': '#fff', 'color': 'black'});
 
 });
 
@@ -22,39 +20,35 @@ $('.select-opcao').click(function(){
 $('#quartos div').click(function(){
   let id = ($(this).attr('id'));
   let aux = ("#"+id);
-  console.log("o id clicado foi:"+ aux);
 
-  $(".quarto").css('background-color', '#fff');
+  $(".quarto").css('background-color', 'transparent');
 
-  $(aux).css('background-color', '#cc5f56');
+  $(aux).css('background-color', '#877b7b');
 })
 
 $('#suite div').click(function(){
   let id = ($(this).attr('id'));
   let aux = ("#"+id);
-  console.log("o id clicado foi:"+ aux);
 
-  $(".suite").css('background-color', '#fff');
+  $(".suite").css('background-color', 'transparent');
 
-  $(aux).css('background-color', '#cc5f56');
+  $(aux).css('background-color', '#877b7b');
 })
 
 $('#banheiro div').click(function(){
   let id = ($(this).attr('id'));
   let aux = ("#"+id);
-  console.log("o id clicado foi:"+ aux);
 
-  $(".banheiro").css('background-color', '#fff');
+  $(".banheiro").css('background-color', 'transparent');
 
-  $(aux).css('background-color', '#cc5f56');
+  $(aux).css('background-color', '#877b7b');
 })
 
 $('#vagas div').click(function(){
   let id = ($(this).attr('id'));
   let aux = ("#"+id);
-  console.log("o id clicado foi:"+ aux);
 
-  $(".vaga").css('background-color', '#fff');
+  $(".vaga").css('background-color', 'transparent');
 
-  $(aux).css('background-color', '#cc5f56');
+  $(aux).css('background-color', '#877b7b');
 })

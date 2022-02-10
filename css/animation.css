@@ -7,16 +7,16 @@
 
 @-webkit-keyframes color-change-4x {
     0% {
-      background: #19dcea;
+      background: #292825;
     }
     33.3333% {
-      background: #bca2a28a;
+      background: #4064ac;
     }
     66.666% {
-      background: #8f6666;
+      background: #474a51;
     }
     100% {
-      background: hsl(148, 27%, 48%);
+      background: hsl(5deg 54% 57%);
     }
   }
 
