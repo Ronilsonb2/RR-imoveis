@@ -13,18 +13,14 @@ window.addEventListener('scroll', function(e) {
   $('.nav-bar').removeClass('_open');
 });
 
-// let headerHeight = $('.header').height();
-// console.log("Height do header: " + headerHeight);
-
-// window.onload = function () {
-//   $('.banner-logo').css('margin-top', headerHeight);
-//   $('.qtd-imoveis-disponiveis').css('margin-top', headerHeight + 25);
-// };
 
 function initPosition(){
   let headerHeight = $('.header').height();
   $('.banner-logo').css('margin-top', headerHeight);
-  $('.qtd-imoveis-disponiveis').css('margin-top', headerHeight + 25);
+  // $('.qtd-imoveis-disponiveis').css('margin-top', headerHeight + 25);
+
+
+  // $('.content-100').css('margin-top', headerHeight);
 
   setTimeout(function(){$('#body').addClass('_open'); }, 300);
 }
