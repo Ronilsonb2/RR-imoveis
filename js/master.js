@@ -16,11 +16,7 @@ window.addEventListener('scroll', function(e) {
 
 function initPosition(){
   let headerHeight = $('.header').height();
-  $('.banner-logo').css('margin-top', headerHeight);
-  // $('.qtd-imoveis-disponiveis').css('margin-top', headerHeight + 25);
-
-
-  // $('.content-100').css('margin-top', headerHeight);
+  // $('.banner-logo').css('margin-top', headerHeight);
 
   setTimeout(function(){$('#body').addClass('_open'); }, 300);
 }
@@ -28,6 +24,7 @@ function initPosition(){
 $(document).ready(function() {
   setTimeout(function(){initPosition(); }, 500);
 });
+
 // Responsivo
 
 if($(window).width() > 1000){
