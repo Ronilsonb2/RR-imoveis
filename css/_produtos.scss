@@ -1,81 +1,149 @@
-$font-14: 14px;
-
-$small: 300px;
+$small: 380px;
 $medium-min: 779px;
 $medium-max: 780px;
 
-
-$color-2: #494242;
-$color-bg: #a7a0a0;
-$color-btn: #a7a0a0;
+$color-bg-geral: #CBD5E1;
+$color-txt-geral: #E5E5E5;
+$color-bg-itens: #475569;
+$color-black: #000000;
+$color-branco: #fff;
+$color-red: #E70A0D;
+$color-verde: #B9AC8F;
 $color-branco: #fff;
 
+$ft-24: 24px;
+$ft-20: 20px;
+$ft-18: 18px;
+$ft-16: 16px;
+$ft-14: 14px;
+$ft-32: 32px;
+
+// cores do CTAs
 $bg-transparent: transparent;
-$color-btn-bg: #051736;
 $color-btn-bg-hover: #877b7b;
+$color-btn-hover: #a7a0a0;
 
 
 body{
-    background: #f0eae4;
+    background: $color-bg-geral;
     transform: translateX();
-    // font-size: $font-14;
 }
+
+.dados-header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+
+    @media (max-width: $medium-max) {
+        align-items: stretch;
+        justify-content: space-around;
+        align-content: center;
+        padding: 20px 0px 0px;
+        max-width: 350px;
+    }
+
+    .banner-logo{
+        margin-top: 15px;
+       
+        .mobile{
+           margin-bottom: 0px;
+        }
+    }
+}
+
 
 .qtd-imoveis-disponiveis{
-    padding: 36px 0 10px;
     width: 100%;
-    margin-top: 85px;
+    margin-top: 35px;
     font-size: 40px;
+    color: $color-bg-itens;
 
     @media (max-width: 520px){
-        float: left;
         padding: 0;
-        margin: 20px 0 !important;
-        font-size: 20px;
-        width: 68%;
+        margin: 0;
+        font-size: $ft-24;
     }
 }
 
-.prioridade-resultados{
-    border: 1px solid #d5c1c1;
-    padding: 8px;
-    float: right;
-    margin-bottom: 10px;
-    font-size: 12px;
-    border-radius: 4px;
-    background-color: #ffffff94;
+.opcoes-filtros {
+    display: flex;
+    justify-content: flex-end;
 
     @media (max-width: 520px){
-        margin: 20px 0 0 !important;
-        width: 32%;
+        padding: 20px 0px 10px;
+        max-width: 350px;
+        justify-content: space-between;
+    }
+    
+    .prioridade-resultados{
+        border: 3px solid $color-bg-itens;
+        color: $color-bg-itens;
+        height: 33px;
+        width: 110px;
+        padding: 5px 5px;
+        margin-bottom: 10px;
+        font-size: $ft-14;
+        border-radius: 4px;
+        background-color: $bg-transparent;
+
+        @media (max-width: 520px){
+            margin: 0px 0 0 !important;
+            width: 105px;
+            border: 2px solid $color-bg-itens;
+        }
     }
 }
 
-.box-produtos img {
-    max-height: 400px;
+.content-resultado-pesquisa {
+    width: 90%;
+    display: flex;
+    gap: 30px;
+    max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
+    clear: both;
+
+    @media (max-width: $medium-max) {
+        flex-direction: column;
+    }
 }
-.filtro{
-    display: none;
+
+.form-lateral._open{
+    display: block;
 }
 
 .form-lateral{
-    width: 23%;
+    width: 100%;
+    max-width: 240px;
+    height: 985px;
     position: relative;
-    float: left;
-    background-color: $color-2;
+    background-color: $color-bg-itens;
+    color: $color-txt-geral;
+    border-radius: 10px;
+
+    @media (max-width: $medium-max) {
+        max-width: 300px;
+        display: none;
+        position: relative;
+        float: none;
+        margin-bottom: 20px;
+    }
+
+
 
     .list-group{
         position: relative;
         display: block;
         padding: 15px 10px 25px;
-        border-color: $color-2;
+        border-color: $color-bg-itens;
         border-top: 1px solid $color-branco;
 
         .btn {
             background: $bg-transparent;
-            border: 1px solid $color-branco;
+            border: 1px solid $color-txt-geral;
             border-radius: 4px;
-            color: $color-branco;
+            color: $color-txt-geral;
 
             #icon-search {
                 margin-right: 5px;
@@ -88,12 +156,16 @@ body{
 
         .opc-imoveis{
             width: 90%;
-            font-size: 12px;
-            padding: 12px 0px 12px 10px;
-            color: #3d3d3d;
+            font-size: $ft-14;
+            height: 40px;
+            color: $color-txt-geral;
             margin-top: 10px;
             border-radius: 6px;
-            border: 1px solid rgba(0, 0, 0, .15);
+            border: 1px solid $color-txt-geral;
+
+            &::placeholder{
+                color: $color-txt-geral;
+            }
         }
 
         label{
@@ -102,31 +174,30 @@ body{
 
         .group-duplo {
             display: flex;
+            justify-content: space-between;
         }
 
         .duplo{
-            float: left;
-            width: 50%;
-
-            #preco-min{
-                width: 75%;
-            }
-            
-            #preco-max{
-                width: 75%;    
-            }
+            width: 48%;
         }
 
         .qtd{
             display: flex;
+            gap: 9px;
+            justify-content: flex-start;
 
             .gtd-op{
+                width: 30px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                justify-content: center;
+                align-items: center;
                 font-size: 12px;
-                border: 1px solid $color-branco;
+                border: 1px solid $color-txt-geral;
                 background-color: transparent;
-                margin: 6px 10px 0 0;
+                margin: 6px 0px 0px;
                 text-align: center;
-                padding: 10px;
                 border-radius: 20px;
 
                 @media (max-width: 1200px) {
@@ -139,13 +210,19 @@ body{
             }
             
             .gtd-op::selection{
-                background-color: black;
+                background-color: $color-bg-itens;
             }
         }
 
         #btn-buscar {
-            padding: 12px 5px;
-            height: auto;
+            height: 50px;
+            width: 100%;
+            font-size: $ft-20;
+            margin: 10px 0px 0;
+
+            @media (max-width: $medium-max) {
+                margin: 0;
+            }
         }
     }
 
@@ -158,111 +235,211 @@ body{
             padding: 15px 0;
             background-color: transparent;
             font-size: 14px;
+            color: $color-branco;
         }
         #opcoes-compras{
-            border-right: 3px solid #fff;
+            border-right: 3px solid $color-txt-geral;
         }
     }
 }
 
-/*========== Produtos =======*/
-.box-produtos{
-    display: grid;
-    grid-template-columns: 49% 49%;
-    grid-column-gap: 2%;
-    grid-row-gap: 1em;
-    padding-left: 25px;
-
-    .box-produtos-item{
-        padding: 7px;
-        background: $color-2;
-
-        .box-produtos-desc{
-            position: relative;
-            width: auto;
-            line-height: 1.5;
-            padding: 0 20px 20px;
-        }
-        .box-produtos-desc p{
-            font-size: 14px;
-        }
-        .box-produtos-desc h3{
-            margin-bottom: 5px;
-            font-size: 20px;
-        }
-    }
-
-    
+.box-produtos img {
+    max-height: 400px;
 }
 
+.filtro{
+    display: none;
 
-
-// Rever estrutura 
-
-@media (max-width: 780px) {
-
-    .filtro{
+    @media (max-width: $medium-max){
         display: block;
         padding: 5px 10px;
         text-align: center;
         width: 42px;
         background: transparent;
-        border: 1px solid $color-btn;
+        border: 2px solid $color-bg-itens;
+        color: $color-bg-itens;
         font-size: 14px;
-        margin-top: 10px;
-        margin-bottom: 10px;
         border-radius: 4px;
+    
+        ._open{
+            background-color: $color-txt-geral;
+        }
     }
+}
 
-    .filtro._open{
-        background-color: #ffffff94;
+
+/*========== Produtos =======*/
+.msg-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h1{
+        font-size: 50px;
     }
-
-
-    .form-lateral{
-        display: none;
-        width: 100%;
-        position: relative;
-        float: none;
-        margin-bottom: 20px;
+    h3{
+        font-size: 30px;
     }
-    .form-lateral._open{
-        display: block;
+    p{
+        font-size: 20px;
+        margin-top: 34px;
     }
+}
 
-    .box-produtos{
+#show-imoveis-filtrados {
+    background-color: $bg-transparent;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 40px;
+    padding-bottom: 40px;
+  
+    @media screen and (max-width: $medium-max){
+      padding-top: 0;
+    }
+  
+  
+    @media (min-width: $medium-min) {
+      gap: 40px;
+      flex-direction: row;
+      grid-template-columns: 1fr; /* 3 colunas ajustáveis */
+    }
+  
+    .slide{
+      width: 100%;
+      max-height: 350px;
+      border-radius: 10px;
+      overflow: hidden;
+      -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25); 
+      box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+  
+      @media screen and (max-width: $medium-max){
+        width: auto;
+        max-height: 580px;
+      }
+  
+      .box-produto {
+        height: 350px;
         display: grid;
-        grid-template-columns: 100%;
-        grid-column-gap: 0;
-        padding: 0;
-
-        .box-produtos-item .box-produtos-desc h3{
-            font-size: 16px;
+        font-size: $ft-18;
+        grid-template-columns: 1fr 2fr;
+        color: $color-bg-itens;
+  
+        @media screen and (max-width: $medium-max){
+          height: 585px;
+          width: 350px;
+          display: flex;
+          flex-direction: column;
+          background-color: $color-branco;
+          grid-template-columns: 1fr;
+        }
+  
+        .imagens-imovel {
+          width: 400px;
+          height: 350px;
+          overflow: hidden;
+          position: relative;
+          background-color: $color-black;
+  
+          @media screen and (max-width: $medium-max){
+            width: 350px;
+            height: 300px;
+          }
+  
+          img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: auto;
+            width: 100%;
+  
+            @media screen and (max-width: $medium-max){
+              width: 350px;
+            }
+          }
         }
 
-        .box-produtos-item .box-produtos-desc p{
-            font-size: 14px;
+        .desc-oferta-container{
+            background-color: $color-branco;
+
+            .desc-oferta {
+                gap: 24px;
+                padding: 26px;
+                display: flex;
+                flex-direction: column;
+        
+                @media screen and (max-width: $medium-max){
+                    max-width: 350px;
+                    padding: 10px 20px;
+                    gap: 10px;
+                }
+        
+                h2{
+                    font-size: $ft-18;
+                }
+                h3{
+                    font-size: $ft-14;
+                    font-weight: 400;
+                    margin-top: 5px;
+                }
+                .descricao-curta{
+                    font-size: $ft-14;
+                    font-weight: 300;
+                }
+        
+                .price-imovel {
+                    font-size: $ft-24;
+                    font-weight: bold;
+    
+                    br{
+                        display: none;
+                    }
+        
+                    @media screen and (max-width: $medium-max){
+                    font-size: $ft-20;
+        
+                    
+                    }
+                }
+                .price-imovel span{
+                    font-size: $ft-32;
+                    font-weight: bold;
+        
+                    @media screen and (max-width: $medium-max){
+                    font-size: $ft-32;
+                    }
+                }
+        
+                .text-xs-center {
+                    width: 260px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: $color-bg-itens;
+                    border-radius: 10px;
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    -ms-border-radius: 10px;
+                    -o-border-radius: 10px;
+        
+                    @media screen and (max-width: $medium-max){
+                    width: 100%;
+                    }
+        
+                    a{
+                    color: $color-txt-geral;
+                    font-weight: bold;
+                    }
+                }  
+                }
         }
+  
 
-        .box-produtos-item .box-produtos-desc .text-xs-center .btn-2{
-            font-size: 14px;
-            padding: 5px 10px;
-        }
+      }
     }
+  }
 
-    .list-group #btn-buscar {
-        margin: 0;
-    }
-
-}
-
-@media screen and (max-width: 770px){
-    .form-lateral .list-group #btn-buscar {
-        margin: 0;
-        width: 100%;
-    }
-}
-
-@media screen and (min-width: $medium-min){
-
-}

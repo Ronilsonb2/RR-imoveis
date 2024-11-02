@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/animation.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css">
 
@@ -24,14 +24,10 @@
         <div class="content content-header">
 
             <div class="grid-logo">
-                <img class="logo-desc" src="img/logo-marca-footer2.png" alt="Logo ">
+                <img class="logo-desc" src="img/logo-marca-footer3.png" alt="Logo ">
             </div>
             <div class="grid-menu">
-                <div class="btn-login">
-                    <button class="fazer-login" type="submit">Entrar</button>
-                </div>
-                
-            
+
                 <div class="menu" id="nav-bar-toggle">
                     <div class="menu-line" id="menu-line1"></div>
                     <div class="menu-line" id="menu-line2"></div>
@@ -44,16 +40,16 @@
                             <a href="index.html">HOME</a>
                         </li>
                         <li>
-                            <a href="#destaques">DESTAQUES</a>
+                            <a href="#destaques-mobile">DESTAQUES</a>
                         </li>
                         <li>
                             <a href="#dicas">NOSSAS DICAS</a>
                         </li>
                         <li>
-                            <a href="#siga-nos">SIGA-NÓS</a>
+                            <a href="#contato">CONTATO</a>
                         </li>
                         <li>
-                            <a href="#contato">CONTATO</a>
+                            <a href="#siga-nos">SIGA-NÓS</a>
                         </li>
                     </ul>
                 </div>
@@ -61,15 +57,16 @@
            
         </div>
     </section>
-    <section class="content-conteudo">
-        <div class="banner-logo" id="inicio">
-            <img class="logo-mobile mobile" src="img/logo-marca-footer.png" alt="Logo ">
-        </div>
 
-        <div class="qtd-imoveis-disponiveis">
+    <section class="content-conteudo dados-header">
+
+        <div class="qtd-imoveis-disponiveis" id="resultado-total-imoveis">
             <p><b>000</b>  Imóveis à venda</p>
         </div>
+    </section>
 
+    <section class="content-conteudo opcoes-filtros">
+        <div class="filtro">Filtro</div>
         <select class="prioridade-resultados" name="">
             <option value="menor_valor">Menor valor</option>
             <option value="maior_valor">Maior valor</option>
@@ -77,18 +74,18 @@
         </select>
     </section>
 
-    <section class="content-conteudo">
-        <div class="filtro">Filtro</div>
+    <section class="content-resultado-pesquisa">
+        
         </div>
             <div class="form-lateral">
-                    <div class="menu-opcoes" id="menu-opcoes">
-                        <div class="select-opcao" id="opcoes-compras">Comprar</div>
-                        <div class="select-opcao" id="opcoes-alugar">Alugar</div>
-                    </div>
+                <div class="menu-opcoes" id="menu-opcoes">
+                    <button class="select-opcao" id="opcoes-compras">Comprar</button>
+                    <button class="select-opcao" id="opcoes-alugar">Alugar</button>
+                </div>
               
                 <div class="list-group">
                     <label for="">Localidade</label><br>
-                    <input class="opc-imoveis" type="text" placeholder="Digite código, condomínio, região, bairro ou cidade">
+                    <input class="opc-imoveis" id="imput-localidade" type="text" placeholder="Digite código, condomínio, região, bairro ou cidade">
                 </div>
 
                 <div class="list-group">
@@ -96,9 +93,11 @@
                     <div class="group-duplo">
                         <div class="duplo">
                             <input class="opc-imoveis " id="preco-min" type="text" maxlength="20" placeholder="Min">
+                            <span class="erro-msg-preco-min" style="color:rgb(130, 243, 10); display:none;">Valor inválido</span>
                         </div>
                         <div class="duplo">
                             <input class="opc-imoveis" id="preco-max" type="text" maxlength="20" placeholder="Max">
+                            <span class="erro-msg-preco-max" style="color:rgb(130, 243, 10); display:none;">Valor inválido</span>
                         </div>
                     </div>
                 </div>
@@ -106,10 +105,11 @@
                 <div class="list-group">
                     <label for="">Tipo</label><br>
                     <select class="opc-imoveis" name="" id="tipo-imovel">
-                        <option value="">Apartamento</option>
-                        <option value="">Cobertura</option>
-                        <option value="">Casa</option>
-                        <option value="">Sobrado</option>
+                        <option value="Selecione">Selecione</option>
+                        <option value="APARTAMENTO">Apartamento</option>
+                        <option value="COBERTURA">Cobertura</option>
+                        <option value="CASA">Casa</option>
+                        <option value="SOBRADO">Sobrado</option>
                     </select>
                 </div>
 
@@ -118,16 +118,16 @@
                     <div class="qtd" id="quartos">
                         
                         <div class="gtd-op quarto" id="quarto1">
-                            +1
+                            1
                         </div>
                         <div class="gtd-op quarto" id="quarto2">
-                            +2
+                            2
                         </div>
                         <div class="gtd-op quarto" id="quarto3">
-                            +3
+                            3
                         </div>
                         <div class="gtd-op quarto" id="quarto4">
-                            +4
+                            4
                         </div>
                         <div class="gtd-op quarto" id="quarto5">
                             +5
@@ -138,17 +138,17 @@
                 <div class="list-group">
                     <label for="">Suites</label><br>
                     <div class="qtd" id="suite">
-                        <div class="gtd-op suite" id="suite1">
-                            +1
+                        <div class="gtd-op suite" value="1" id="suite1">
+                            1
                         </div>
                         <div class="gtd-op suite" id="suite2">
-                            +2
+                            2
                         </div>
                         <div class="gtd-op suite" id="suite3">
-                            +3
+                            3
                         </div>
                         <div class="gtd-op suite" id="suite4">
-                            +4
+                            4
                         </div>
                         <div class="gtd-op suite" id="suite5">
                             +5
@@ -161,19 +161,19 @@
                     <div class="qtd" id="banheiro">
                         
                         <div class="gtd-op banheiro" id="banheiro1">
-                            +1
+                            1
                         </div>
                         <div class="gtd-op banheiro" id="banheiro2">
-                            +2
+                            2
                         </div>
                         <div class="gtd-op banheiro" id="banheiro3">
-                            +3
+                            3
                         </div>
                         <div class="gtd-op banheiro" id="banheiro4">
-                            +4
+                            4
                         </div>
                         <div class="gtd-op banheiro" id="banheiro5">
-                            +5
+                            5
                         </div>
                     </div>
                 </div>
@@ -183,16 +183,16 @@
                     <div class="qtd" id="vagas">
                         
                         <div class="gtd-op vaga" id="vaga1">
-                            +1
+                            1
                         </div>
                         <div class="gtd-op vaga" id="vaga2">
-                            +2
+                            2
                         </div>
                         <div class="gtd-op vaga" id="vaga3">
-                            +3
+                            3
                         </div>
                         <div class="gtd-op vaga" id="vaga4">
-                            +4
+                            4
                         </div>
                         <div class="gtd-op vaga" id="vaga5">
                             +5
@@ -205,9 +205,11 @@
                     <div class="group-duplo">
                         <div class="duplo">
                             <input class="opc-imoveis " id="area-min" type="text" maxlength="10" placeholder="Min">
+                            <span class="erro-msg-area-min" style="color:rgb(130, 243, 10); display:none;">Valor inválido</span>
                         </div>
                         <div class="duplo">
                             <input class="opc-imoveis" id="area-max" type="text" maxlength="10" placeholder="Max">
+                            <span class="erro-msg-area-max" style="color:rgb(130, 243, 10); display:none;">Valor inválido</span>
                         </div>
                     </div>
                 </div>
@@ -217,158 +219,168 @@
             </div>
         
 
-        <div class="box-produtos">
-            <div class="box-produtos-item">
-                <div class="carousel">
-                    <img src="img/casa1.jpeg" alt="">
-                    <img src="img/casa2.jpeg" alt="">
-                    <img src="img/casa3.jpeg" alt="">
-                    <img src="img/casa4.jpeg" alt="">
-                </div>
-                <div class="box-produtos-desc">
-                    <h3>Casa de Luxo, requinte e beleza</h3>
-                    <p>Localizada em bairro nobre de São Paulo</p>
-                    <p>Para mais informações, Clique e saiba Mais!</p>
+        <div class="box-produtos"  id="show-imoveis-filtrados">
 
-                    <div class="text-xs-center">
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Detalhes </a>
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Contato</a>
+            <div class="slide">
+                <div class="box-produto">
+                    <div class="imagens-imovel">
+                        <img src="img/slide/casa5.jpeg" alt="Casa Charmosa com Jardim Privativo">
+                    </div>
+
+                    <div class="desc-oferta-container">
+                        <div class="desc-oferta">
+
+                            <div>
+                                <h2>Casa aconchegante em bairro tranquilo</h2>
+                                <h3>Centro, Rio de Janeiro</h3>
+                            </div>
+                            
+                            <p class="descricao-curta">EXCLUSIVIDADE: Leblon, Apartamento espetacular à venda em excelente...</p>
+                
+                            <div class="icons-config">
+                                <div class="icons metragem">160, 00</div>
+                                <div class="icons quarto">3</div>
+                                <div class="icons banheiro">2</div>
+                                <div class="icons garagem">3</div>
+                            </div>
+                
+                            <p class="price-imovel">Locação<br> <span> R$ 2.500,00</span></p>
+        
+                            <div class="text-xs-center">
+                                <a href="detalhes-imoveis.html" class="btn-2">Mais detalhes</a>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="box-produtos-item">
-                <div class="carousel">
-                    <img src="img/casa1.jpeg" alt="">
-                    <img src="img/casa2.jpeg" alt="">
-                    <img src="img/casa3.jpeg" alt="">
-                    <img src="img/casa4.jpeg" alt="">
-                </div>
-                <div class="box-produtos-desc">
-                    <h3>Casa de Luxo, requinte e beleza</h3>
-                    <p>Localizada em bairro nobre de São Paulo</p>
-                    <p>Para mais informações, Clique e saiba Mais!</p>
-
-                    <div class="text-xs-center">
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Detalhes </a>
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Contato</a>
+            <div class="slide">
+                <div class="box-produto">
+                    <div class="imagens-imovel">
+                        <img src="img/slide/casa5.jpeg" alt="Casa Charmosa com Jardim Privativo">
                     </div>
+
+
+                    <div class="desc-oferta-container">
+                        <div class="desc-oferta">
+                            <div>
+                                <h2>Casa aconchegante em bairro tranquilo</h2>
+                                <h3>Centro, Rio de Janeiro</h3>
+                            </div>
+                            
+        
+                            <p class="descricao-curta">EXCLUSIVIDADE: Leblon, Apartamento espetacular à venda em excelente...</p>
+                
+                            <div class="icons-config">
+                                <div class="icons metragem">160, 00</div>
+                                <div class="icons quarto">3</div>
+                                <div class="icons banheiro">2</div>
+                                <div class="icons garagem">3</div>
+                            </div>
+                
+                            <p class="price-imovel">Locação<br> <span> R$ 2.500,00</span></p>
+        
+                            <div class="text-xs-center">
+                                <a href="detalhes-imoveis.html" class="btn-2">Mais detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
-
-            <div class="box-produtos-item">
-                <div class="carousel">
-                    <img src="img/casa1.jpeg" alt="">
-                    <img src="img/casa2.jpeg" alt="">
-                    <img src="img/casa3.jpeg" alt="">
-                    <img src="img/casa4.jpeg" alt="">
-                </div>
-                <div class="box-produtos-desc">
-                    <h3>Casa de Luxo, requinte e beleza</h3>
-                    <p>Localizada em bairro nobre de São Paulo</p>
-                    <p>Para mais informações, Clique e saiba Mais!</p>
-
-                    <div class="text-xs-center">
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Detalhes </a>
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Contato</a>
+            <div class="slide">
+                <div class="box-produto">
+                    <div class="imagens-imovel">
+                        <img src="img/slide/casa5.jpeg" alt="Casa Charmosa com Jardim Privativo">
                     </div>
-                </div>
-            </div>
 
-            <div class="box-produtos-item">
-                <div class="carousel">
-                    <img src="img/casa1.jpeg" alt="">
-                    <img src="img/casa2.jpeg" alt="">
-                    <img src="img/casa3.jpeg" alt="">
-                    <img src="img/casa4.jpeg" alt="">
-                </div>
-                <div class="box-produtos-desc">
-                    <h3>Casa de Luxo, requinte e beleza</h3>
-                    <p>Localizada em bairro nobre de São Paulo</p>
-                    <p>Para mais informações, Clique e saiba Mais!</p>
 
-                    <div class="text-xs-center">
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Detalhes </a>
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Contato</a>
+                    <div class="desc-oferta-container">
+                        <div class="desc-oferta">
+                            <div>
+                                <h2>Casa aconchegante em bairro tranquilo</h2>
+                                <h3>Centro, Rio de Janeiro</h3>
+                            </div>
+                            
+        
+                            <p class="descricao-curta">EXCLUSIVIDADE: Leblon, Apartamento espetacular à venda em excelente...</p>
+                
+                            <div class="icons-config">
+                                <div class="icons metragem">160, 00</div>
+                                <div class="icons quarto">3</div>
+                                <div class="icons banheiro">2</div>
+                                <div class="icons garagem">3</div>
+                            </div>
+                
+                            <p class="price-imovel">Locação<br> <span> R$ 2.500,00</span></p>
+        
+                            <div class="text-xs-center">
+                                <a href="detalhes-imoveis.html" class="btn-2">Mais detalhes</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="box-produtos-item">
-                <div class="carousel">
-                    <img src="img/casa1.jpeg" alt="">
-                    <img src="img/casa2.jpeg" alt="">
-                    <img src="img/casa3.jpeg" alt="">
-                    <img src="img/casa4.jpeg" alt="">
-                </div>
-                <div class="box-produtos-desc">
-                    <h3>Casa de Luxo, requinte e beleza</h3>
-                    <p>Localizada em bairro nobre de São Paulo</p>
-                    <p>Para mais informações, Clique e saiba Mais!</p>
 
-                    <div class="text-xs-center">
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Detalhes </a>
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Contato</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box-produtos-item">
-                <div class="carousel">
-                    <img src="img/casa1.jpeg" alt="">
-                    <img src="img/casa2.jpeg" alt="">
-                    <img src="img/casa3.jpeg" alt="">
-                    <img src="img/casa4.jpeg" alt="">
-                </div>
-                <div class="box-produtos-desc">
-                    <h3>Casa de Luxo, requinte e beleza</h3>
-                    <p>Localizada em bairro nobre de São Paulo</p>
-                    <p>Para mais informações, Clique e saiba Mais!</p>
-
-                    <div class="text-xs-center">
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Detalhes </a>
-                        <a href="produtos.html" class="btn-2" style="margin-top: 20px;">Contato</a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="faixa"></div>
+    <section class="content" id="dicas">
+        <h3 class="tit-dicas">Veja nossas dicas</h3>
 
-    <section class="content-conteudo">
-        <div class="doc-indent">
-            CRECI: 00.000-0
+        <div class="nossas-dicas">
+           <div class="box-dicas" id="box-dicas1">
+              <h3>Afim de comprar?</h3> 
+              <p>Analise seu perfil e o imovel que melhor atende a sua familia e você.</p>
+              <p>Se atente a localização, isso afeta diretamento a valorização do imovel e sua locomoção no dia a dia</p>
+              <p>Em caso de adquirir um apartamento, fique de olho nos beneficios que são oferecidos pelo condominio</p>
+              <p>Analise se e um ambiente familiar, onde você possa desfrutar do sossegoe lazer que procura</p>
+           </div>
+
+           <div class="box-dicas" id="box-dicas2">
+            <h3>Afim de alugar?</h3> 
+            <p>Analise se o imovel esta dentro do que procura para você e familia.</p>
+              <p>Veja quais os itens que o condominio oferece.</p>
+              <p>Procure negociar o valor da locacão, descontos são sempre possiveis.</p>
+              <p>Não tenha medo de perguntar sobre seus futuros vizinhos, regras impostas pelo condominio, etc.</p>
+           </div>
         </div>
     </section>
 
-    <div class="redes-sociais" id="siga-nos">
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-google-plus-g"></i>
-        <i class="fab fa-instagram"></i>
-    </div>
+    <section class="content" id="contato">
+        <div class="box-contato">
+            <div class="formulario">
 
-    <section class="content-footer">
-        <div class="footer">
-            <div class="endereco">
-                <p>Rua Almirante Barroso, 256 - Jardins</p>
-                <p>São Paulo - SP</p>
-                <p>Email:  <a href=mailto:<nowiki>contato@contato.com</a></p>
-                <p>Fone: (+55) 00 0000-0000</p>
+                <p>Dúvidas? Entre em contato conosco</p>
+                <div class="list-form">
+                    Nome:
+                    <input class="" type="text" placeholder="Nome completo...">
+                </div>  
+                <div class="list-form">
+                    Telefone:
+                    <input class="" type="tel" placeholder="(00) 00000-0000">
+                </div>
+                <div class="list-form">
+                    Email:
+                    <input class="" type="email" placeholder="contato@contato.com.br...">
+                </div>
+                <div class="list-form">
+                    Escreva sua dúvida:
+                    <textarea name="textarea" rows="5" cols="10" placeholder="Escreva..."></textarea>
+                </div>
+                <div class="list-form" id="list-form-btn">
+                    <button class="btn" id="cancelar-form" type="submit">Cancelar</button>
+                    <button class="btn" id="enviar-form" type="submit">Enviar</button>
+                </div>
             </div>
 
-            <div class="logo-empresa">
-                <img src="img/logo-marca-footer.png" alt="Logo ">
+            <div class="anuncio">
+                <iframe src="banner-anuncio/index2.html" width="100%" height="100%" style="position: absolute; border: none;"></iframe>
+                <img src="banner-anuncio/bg.png" alt="">
             </div>
-
-            <div class="info-devs">
-                <p>Em producão...</p>
-            </div>
-
-            <div class="desc-ano">
-                <p style="text-align: center; margin-top: 30px;">&copy; Outubro 2021</p>
-            </div>
-
         </div>
     </section>
 
@@ -377,20 +389,58 @@
             <i class="fa fa-whatsapp"></i>
         </div>
     </section>
+    <section class="content">
+        <div class="botao-topo">
+            <img src="img/botao-topo.png" alt="Botão para subir ao topo da página">
+        </div>
+    </section>
+
+    <footer class="content-footer">
+        <section class="content">
+            <div class="footer">
+                <div class="endereco">
+                    <p>Rua Almirante Barroso, 256 - Jardins</p>
+                    <p>São Paulo - SP</p>
+                    <p>Email:  <a href=mailto:<nowiki>contato@contato.com</a></p>
+                    <p>Fone: (+55) 00 0000-0000</p>
+                </div>
+
+                <div class="logo-empresa">
+                    <img src="img/logo-marca-footer3.png" alt="Logo ">
+                </div>
+
+                <div class="info-redes" id="siga-nos">
+                    <div class="doc-indent">
+                        CRECI: 00.000-0
+                    </div>
+                    <div class="line_redes"></div>
+                    <d class="redes-sociais">
+                        <p>Acesse nossas redes sociais</p>
+                        <div class="icons-sociais">
+                            <div></div>
+                            <div><a href="#" target="_blank"><img src="img/facebook.png" alt="Facebook"></a></div>
+                            <div><a href="#" target="_blank"><img src="img/tiktok.png" alt="TikTok"></a></div>
+                            <div><a href="#" target="_blank"><img src="img/instagram.png" alt="Instagram"></a></div>
+                            <div></div>
+                        </div>
+                    </d>
+                </div>
+            </div>
+
+            <div class="faixa_footer"></div>
+
+            <div class="desc-ano">
+                <p style="text-align: center; margin-top: 30px;">&copy; Outubro 2021</p>
+            </div>
+        </section>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
     <script src="js/master.js"></script>
-    <script src="js/produtos.js"></script>
+    <!-- <script src="js/produtos.js"></script> -->
         
-
-    <script>
-
-
-
-
-    </script>
 </body>
 
 </html>

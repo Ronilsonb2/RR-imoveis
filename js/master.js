@@ -25,20 +25,31 @@ $(document).ready(function() {
   setTimeout(function(){initPosition(); }, 500);
 });
 
-// Responsivo
+$(window).on("load", function(){
+  // Responsivo
+  if($(window).width() > 1000){
+    $('.destaques-ofertas').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
+      cssEase: 'linear',
+      slidesToShow: 3,
+      slidesToScroll: 3
+    });
+  }
+  else{
+    $('.destaques-ofertas').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
+      cssEase: 'linear',
+      slidesToShow: 1,
+      slidesToScroll: 1
+    });
+  }
 
-if($(window).width() > 1000){
-  $('.destaques-ofertas').slick({
-    dots: true,
-    infinite: true,
-    speed: 500,
-    cssEase: 'linear',
-    slidesToShow: 3,
-    slidesToScroll: 3
-  });
-}
-else{
-  $('.destaques-ofertas').slick({
+
+  $('#destaques').slick({
     dots: true,
     infinite: true,
     speed: 500,
@@ -46,15 +57,6 @@ else{
     slidesToShow: 1,
     slidesToScroll: 1
   });
-}
-
-  $('.carousel').slick({
-    dots: true,
-    infinite: true,
-    speed: 500,
-    cssEase: 'linear',
-    slidesToShow: 1,
-    slidesToScroll: 1
-  });
+});
 
 

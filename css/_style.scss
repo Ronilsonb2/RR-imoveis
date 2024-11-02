@@ -1,20 +1,27 @@
 
 
-$small: 300px;
+$small: 380px;
 $medium-min: 779px;
 $medium-max: 780px;
 
-$color-bg-geral: #292825;
-$color-2: #494242;
-$color-bg: #051736;
+$color-bg-geral: #CBD5E1;
+$color-txt-geral: #E5E5E5;
+$color-bg-itens: #475569;
+$color-black: #000000;
+$color-branco: #fff;
+$color-red: #E70A0D;
+$color-verde: #B9AC8F;
 $color-branco: #fff;
 
-$color-header-menu: #474a51;
+$ft-24: 24px;
+$ft-20: 20px;
+$ft-18: 18px;
+$ft-16: 16px;
+$ft-14: 14px;
+$ft-32: 32px;
 
 // cores do CTAs
 $bg-transparent: transparent;
-$color-btn-bg: #051736;
-$color-btn: $color-branco;
 $color-btn-bg-hover: #877b7b;
 $color-btn-hover: #a7a0a0;
 
@@ -51,11 +58,13 @@ pre,
 form,
 fieldset,
 input,
+button,
 textarea,
 p,
 blockquote,
 th,
 td {
+  border: none;
   margin: 0;
   padding: 0;
 }
@@ -112,7 +121,7 @@ acronym {
 body {
   font-family: 'Birthstone', cursive;
   font-family: 'Roboto', sans-serif;
-  color: #fff;
+  color: $color-txt-geral;
 
   background-color: $color-bg-geral !important;
 
@@ -147,23 +156,22 @@ body {
   align-items: center;
   top: 0;
   width: 100%;
-  height: 70px;
-  min-height: 60px;
-  color: #fff;
-  z-index: 9999;
-  background-color: $color-header-menu;
+  height: 110px;
+  color: $color-branco;
+  background-color: $color-bg-itens;
 
-  @media (min-width: $medium-min){
-    height: auto;
-    border: none;
+  @media (max-width: $medium-max){
+    height: 100px;
   }
 
   .grid-logo{
-    display: none;
+    display: block;
+    width: 224px;
+    height: auto;
 
-    @media (min-width: $medium-min){
-      display: block;
-      width: 80%;
+    @media (max-width: $medium-max){
+      padding: 0px 0px 0px 5%;
+      width: 190px;
     }
   }
 
@@ -172,13 +180,10 @@ body {
     grid-template-areas: "grid-logo grid-menu";
     grid-template-columns: 30% 70%;
     grid-template-rows: 1fr;
+    align-items: center;
 
-    @media (max-width: 780px) {
-      display: block;
-    }
-
-    .grid-logo{
-      grid-area: grid-logo;
+    @media (max-width: $medium-max){
+      grid-template-columns: 80% 20%;
     }
 
     .grid-menu{
@@ -190,17 +195,9 @@ body {
       justify-items: end;
 
       @media (max-width: $medium-max) {
+        width: 20%;
         justify-content: flex-start;
         justify-items: stretch;
-      }
-
-      .btn-login{
-        grid-area: btn-login;
-        grid-area: 1;
-
-        @media (min-width: $medium-min) {
-          padding: 20px 0px 15px 15px;
-        }
       }
       .nav-bar{
         grid-area: nav-bar;
@@ -221,13 +218,9 @@ body {
     max-width: 200px;
     height: 35px;
     position: relative !important;
-    background-color: transparent;
-    border: 2px solid $color-btn;
     border-radius: 4px;
-    color: $color-btn;
 
     &:hover {
-      background-color: $color-btn-bg-hover;
       color: $color-branco;
     }
 
@@ -238,8 +231,9 @@ body {
   }
 
   .nav-bar {
+    left: 0;
     z-index: 999;
-    margin-top: 52px;
+    margin-top: 67px;
     position: absolute;
     width: 100%;
     height: 1000px;
@@ -254,23 +248,25 @@ body {
     @media (min-width: $medium-min){
       width: 100%;
       height: auto;
-      top: 0;
-      margin: 0px 0 20px;
+      margin: 0;
       box-shadow: none;
-      text-align: right;
       border-radius: 0;
       position: relative;
       border: none;
-      background: transparent;
-
+      background-color: transparent;
       transform: translateX(0px);
-    }
+      -webkit-transform: translateX(0px);
+      -moz-transform: translateX(0px);
+      -ms-transform: translateX(0px);
+      -o-transform: translateX(0px);
+}
 
     ul {
       padding: 20px 20px;
       display: flex;
       flex-direction: column;
-      background-color: $color-header-menu;
+      gap: 35px;
+      background-color: $color-bg-itens;
 
       @media (min-width: $medium-min){
         padding: 0;
@@ -280,14 +276,9 @@ body {
 
       li {
         margin: 0;
-        padding-bottom: 15px;
-
-        @media (min-width: $medium-min){
-          padding: 0px 0px 0px 17px;
-        }
 
         a {
-          font-size: 20px;
+          font-size: $ft-20;
           color: $color-branco;
           font-weight: 600;
 
@@ -311,7 +302,6 @@ body {
     position: relative;
     padding-right: 15px;
     
-
     @media (min-width: $medium-min) {
       padding: 15px;
     }
@@ -353,6 +343,8 @@ body {
 
 .banner-principal {
   width: 100%;
+  max-width: 1440px;
+  height: auto;
   max-height: 450px;
   display: block;
   margin: 0 auto;
@@ -387,13 +379,12 @@ body {
 
 .content {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   position: relative;
 
   &-conteudo {
-    width: 90%;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     position: relative;
     clear: both;
@@ -417,12 +408,7 @@ body {
 
 /*========== CARROSEL ===========*/
 .carousel {
-  background-color: $color-2;
   margin: 0 auto;
-
-  .desc-slide {
-    margin: 2px;
-  }
 
   .slick-prev:before,
   .slick-next:before {
@@ -431,35 +417,6 @@ body {
 
   .slick-dotted.slick-slider {
     margin-bottom: 20px !important;
-  }
-
-
-
-  .desc-oferta-carousel {
-    line-height: 1.5;
-    margin-top: -5px;
-    padding: 15px 10px;
-    font-size: 14px;
-    font-weight: 400;
-
-    .btn-2 {
-      color: $color-btn;
-      border: 1px solid $color-branco;
-    }
-  }
-
-  .desc-oferta {
-    p,
-    h3,
-    h4 {
-      font-size: 16px;
-    }
-
-    h3,
-    h4,
-    h2 {
-      margin-bottom: 10px;
-    }
   }
 }
 
@@ -477,36 +434,77 @@ body {
 }
 
 .btn-opcoes {
-  margin: 20px 0 10px 0;
+  padding: 65px 0 20px 0;
 
-  @media screen and (min-width: $medium-min) {
-    margin: 60px 0 20px 0;
-  }
-
-  .btn {
+  #tipo-imovel {
     width: 32%;
-    height: 40px;
-    font-size: 18px;
-    border-color: $color-branco;
-    border: 2px solid;
-    background: $bg-transparent;
-    border-radius: 8px;
-    color: $color-btn;
-    -webkit-box-shadow: 0px 3px 7px 2px rgba(167, 160, 160, .82);
-    box-shadow: 0px 3px 7px 2px rgba(167, 160, 160, .82);
 
-    @media screen and (min-width: $medium-max) {
-      cursor: pointer;
-      width: 180px;
-      height: 50px;
-      margin-right: 15px;
+    @media screen and (max-width: $medium-max){
+      width: auto;
     }
   }
 
-  @media screen and (min-width: $medium-min){
-    .espaco-branco {
+  #input-pesquisa{
+    width: 49%;
+    margin: 0px 10px;
+
+    @media screen and (max-width: $medium-max){
+      margin: 0px;
+      width: auto;
+    }
+  }
+
+  #buscar{
+    margin-right: 0px;
+  }
+
+  .btn-escolha{
+    padding-bottom: 20px;
+  }
+
+  @media screen and (max-width: $medium-max) {
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .btn-escolha{
+      display: flex;
+      gap: 12px;
+      padding: 0;
+    }
+  }
+
+  .btn {
+    width: 190px;
+    height: 50px;
+    font-size: $ft-20;
+    font-weight: bold;
+    border-color: $color-bg-itens;
+    background-color: $color-bg-itens;
+    border-radius: 10px;
+    color: $color-txt-geral;
+    box-sizing: border-box;
+    margin-right: 15px;
+    box-shadow: 0px 3px 4px 0px $color-bg-itens;
+    -webkit-box-shadow: 0px 3px 4px 0px $color-bg-itens;
+
+    &#btn-comprar, &#btn-alugar{
+      width: 190px;
+
+      @media screen and (max-width: $medium-max){
+        width: 100%;
+        height: 45px;
+        font-size: $ft-16;
+        margin: 0;
+      }
+    }
+  }
+
+  @media screen and (max-width: $medium-max){
+    #buscar {
       width: 100%;
-      height: 20px;
+      margin: 0;
     }
   }
 
@@ -516,178 +514,448 @@ body {
   #btn-buscar:hover,
   #buscar:hover {
     background-color: $color-btn-bg-hover;
+    color: $color-branco;
+    border: 2px solid $color-branco;
+  }
+
+  .active{
+    background-color: #877b7b;
     color: #fff;
     border: 2px solid #fff;
   }
 
   #btn-buscar {
-    width: 180px;
+    width: 190px;
     padding: 12px 5px;
-    height: auto;
+    height: 50px;
     margin: 0;
-  }
-
-  #buscar {
-    width: 180px;
-    margin: 15px 0 5px;
-    padding: 8px 5px;
-    height: auto;
-
-    @media (max-width: 520px) {
-      width: 100%;
-    }
   }
 
   #icon-search {
     margin-right: 5px;
   }
-
 }
 
 .opc-imoveis {
-  color: #3d3d3d;
-  margin-top: 10px;
-  width: 100%;
-  padding: 12px 5px;
-  border-radius: 6px;
-  border: 1px solid rgba(0, 0, 0, .15);
+  padding-left: 10px;
+  color: $color-txt-geral;
+  height: 50px;
+  font-size: $ft-20;
+  border-radius: 10px;
+  background-color: $color-bg-itens;
 
-  @media (min-width: $medium-min) {
-    margin-right: 10px;
-    width: 27%;
+  @media screen and (max-width: $medium-max){
+    height: 45px;
+    font-size: $ft-16;
   }
 }
 
-input.opc-imoveis {
-  padding: 12px 0px 12px 10px;
-  width: 96%;
+#input-pesquisa::placeholder {
+  color: $color-txt-geral;
+  opacity: 60%;
+  font-size: $ft-20;
 
-  @media (min-width: $medium-min) {
-    width: 53%;
+  @media screen and (max-width: $medium-max){
+    font-size: $ft-16;
   }
 }
 
 /*===== Ofertas em destaque ===========*/
-.destaques {
-  background-color: $color-2;
-  padding-bottom: 25px;
+.icons-config {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 260px;
+
+  .icons {
+    display: flex;
+    padding: 20px 0px;
+    width: auto;
+    height: auto;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    @media screen and (max-width: $medium-max){
+      padding: 10px 0px;
+    }
+  }
+
+  .metragem::before {
+    content: "";
+    display: block;
+    background-image: url(../img/icon-metro-quadrado.png);
+    background-size: 100% auto;
+    background-position: bottom;
+    width: 25px;
+    height: 25px;
+    margin-right: 2px;
+    position: relative;
+  }
+  .quarto::before {
+    content: "";
+    display: block;
+    background-image: url(../img/icon-quartos.png);
+    background-size: 100% auto;
+    background-position: bottom;
+    width: 25px;
+    height: 21px;
+    margin-right: 2px;
+    position: relative;
+  }
+  .banheiro::before {
+    content: "";
+    display: block;
+    background-image: url(../img/icon-chuveiro.png);
+    background-size: 100% auto;
+    background-position: bottom;
+    width: 25px;
+    height: 25px;
+    margin-right: 2px;
+    position: relative;
+  }
+  .garagem::before {
+    content: "";
+    display: block;
+    background-image: url(../img/icon-vaga-garagem.png);
+    background-size: 100% auto;
+    background-position: bottom;
+    width: 25px;
+    height: 25px;
+    margin-right: 2px;
+    position: relative;
+  }
+}
+.container-imoveis {
+  background-color: $bg-transparent;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 40px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+
+  @media screen and (max-width: $medium-max){
+    padding-top: 0;
+  }
+
 
   @media (min-width: $medium-min) {
-    background-color: $bg-transparent;
+    gap: 40px;
+    flex-direction: row;
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)); /* 3 colunas ajustáveis */
   }
 
-  p {
-    background-color: $color-2;
-    font-size: 25px;
-    padding: 40px 0;
-    text-align: center;
-  }
+  .slide{
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25); 
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
 
-  .slick-dots {
-    display: none !important;
-  }
+    @media screen and (max-width: $medium-max){
+      width: auto;
+    }
 
-  .destaques-ofertas {
-    position: relative;
+    .box-produto {
+      width: 600px;
+      height: 350px;
+      display: grid;
+      font-size: $ft-18;
+      grid-template-columns: 1fr 1fr;
+      color: $color-bg-itens;
 
-    @media (max-width: $medium-max) {
-      margin-bottom: 0px !important;
+      @media screen and (max-width: $medium-max){
+        width: 350px;
+        height: 585px;
+        display: flex;
+        flex-direction: column;
+        background-color: $color-branco;
+      }
+
+      .imagens-imovel {
+        width: 310px;
+        height: 350px;
+        overflow: hidden;
+        position: relative;
+        background-color: $color-black;
+
+        @media screen and (max-width: $medium-max){
+          width: 350px;
+          height: 300px;
+        }
+
+        img{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: auto;
+          width: 310px;
+
+          @media screen and (max-width: $medium-max){
+            width: 350px;
+          }
+        }
+      }
+
+      .desc-oferta {
+        background-color: $color-branco;
+        max-width: 260px;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        @media screen and (max-width: $medium-max){
+          max-width: 350px;
+          gap: 15px;
+        }
+
+        h2{
+          font-size: $ft-18;
+        }
+        h3{
+          font-size: $ft-14;
+          font-weight: 400;
+          margin-top: 5px;
+        }
+        .descricao-curta{
+          font-size: $ft-14;
+          font-weight: 300;
+        }
+
+        .price-imovel {
+          font-size: $ft-16;
+          font-weight: bold;
+
+          @media screen and (max-width: $medium-max){
+            font-size: $ft-20;
+
+            br{
+              display: none;
+            }
+          }
+        }
+        .price-imovel span{
+          font-size: $ft-24;
+          font-weight: bold;
+
+          @media screen and (max-width: $medium-max){
+            font-size: $ft-32;
+          }
+        }
+
+        .text-xs-center {
+          width: 260px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $color-bg-itens;
+          border-radius: 10px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          -o-border-radius: 10px;
+
+          @media screen and (max-width: $medium-max){
+            width: 100%;
+          }
+
+          a{
+            color: $color-txt-geral;
+            font-weight: bold;
+          }
+        }  
+      }
     }
 
     @media (min-width: $medium-min) {
-      img {
-        max-height: 400px;
-      }
+      
+    }
+  }
+}
+
+.tit-oportunidades {
+  background-color: $color-bg-itens;
+  font-size: 40px;
+  padding: 36px 0;
+  text-align: center;
+  color: $color-txt-geral;
+  font-weight: bold;
+
+  @media screen and (max-width: $medium-max){
+    font-size: $ft-20;
+  }
+}
+
+.destaques-ofertas {
+  gap: 20px;
+  display: grid;
+  padding: 20px 0px 20px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+
+  @media screen and (max-width: $medium-max){
+    justify-items: center;
+    gap: 40px;
+  }
+
+  .slide{
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25); 
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+
+    @media screen and (max-width: $medium-max){
+      width: auto;
     }
 
-    .box-oferta {
-      margin: 2px;
+    .box-produto {
+      width: 400px;
+      height: 600px;
+      display: flex;
+      font-size: 18px;
+      color: $color-black;
+      flex-direction: column;
+
+      @media screen and (max-width: $medium-max){
+        width: 350px;
+        height: 585px;
+      }
+
+      .imagens-imovel {
+        width: 400px;
+        height: 350px;
+        overflow: hidden;
+        position: relative;
+        background-color: $color-black;
+
+        @media screen and (max-width: $medium-max){
+          width: 350px;
+          height: 300px;
+        }
+
+        img{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: auto;
+          width: 400px;
+
+          @media screen and (max-width: $medium-max){
+            width: 350px;
+          }
+        }
+      }
 
       .desc-oferta {
-        padding: 10px 15px 1px 15px;
-        font-size: 14px;
-        color: white;
-        background: $color-2;
-        font-weight: 400;
+        background-color: $color-branco;
+        max-width: 370px;
+        height: 220px;
+        padding: 15px;
+        display: flex;
+        overflow: hidden;
+        justify-content: space-between;
+        flex-direction: column;
+        border-radius: 0px 0px 10px 10px;
 
-        @media (min-width: $medium-min){
-          padding: 20px 25px 11px 25px;
+        @media screen and (max-width: $medium-max){
+          width: 324px;
+          height: 265px;
+          padding: 13px;
         }
 
-        h2 {
-          font-size: 18px;
+        h2{
+          font-size: $ft-18;
+          text-align: left;
+        }
+        h3{
+          font-size: $ft-14;
+          font-weight: 400;
+          margin-top: 5px;
+          text-align: left;
+        }
+        .descricao-curta{
+          font-size: $ft-14;
+          font-weight: 300;
+          text-align: left;
+          padding: 0;
         }
 
-        h2,
-        h3,
-        h4 {
-          margin-bottom: 10px;
+        .price-cta {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+
+          @media screen and (max-width: $medium-max){
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+          }
+
+          .price-imovel {
+            font-size: $ft-16;
+            font-weight: bold;
+
+            @media screen and (max-width: $medium-max){
+              br{
+                display: none;
+              }
+            }
+          }
+          .price-imovel span{
+            font-size: $ft-24;
+            font-weight: bold;
+          }
+  
+          .text-xs-center {
+            width: 170px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $color-bg-itens;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+
+            @media screen and (max-width: $medium-max){
+              width: 100%;
+            }
+  
+            a{
+              color: $color-txt-geral;
+              font-weight: bold;
+            }
+          } 
+        } 
+
+        .icons-config .icons {
+          padding: 0px;
         }
       }
     }
 
-    .slick-prev:before,
-    .slick-next:before {
-      font-size: 26px;
+    @media (min-width: $medium-min) {
+      
     }
   }
-
 }
 
-.text-xs-center .btn-2 {
-  color: $color-btn;
-  border-radius: 4px;
-  border: 1px solid $color-btn;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  white-space: nowrap;
-  cursor: pointer;
-  display: inline-block;
-  padding: 7px 10px;
-  line-height: 1.2;
-  font-size: 18px;
-
-  @media (min-width: $medium-min) {
-    padding: 10px 32px;
-  }
-
-  &:hover {
-    background-color: $color-btn-bg-hover;
-    color: #fff;
-    border: 1px solid #fff;
-  }
-}
-
-.text-xs-center {
-  text-align: center !important;
-  padding-top: 25px;
-
-  @media (min-width: $medium-min){
-    padding-bottom: 20px;
-  }
-}
-
-.faixa {
-  width: 100%;
-  height: 20px;
-  margin-top: 20px;
-  background-color: $color-branco;
-  clear: both;
-  position: relative;
-}
 
 /* Dicas para compra e locação */
-#dicas {
-  background-color: $color-2;
-}
 
 .tit-dicas {
-  font-size: 25px;
+  font-size: 40px;
   margin-top: 20px;
-  padding: 50px 0;
-  border-bottom: 3px solid #8d6161;
-  margin-bottom: 0;
+  margin-bottom: 7px;
+  padding: 36px 0;
+  font-weight: bold;
+  background-color: $color-bg-itens;
   text-align: center;
 }
 
@@ -695,35 +963,37 @@ input.opc-imoveis {
   width: 100%;
   display: flex;
   margin-bottom: 20px;
+  padding: 35px 0px 10px;
   flex-direction: row;
+  border-radius: 0px 0px 10px 10px;
+  background-color: $color-bg-itens;
 
   @media (max-width: $medium-max) {
     flex-direction: column;
   }
 
   h3 {
-    font-weight: 900;
-    padding: 30px 0 0;
+    font-weight: bold;
+    padding: 0px 0 30px;
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 20px;
+    font-size: $ft-24;
   }
 
   .box-dicas {
     width: 50%;
     height: auto;
     position: relative;
-    padding: 20px 0 20px;
     line-height: 1.5;
 
     @media (max-width: $medium-max) {
       width: 100%;
+      padding-top: 30px;
     }
 
     p {
-      font-size: 18px;
-      padding: 0px 17px 0 20px;
-      margin-bottom: 20px;
+      font-size: $ft-16;
+      padding: 0px 20px 0 20px;
+      margin-bottom: 30px;
 
       @media (max-width: 520px) {
         font-size: 16px;
@@ -747,49 +1017,53 @@ input.opc-imoveis {
 .box-contato {
   display: flex;
   flex-direction: row;
+  gap: 40px;
   width: 100%;
-
-  @media (max-width: $medium-max){
+  padding: 20px 0px 40px;
+  
+  @media(max-width: $medium-max){
     flex-direction: column;
   }
 
   .formulario {
-    width: 50%;
+    width: 100%;
+    max-width: 600px;
+    height: 550px;
     position: relative;
-    padding: 10px 20px;
-    background-color: $color-2;
+    background-color: $color-bg-itens;
+    border-radius: 10px;
 
     @media (max-width: 520px) {
       width: auto;
     }
 
     p {
-      font-size: 25px;
-      margin: 15px 0;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 35px 20px 18px 20px;
 
       @media (max-width: 520px) {
-        font-size: 20px;
+        font-size: 22px;
       }
     }
 
     .list-form {
       position: relative;
-      font-size: 18px;
-      padding: 10px 0;
-      width: 100%;
+      font-size: $ft-16;
+      padding: 10px 20px;
       display: grid;
 
       @media (max-width: $medium-max) {
         font-size: 16px;
-        padding: 8px 0;
+        padding: 10px 20px;
       }
 
       input {
         width: auto;
-        padding: 10px 10px;
+        height: 38px;
+        padding: 0px 10px;
         margin-top: 5px;
         border-radius: 5px;
-        border: 1px solid $color-bg;
 
         &:focus {
           border: none;
@@ -807,11 +1081,10 @@ input.opc-imoveis {
 
       .btn {
         cursor: pointer;
-        width: 180px;
+        width: 50%;
         padding: 10px 10px;
 
         @media (max-width: $medium-max) {
-          width: 50%;
           padding: 8px 10px;
         }
       }
@@ -820,12 +1093,15 @@ input.opc-imoveis {
 
     #list-form-btn {
       display: flex;
+      padding: 20px 20px;
+      gap: 15px;
 
       #enviar-form {
+        color: $color-txt-geral;
+        font-weight: bold;
+        font-size: $ft-16;
         border: none;
-        color: white;
-        background-color: #28a745;
-        margin-right: 10px;
+        background-color: $color-verde;
         border-radius: 5px;
 
         &:hover {
@@ -835,8 +1111,10 @@ input.opc-imoveis {
 
       #cancelar-form {
         border: none;
-        color: white;
-        background-color: #ed5948;
+        color: $color-txt-geral;
+        font-weight: bold;
+        font-size: $ft-16;
+        background-color: $color-red;
         border-radius: 5px;
 
         &:hover {
@@ -847,143 +1125,155 @@ input.opc-imoveis {
   }
 
   .anuncio {
-    width: 50%;
+    width: 100%;
+    max-width: 600px;
+    max-height: 550px;
     position: relative;
     display: block;
-    background-color: blue;
+    border-radius: 10px;
+    overflow: hidden;
 
     @media (max-width: 520px) {
-      width: 100%;
+      display: none;
     }
   }
 }
 
 /*========== FOOTER ============*/
 
-.doc-indent {
-  font-size: 16px;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.redes-sociais {
-  text-align: center;
-  
-
-  p {
-    padding-bottom: 10px;
-    font-size: 16px;
-    max-width: 250px;
-    display: block;
-    padding-top: 20px;
-    margin: 0 auto;
-    border-top: 2px solid $color-branco;
-  }
-
-  .fab {
-    font-weight: 600;
-    text-align: center;
-    padding: 10px;
-    font-size: 25px;
-    margin: 0 5px;
-  }
-
-  .fa-facebook-f {
-    background-color: #4064ac;
-    border-radius: 50%;
-    padding: 7px 12px;
-    color: $color-branco;
-  }
-
-  .fa-google-plus-g {
-    background-color: #cc5f56;
-    border-radius: 50%;
-    padding: 8px 5px;
-    color: $color-branco;
-  }
-
-  .fa-instagram {
-    background: #d6249f;
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
-    border-radius: 50%;
-    padding: 7px 9px;
-    color: $color-branco;
-  }
-}
-
 .content-footer{
   width: 100%;
+  background-color: $color-bg-itens;
+}
 
-  .footer {
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 40px 0px;
+  gap: 40px;
+
+  @media(max-width: $medium-max){
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 10px;
+  }
+
+  .endereco {
+    font-size: $ft-24;
+    display: flex;
+    line-height: 30px;
+    font-weight: normal;
+    flex-direction: column;
+    justify-content: space-around;
+
+    @media (max-width: $medium-max){
+      font-size: $ft-18;
+      text-align: center;
+    }
+
+    a{
+      color: $color-txt-geral;
+      text-decoration: underline;
+    }
+  }
+
+  .logo-empresa {
     width: 100%;
-    max-width: 1200px;
-    margin: 30px auto 0;
-    position: relative;
-
-    display: grid;
-    grid-template-columns: 35% 30% 35%;
-    grid-template-rows: auto 50px;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    grid-template-areas: "endereco logo-empresa info-devs""desc-ano desc-ano desc-ano";
+    max-width: 380px;
     height: auto;
-    padding: 30px 0 50px 0px;
-    justify-items: center;
-  
-    @media (max-width: 520px) {
-      padding: 30px 0 20px 0px;
-      grid-template-columns: 100%;
-      grid-template-rows: auto;
-      grid-template-areas: "endereco""info-devs""desc-ano";
+    margin: 0 auto;
+
+    @media (max-width: $medium-max){
+      max-width: 267px;
     }
-  
-    .endereco {
-      line-height: 35px;
-      grid-area: endereco;
-  
+
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .info-redes {
+    display: grid;
+    width: 300px;
+    gap: 20px;
+    align-content: space-evenly;
+    justify-items: stretch;
+
+    .doc-indent {
+      font-size: $ft-24;
+      text-align: center;
+    }
+
+    .line_redes{
+      width: 300px;
+      height: 2px;
+      display: block;
+      margin: 0 auto;
+      background-color: $color-branco;
+    }
+
+    .redes-sociais {
+      font-size: $ft-20;
+      text-align: center;
+      
       p {
-        line-height: 1.7;
-        color: $color-branco;
-        font-size: 16px;
+        padding-bottom: 15px;
+        font-size: $ft-20;
+        text-align: center;
+      }
+
+      .icons-sociais{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        img{
+          width: 100%;
+          max-width: 50px;
+          height: auto;
+        }
       }
     }
-  
-    .logo-empresa {
-      padding: 10px;
-      grid-area: logo-empresa;
-  
-      @media (max-width: 520px) {
-        display: none;
-      }
-  
-      img {
-        width: 100%;
-      }
-    }
-  
-    .info-devs {
-      height: 100px;
-      padding: 10px;
-      grid-area: info-devs;
-  
-  
-      // display: none;
-    }
-  
-    .desc-ano {
-      grid-area: desc-ano;
-    }
-  
   }
 }
 
+.faixa_footer{
+  width: 100%;
+  height: 4px;
+  background-color: $color-txt-geral;
+  display: block;
+  margin: 0 auto;
+}
+
+.desc-ano{
+  font-size: $ft-20;
+  font-weight: bold;
+  padding: 20px 0px 55px;
+}
+
+.botao-topo{
+  position: fixed;
+  right: 90px;
+  width: 100%;
+  max-width: 90px;
+  height: auto;
+  bottom: 15px;
+  z-index: 888;
+
+  @media (max-width: $medium-max){
+    right: -3px;
+    bottom: 75px;
+  }
+}
 
 .whats {
   position: fixed;
-  right: 10px;
-  bottom: 10px;
-  z-index: 999;
+  right: 20px;
+  bottom: 20px;
+  z-index: 888;
 
   .fa-whatsapp {
     background-color: #25d366;
@@ -991,11 +1281,5 @@ input.opc-imoveis {
     font-size: 28px;
     border-radius: 50%;
     padding: 11px;
-  }
-}
-
-@media screen and (min-width: $medium-min) {
-  img.logo-mobile {
-    display: none;
   }
 }
