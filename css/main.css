@@ -1283,6 +1283,8 @@ body {
 
 .form-lateral._open {
   display: block;
+  margin: 0 auto;
+  height: auto;
 }
 
 .form-lateral {
@@ -1296,7 +1298,7 @@ body {
 }
 @media (max-width: 780px) {
   .form-lateral {
-    max-width: 300px;
+    max-width: 350px;
     display: none;
     position: relative;
     float: none;
