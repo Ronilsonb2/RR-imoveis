@@ -1785,6 +1785,7 @@ body {
 #show-imovel .container-detalhes-imovel .descricao-imovel .descricao {
   font-size: 16px;
   line-height: 24px;
+  white-space: pre-line;
 }
 #show-imovel .container-detalhes-imovel .info-contado {
   padding: 20px 0px 30px;

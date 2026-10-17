@@ -14,8 +14,8 @@ export function criarCardImovel(imovel, variante = 'resultado') {
             <img src="${escaparHtml(urlImagem(imagem))}" class="d-block w-100" alt="Foto do imóvel ${escaparHtml(imovel.titulo)}">
         </div>`).join('');
 
-    // A descrição pode ter HTML básico (<b>, <i>): no card mostramos só o texto, já escapado
-    const descricaoResumida = escaparHtml(truncateText(textoPuro(imovel.descricao), 65));
+    // No card a descrição vira uma linha só (sem quebras nem HTML) e é cortada em 65 caracteres
+    const descricaoResumida = escaparHtml(truncateText(textoPuro(imovel.descricao).replace(/\s+/g, ' ').trim(), 65));
 
     const preco = imovel.precoVenda != null
         ? `Venda<br> <span> ${formatarMoeda(imovel.precoVenda)}</span>`

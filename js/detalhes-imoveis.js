@@ -38,7 +38,7 @@ function renderizar(imovel) {
     // Título da aba com o nome do imóvel (não muda o preview de link no WhatsApp/redes, que não executa JS)
     document.title = `${imovel.titulo} — R&R Imóveis`;
     document.getElementById('detalhes-description')
-        ?.setAttribute('content', truncateText(textoPuro(imovel.descricao), 150));
+        ?.setAttribute('content', truncateText(textoPuro(imovel.descricao).replace(/\s+/g, ' '), 150));
 
     const imagens = imovel.imagens?.length ? imovel.imagens : [null];
     const imagensHTML = imagens
@@ -48,8 +48,8 @@ function renderizar(imovel) {
     const ehVenda = imovel.finalidadeImovel === 'VENDA';
     const endereco = imovel.endereco || {};
 
-    // A descrição já vem sanitizada pela API (só HTML básico como <b> e <i>), então é exibida como HTML.
-    // Os demais campos são escapados.
+    // A descrição é texto puro com quebras de linha: escapada aqui e exibida com
+    // "white-space: pre-line" no CSS, que mostra os parágrafos e listas como foram digitados.
     resultImovel.innerHTML = `
         <div class="slide">
             <div class="imagens-imovel">${imagensHTML}</div>
@@ -86,7 +86,7 @@ function renderizar(imovel) {
 
                 <div class="descricao-imovel">
                     <h1 class="titulo-imovel">${escaparHtml(imovel.titulo)}</h1>
-                    <p class="descricao">${imovel.descricao ?? ''}</p>
+                    <p class="descricao">${escaparHtml(imovel.descricao)}</p>
                 </div>
 
                 <div class="info-contado">${escaparHtml(CONTACT_PHONE_DISPLAY)} · ${escaparHtml(CONTACT_EMAIL)}</div>
