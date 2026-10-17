@@ -75,6 +75,7 @@
     <section class="content-conteudo opcoes-filtros">
         <div class="filtro">Filtro</div>
         <select class="prioridade-resultados" name="" id="ordenacao-resultados">
+            <option value="destaques">Destaques</option>
             <option value="menor_valor">Menor valor</option>
             <option value="maior_valor">Maior valor</option>
             <option value="recentes">Recentes</option>
@@ -94,9 +95,8 @@
                 <select class="opc-imoveis" name="" id="tipo-imovel">
                     <option value="Selecione">Selecione</option>
                     <option value="APARTAMENTO">Apartamento</option>
-                    <option value="COBERTURA">Cobertura</option>
-                    <option value="CASA">Casa</option>
-                    <option value="SOBRADO">Sobrado</option>
+                <option value="CASA">Casa</option>
+                <option value="TERRENO">Terreno</option>
                 </select>
             </div>
 
@@ -157,26 +157,6 @@
                 </div>
             </div>
 
-            <div class="list-group">
-                <label for="">Suites</label><br>
-                <div class="qtd" id="suite">
-                    <div class="gtd-op suite" value="1" id="suite1">
-                        1
-                    </div>
-                    <div class="gtd-op suite" id="suite2">
-                        2
-                    </div>
-                    <div class="gtd-op suite" id="suite3">
-                        3
-                    </div>
-                    <div class="gtd-op suite" id="suite4">
-                        4
-                    </div>
-                    <div class="gtd-op suite" id="suite5">
-                        +5
-                    </div>
-                </div>
-            </div>
 
             <div class="list-group">
                 <label for="">Banheiros</label><br>
@@ -269,7 +249,7 @@
                             <p class="price-imovel">Locação<br> <span> R$ 2.500,00</span></p>
         
                             <div class="text-xs-center">
-                                <a href="/detalhes-imoveis.html?idImovel=1" class="btn-2">Mais detalhes</a>
+                                <a href="detalhes-imoveis.html?idImovel=1" class="btn-2">Mais detalhes</a>
                             </div>
 
                         </div>
@@ -304,7 +284,7 @@
                             <p class="price-imovel">Locação<br> <span> R$ 2.500,00</span></p>
         
                             <div class="text-xs-center">
-                                <a href="/detalhes-imoveis.html?idImovel=1" class="btn-2">Mais detalhes</a>
+                                <a href="detalhes-imoveis.html?idImovel=1" class="btn-2">Mais detalhes</a>
                             </div>
                         </div>
                     </div>
@@ -339,7 +319,7 @@
                             <p class="price-imovel">Locação<br> <span> R$ 2.500,00</span></p>
         
                             <div class="text-xs-center">
-                                <a href="/detalhes-imoveis.html?idImovel=1" class="btn-2">Mais detalhes</a>
+                                <a href="detalhes-imoveis.html?idImovel=1" class="btn-2">Mais detalhes</a>
                             </div>
                         </div>
                     </div>
@@ -503,7 +483,7 @@
 
     <script src="js/config.js"></script>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script src="js/produtos.js" type="module"></script>
 

@@ -32,76 +32,7 @@ document.getElementById("voltar-ao-topo").addEventListener("click", function () 
   });
 });
 
-// Inserindo os dados de pesquisas inicial na home Estados / Cidades / Bairros
-document.addEventListener("DOMContentLoaded", function () {
-  const estadoSelect = document.getElementById("estado-imovel");
-  const cidadeSelect = document.getElementById("cidade-imovel");
-  const bairroSelect = document.getElementById("bairro-imovel");
-
-  if (!estadoSelect || !cidadeSelect || !bairroSelect) return;
-
-  // 🔹 Carrega os estados do backend
-  fetch(`${API_BASE_URL}/estados`)
-      .then(response => response.json())
-      .then(estados => {
-          estadoSelect.innerHTML = '<option value="">Selecione um estado</option>';
-          estados.forEach(estado => {
-              const option = document.createElement("option");
-              option.value = estado;
-              option.textContent = estado;
-              estadoSelect.appendChild(option);
-          });
-      })
-      .catch(error => console.error("Erro ao carregar estados:", error));
-
-  // 🔹 Quando o usuário escolhe um estado, buscar cidades
-  estadoSelect.addEventListener("change", function () {
-      const estadoSelecionado = this.value;
-      cidadeSelect.innerHTML = '<option value="">Carregando cidades...</option>';
-      cidadeSelect.disabled = true;
-      bairroSelect.innerHTML = '<option value="">Selecione uma cidade primeiro</option>';
-      bairroSelect.disabled = true;
-
-      if (estadoSelecionado) {
-          fetch(`${API_BASE_URL}/cidades?estado=${estadoSelecionado}`)
-              .then(response => response.json())
-              .then(cidades => {
-                  cidadeSelect.innerHTML = '<option value="">Selecione uma cidade</option>';
-                  cidades.forEach(cidade => {
-                      const option = document.createElement("option");
-                      option.value = cidade;
-                      option.textContent = cidade;
-                      cidadeSelect.appendChild(option);
-                  });
-                  cidadeSelect.disabled = false;
-              })
-              .catch(error => console.error("Erro ao carregar cidades:", error));
-      }
-  });
-
-  // 🔹 Quando o usuário escolhe uma cidade, buscar bairros
-  cidadeSelect.addEventListener("change", function () {
-      const cidadeSelecionada = this.value;
-      bairroSelect.innerHTML = '<option value="">Carregando bairros...</option>';
-      bairroSelect.disabled = true;
-
-      if (cidadeSelecionada) {
-          fetch(`${API_BASE_URL}/bairros?cidade=${cidadeSelecionada}`)
-              .then(response => response.json())
-              .then(bairros => {
-                  bairroSelect.innerHTML = '<option value="">Selecione um bairro</option>';
-                  bairros.forEach(bairro => {
-                      const option = document.createElement("option");
-                      option.value = bairro;
-                      option.textContent = bairro;
-                      bairroSelect.appendChild(option);
-                  });
-                  bairroSelect.disabled = false;
-              })
-              .catch(error => console.error("Erro ao carregar bairros:", error));
-      }
-  });
-});
+// Os selects Estado / Cidade / Bairro são carregados por js/localizacao.js
 
 // Botão flutuante de WhatsApp (index.html e produtos.html)
 document.addEventListener("DOMContentLoaded", function () {
