@@ -1165,18 +1165,34 @@ body img {
 
 .botao-topo {
   position: fixed;
-  right: 90px;
-  width: 100%;
-  max-width: 90px;
-  height: auto;
-  bottom: 15px;
+  right: 23px;
+  bottom: 82px;
   z-index: 888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #475569;
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
-@media (max-width: 780px) {
-  .botao-topo {
-    right: -3px;
-    bottom: 75px;
-  }
+.botao-topo.visivel {
+  opacity: 0.9;
+  visibility: visible;
+  transform: translateY(0);
+}
+.botao-topo:hover, .botao-topo:focus-visible {
+  opacity: 1;
+  background-color: #334155;
 }
 
 .whats {

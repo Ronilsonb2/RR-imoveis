@@ -24,12 +24,17 @@ $(document).ready(function() {
   setTimeout(function(){initPosition(); }, 500);
 });
 
-// Voltando ao topo da pagina
-document.getElementById("voltar-ao-topo").addEventListener("click", function () {
-  window.scrollTo({
-      top: 0,
-      behavior: "smooth" // Suaviza o scroll
-  });
+// Voltar ao topo: aparece só depois de rolar uma tela e meia (no topo da página ele não serve para nada)
+const botaoTopo = document.getElementById("voltar-ao-topo");
+
+function atualizarBotaoTopo() {
+  botaoTopo.classList.toggle("visivel", window.scrollY > window.innerHeight * 1.5);
+}
+window.addEventListener("scroll", atualizarBotaoTopo, { passive: true });
+atualizarBotaoTopo();
+
+botaoTopo.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 // Os selects Estado / Cidade / Bairro são carregados por js/localizacao.js

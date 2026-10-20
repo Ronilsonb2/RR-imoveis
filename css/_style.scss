@@ -1271,18 +1271,41 @@ body {
   padding: 20px 0px 55px;
 }
 
-.botao-topo{
+// Voltar ao topo: botão redondo acima do WhatsApp (mesma coluna da direita).
+// Só aparece depois de rolar a página (classe .visivel, posta pelo master.js).
+.botao-topo {
   position: fixed;
-  right: 90px;
-  width: 100%;
-  max-width: 90px;
-  height: auto;
-  bottom: 15px;
+  right: 23px;          // centralizado com o WhatsApp (50px a 20px da borda)
+  bottom: 82px;         // 20px + 50px do WhatsApp + 12px de espaço
   z-index: 888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: $color-bg-itens;
+  color: $color-branco;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+  cursor: pointer;
 
-  @media (max-width: $medium-max){
-    right: -3px;
-    bottom: 75px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+
+  &.visivel {
+    opacity: .9;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    background-color: #334155;
   }
 }
 
