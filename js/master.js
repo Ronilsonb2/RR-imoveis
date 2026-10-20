@@ -40,11 +40,54 @@ document.addEventListener("DOMContentLoaded", function () {
   const ano = document.getElementById("ano-atual");
   if (ano) ano.textContent = new Date().getFullYear();
 
-  const creci = document.getElementById("creci");
-  if (creci && CRECI_NUMBER) {
-    creci.textContent = `CRECI: ${CRECI_NUMBER}`;
-    creci.hidden = false;
+  // Rodapé (#creci) e "Quem somos" ([data-creci])
+  if (CRECI_NUMBER) {
+    document.querySelectorAll("#creci, [data-creci]").forEach(function (elemento) {
+      elemento.textContent = `CRECI: ${CRECI_NUMBER}`;
+      elemento.hidden = false;
+    });
   }
+
+  // Links de WhatsApp com mensagem pronta: <a data-whatsapp-msg="...">
+  document.querySelectorAll("[data-whatsapp-msg]").forEach(function (link) {
+    link.href = `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(link.dataset.whatsappMsg)}`;
+  });
+});
+
+// "Quer vender ou alugar seu imóvel?" -> monta a mensagem e abre o WhatsApp do corretor
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("form-anuncie");
+  if (!form) return;
+
+  const erro = document.getElementById("anuncie-erro");
+  const valor = function (id) { return document.getElementById(id).value.trim(); };
+
+  form.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    const nome = valor("anuncie-nome");
+    const telefone = valor("anuncie-telefone");
+    const local = valor("anuncie-local");
+    if (!nome || !telefone || !local) {
+      erro.textContent = "Preencha seu nome, telefone e o bairro/cidade do imóvel.";
+      erro.hidden = false;
+      return;
+    }
+    erro.hidden = true;
+
+    const detalhes = valor("anuncie-detalhes");
+    const mensagem =
+      `Olá! Quero anunciar meu imóvel com a R&R Imóveis.\n\n` +
+      `Nome: ${nome}\n` +
+      `Telefone: ${telefone}\n` +
+      `Quero: ${valor("anuncie-finalidade")}\n` +
+      `Tipo: ${valor("anuncie-tipo")}\n` +
+      `Local: ${local}` +
+      (detalhes ? `\nDetalhes: ${detalhes}` : "");
+
+    window.open(`https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`, "_blank");
+    form.reset();
+  });
 });
 
 document.addEventListener("DOMContentLoaded", function () {

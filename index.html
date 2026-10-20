@@ -53,6 +53,12 @@
                             <a href="#destaques-mobile">DESTAQUES</a>
                         </li>
                         <li>
+                            <a href="#quem-somos">QUEM SOMOS</a>
+                        </li>
+                        <li>
+                            <a href="#anuncie">ANUNCIE</a>
+                        </li>
+                        <li>
                             <a href="#dicas">NOSSAS DICAS</a>
                         </li>
                         <li>
@@ -341,6 +347,85 @@
                     </div>
                 </div> -->
             </div>
+        </div>
+    </section>
+
+    <!-- RASCUNHO: revisar o texto e trocar o logo por uma foto do corretor (img/corretor.jpg) -->
+    <section class="content" id="quem-somos">
+        <div class="quem-somos">
+            <div class="quem-somos-foto">
+                <img src="img/logo-marca-footer3.png" alt="R&amp;R Imóveis">
+            </div>
+            <div class="quem-somos-texto">
+                <h2>Quem somos</h2>
+                <p>
+                    A R&amp;R Imóveis nasceu da parceria entre os irmãos <strong>Rafael</strong> e <strong>Ronilson</strong>,
+                    e o nome vem da inicial de cada um.
+                </p>
+                <p>
+                    O Rafael é corretor de imóveis e faz o seu atendimento pessoalmente: você fala direto com quem
+                    conhece o imóvel, sem central de atendimento.
+                </p>
+                <p>Estamos em Taboão da Serra - SP.</p>
+                <!-- Preenchido pelo master.js com o CRECI_NUMBER do config.js (escondido enquanto for null) -->
+                <p class="quem-somos-creci" data-creci hidden></p>
+                <a class="btn-whatsapp-texto" data-whatsapp-msg="Olá, Rafael! Vim pelo site da R&amp;R Imóveis e gostaria de conversar."
+                   target="_blank" rel="noopener">Fale com o Rafael no WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="content" id="anuncie">
+        <div class="anuncie">
+            <div class="anuncie-chamada">
+                <h2>Quer vender ou alugar seu imóvel?</h2>
+                <p>Anuncie com a R&amp;R Imóveis. Conte um pouco sobre o imóvel e o Rafael entra em contato pelo WhatsApp.</p>
+                <ul>
+                    <li>Avaliação do valor de venda ou aluguel</li>
+                    <li>Anúncio com fotos aqui no site</li>
+                    <li>Atendimento aos interessados e visitas</li>
+                </ul>
+            </div>
+
+            <form class="anuncie-form" id="form-anuncie" novalidate>
+                <div class="campo">
+                    <label for="anuncie-nome">Seu nome</label>
+                    <input id="anuncie-nome" type="text" autocomplete="name" required>
+                </div>
+                <div class="campo">
+                    <label for="anuncie-telefone">Telefone / WhatsApp</label>
+                    <input id="anuncie-telefone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000" required>
+                </div>
+                <div class="campo-duplo">
+                    <div class="campo">
+                        <label for="anuncie-finalidade">Quero</label>
+                        <select id="anuncie-finalidade">
+                            <option>Vender</option>
+                            <option>Alugar</option>
+                            <option>Vender ou alugar</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="anuncie-tipo">Tipo</label>
+                        <select id="anuncie-tipo">
+                            <option>Casa</option>
+                            <option>Apartamento</option>
+                            <option>Terreno</option>
+                            <option>Outro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="campo">
+                    <label for="anuncie-local">Bairro e cidade</label>
+                    <input id="anuncie-local" type="text" placeholder="Ex.: Centro, Taboão da Serra" required>
+                </div>
+                <div class="campo">
+                    <label for="anuncie-detalhes">Detalhes (opcional)</label>
+                    <textarea id="anuncie-detalhes" rows="3" placeholder="Quartos, metragem, valor pretendido..."></textarea>
+                </div>
+                <p class="anuncie-erro" id="anuncie-erro" role="alert" hidden></p>
+                <button type="submit" class="btn-anuncie">Enviar pelo WhatsApp</button>
+            </form>
         </div>
     </section>
 

@@ -1232,6 +1232,155 @@ ul.icons-config {
   font-weight: 400;
 }
 
+/*===== Quem somos (home) ===========*/
+.quem-somos {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  margin: 20px 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+@media (max-width: 780px) {
+  .quem-somos {
+    grid-template-columns: 1fr;
+  }
+}
+.quem-somos .quem-somos-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: #475569;
+}
+.quem-somos .quem-somos-foto img {
+  width: 100%;
+  max-width: 240px;
+  object-fit: cover;
+}
+.quem-somos .quem-somos-texto {
+  padding: 36px 40px;
+  color: #475569;
+  line-height: 1.6;
+}
+@media (max-width: 780px) {
+  .quem-somos .quem-somos-texto {
+    padding: 28px 20px;
+  }
+}
+.quem-somos .quem-somos-texto h2 {
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: bold;
+}
+.quem-somos .quem-somos-texto p {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+.quem-somos .quem-somos-texto .quem-somos-creci {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-whatsapp-texto,
+.btn-anuncie {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1f9d55;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-whatsapp-texto:hover, .btn-whatsapp-texto:focus,
+.btn-anuncie:hover,
+.btn-anuncie:focus {
+  background-color: #17803f;
+  color: #fff;
+}
+
+/*===== Anuncie seu imóvel (home) ===========*/
+.anuncie {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin: 20px 0;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #475569;
+  color: #E5E5E5;
+}
+@media (max-width: 780px) {
+  .anuncie {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px 20px;
+  }
+}
+.anuncie .anuncie-chamada h2 {
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+.anuncie .anuncie-chamada p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.anuncie .anuncie-chamada ul {
+  padding: 0;
+  list-style: none;
+}
+.anuncie .anuncie-chamada li {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+.anuncie .anuncie-chamada li::before {
+  content: "✓";
+  margin-right: 10px;
+  color: #7ee2a8;
+  font-weight: bold;
+}
+.anuncie .anuncie-form {
+  display: grid;
+  gap: 14px;
+}
+.anuncie .anuncie-form .campo {
+  display: grid;
+  gap: 5px;
+}
+.anuncie .anuncie-form .campo-duplo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.anuncie .anuncie-form label {
+  font-size: 14px;
+}
+.anuncie .anuncie-form input,
+.anuncie .anuncie-form select,
+.anuncie .anuncie-form textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.anuncie .anuncie-form .anuncie-erro {
+  color: #ffb4a8;
+  font-size: 14px;
+}
+.anuncie .anuncie-form .btn-anuncie {
+  width: 100%;
+}
+
 body {
   background: #CBD5E1;
   transform: translateX();

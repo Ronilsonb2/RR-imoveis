@@ -1333,3 +1333,170 @@ ul.icons-config {
     font-size: .5em;
     font-weight: 400;
 }
+
+/*===== Quem somos (home) ===========*/
+.quem-somos {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    margin: 20px 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: $color-branco;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+
+    @media (max-width: $medium-max) {
+        grid-template-columns: 1fr;
+    }
+
+    .quem-somos-foto {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        background-color: $color-bg-itens;
+
+        img {
+            width: 100%;
+            max-width: 240px;
+            object-fit: cover;
+        }
+    }
+
+    .quem-somos-texto {
+        padding: 36px 40px;
+        color: $color-bg-itens;
+        line-height: 1.6;
+
+        @media (max-width: $medium-max) {
+            padding: 28px 20px;
+        }
+
+        h2 {
+            margin-bottom: 16px;
+            font-size: $ft-32;
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 12px;
+            font-size: $ft-18;
+        }
+
+        .quem-somos-creci {
+            font-size: $ft-14;
+            font-weight: bold;
+        }
+    }
+}
+
+// Botão de texto que abre o WhatsApp (verde do WhatsApp, reconhecível)
+.btn-whatsapp-texto,
+.btn-anuncie {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    background-color: #1f9d55;
+    color: $color-branco;
+    font-size: $ft-16;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        background-color: #17803f;
+        color: $color-branco;
+    }
+}
+
+/*===== Anuncie seu imóvel (home) ===========*/
+.anuncie {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 20px 0;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: $color-bg-itens;
+    color: $color-txt-geral;
+
+    @media (max-width: $medium-max) {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 28px 20px;
+    }
+
+    .anuncie-chamada {
+        h2 {
+            margin-bottom: 16px;
+            font-size: $ft-32;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: $ft-18;
+            line-height: 1.5;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: $ft-16;
+        }
+
+        li::before {
+            content: "✓";
+            margin-right: 10px;
+            color: #7ee2a8;
+            font-weight: bold;
+        }
+    }
+
+    .anuncie-form {
+        display: grid;
+        gap: 14px;
+
+        .campo {
+            display: grid;
+            gap: 5px;
+        }
+
+        .campo-duplo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        label {
+            font-size: $ft-14;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 9px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: $ft-16;
+        }
+
+        .anuncie-erro {
+            color: #ffb4a8;
+            font-size: $ft-14;
+        }
+
+        .btn-anuncie {
+            width: 100%;
+        }
+    }
+}
