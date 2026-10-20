@@ -55,6 +55,9 @@ function renderizar(imovel) {
             <div class="imagens-imovel">${imagensHTML}</div>
 
             <div class="container-detalhes-imovel">
+                ${imovel.status === 'RESERVADO'
+                    ? '<p class="aviso-reservado"><strong>Imóvel reservado.</strong> Já há uma proposta em andamento, mas o negócio ainda pode não se concretizar. Fale com a gente para ser avisado.</p>'
+                    : ''}
                 <div class="info-price">
                     <div class="price">
                         <p>${ehVenda ? 'Venda' : 'Locação'}</p>

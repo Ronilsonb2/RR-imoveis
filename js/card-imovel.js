@@ -21,6 +21,11 @@ export function criarCardImovel(imovel, variante = 'resultado') {
         ? `Venda<br> <span> ${formatarMoeda(imovel.precoVenda)}</span>`
         : `Locação<br> <span> ${formatarMoeda(imovel.precoLocacao)}</span>`;
 
+    // Reservado continua no site (no fim da busca), com selo sobre as fotos
+    const seloReservado = imovel.status === 'RESERVADO'
+        ? '<span class="selo-reservado">Reservado</span>'
+        : '';
+
     const link = `<a ${variante === 'resultado' ? 'target="_blank" rel="noopener"' : ''} href="detalhes-imoveis.html?idImovel=${encodeURIComponent(imovel.idImovel)}" class="btn-2">Mais detalhes</a>`;
 
     const precoELink = variante === 'oportunidade'
@@ -52,6 +57,7 @@ export function criarCardImovel(imovel, variante = 'resultado') {
     slide.innerHTML = `
         <div class="box-produto">
             <div id="${carouselId}" class="imagens-imovel carousel slide" data-bs-ride="carousel">
+                ${seloReservado}
                 <div class="carousel-inner">${imagensHTML}</div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

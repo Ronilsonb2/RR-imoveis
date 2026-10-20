@@ -1,4 +1,4 @@
-import { api, avisar, exigirLogin, iniciarMenu, ROTULOS } from './api-admin.js';
+import { api, avisar, exigirLogin, iniciarMenu, ROTULOS, VISIVEIS_NO_SITE } from './api-admin.js';
 import { escaparHtml, formatarMoeda, urlImagem } from '../../js/utils.js';
 
 exigirLogin();
@@ -29,7 +29,7 @@ function opcoesDeStatus(atual) {
 function linha(imovel) {
     const capa = imovel.imagens?.length ? urlImagem(imovel.imagens[0]) : '../img/sem-foto.jpeg';
     const endereco = imovel.endereco || {};
-    const linkSite = imovel.status === 'ATIVO'
+    const linkSite = VISIVEIS_NO_SITE.includes(imovel.status)
         ? `<a class="btn btn-sm btn-outline-secondary" href="../detalhes-imoveis.html?idImovel=${imovel.idImovel}" target="_blank" rel="noopener">Ver no site</a>`
         : '';
 

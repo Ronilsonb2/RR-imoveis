@@ -1269,3 +1269,20 @@ body {
     object-fit: cover;
   }
 }
+
+/*===== Imóvel reservado (card) ===========*/
+// .carousel do Bootstrap já é position: relative
+.selo-reservado {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #c14a3d;
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}

@@ -1176,6 +1176,22 @@ body img {
   object-fit: cover;
 }
 
+/*===== Imóvel reservado (card) ===========*/
+.selo-reservado {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: #c14a3d;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
 body {
   background: #CBD5E1;
   transform: translateX();
@@ -1797,6 +1813,16 @@ body {
   height: 2px;
   width: 100%;
   background-color: #000000;
+}
+
+/*===== Imóvel reservado (detalhe) ===========*/
+.aviso-reservado {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-left: 4px solid #c14a3d;
+  border-radius: 4px;
+  background: #f0eae4;
+  color: #474a51;
 }
 
 .imagens-imovel img {

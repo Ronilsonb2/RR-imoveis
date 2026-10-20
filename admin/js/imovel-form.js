@@ -1,4 +1,6 @@
 import { api, avisar, exigirLogin, iniciarMenu, ROTULOS } from './api-admin.js';
+
+const COR_STATUS = { ATIVO: 'bg-success', RESERVADO: 'bg-warning text-dark' };
 import { iniciarFotos } from './fotos.js';
 
 exigirLogin();
@@ -236,7 +238,7 @@ async function iniciar() {
 
             document.getElementById('titulo-pagina').textContent = `Editar imóvel #${idImovel}`;
             document.getElementById('status-atual').innerHTML =
-                `<span class="badge ${imovel.status === 'ATIVO' ? 'bg-success' : 'bg-secondary'}">${ROTULOS.status[imovel.status]}</span>`;
+                `<span class="badge ${COR_STATUS[imovel.status] || 'bg-secondary'}">${ROTULOS.status[imovel.status]}</span>`;
 
             preencher(imovel);
             // A API não converte casa em apartamento: o tipo fica travado na edição

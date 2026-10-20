@@ -95,9 +95,12 @@ export function iniciarMenu() {
     document.getElementById('btn-sair')?.addEventListener('click', sair);
 }
 
+// Status que aparecem no site (mesma regra de StatusImovel.VISIVEIS_NO_SITE na API)
+export const VISIVEIS_NO_SITE = ['ATIVO', 'RESERVADO'];
+
 // Textos exibidos para os valores dos enums da API
 export const ROTULOS = {
-    status: { ATIVO: 'Ativo', INATIVO: 'Inativo', VENDIDO: 'Vendido', ALUGADO: 'Alugado' },
+    status: { ATIVO: 'Ativo', RESERVADO: 'Reservado', INATIVO: 'Inativo', VENDIDO: 'Vendido', ALUGADO: 'Alugado' },
     finalidade: { VENDA: 'Venda', LOCACAO: 'Locação', PERMUTA: 'Permuta' },
     tipo: { CASA: 'Casa', APARTAMENTO: 'Apartamento', TERRENO: 'Terreno' },
 };
