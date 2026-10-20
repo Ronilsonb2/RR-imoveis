@@ -1,3 +1,5 @@
+import { buscarImoveisApi } from './api.js';
+import { criarCardImovel } from './card-imovel.js';
 import { escaparHtml, formatarMoeda, precoExibicao, textoPuro, truncateText, urlImagem, usarFotoPadraoSeFalhar } from './utils.js';
 
 const resultImovel = document.getElementById('show-imovel');
@@ -6,6 +8,11 @@ const idImovel = new URLSearchParams(window.location.search).get('idImovel');
 
 function mostrarMensagem(texto) {
     resultImovel.innerHTML = `<p class="msg-info" style="display:block; text-align:center; padding:40px 0;">${escaparHtml(texto)}</p>`;
+}
+
+// Link do WhatsApp com mensagem pronta; o código (Ref.) deixa o corretor achar o imóvel no painel na hora
+function linkWhatsapp(mensagem) {
+    return `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
 }
 
 function plural(quantidade, palavra) {
@@ -65,10 +72,11 @@ function renderizar(imovel) {
                         <span>${precoExibicao(ehVenda ? imovel.precoVenda : imovel.precoLocacao)}
                             ${imovel.finalidadeImovel === 'LOCACAO' ? '<span class="dinamica">/mês</span>' : ''}</span>
                     </div>
+                    ${imovel.taxaCondominio != null ? `
                     <div class="info-condominio">
                         <p>Condomínio</p>
                         <span>R$ ${formatarMoeda(imovel.taxaCondominio)}</span>
-                    </div>
+                    </div>` : ''}
                     <div class="info-iptu">
                         <p>IPTU</p>
                         <span>R$ ${formatarMoeda(imovel.valorIptu)}</span>
@@ -81,9 +89,18 @@ function renderizar(imovel) {
                     <div class="info-garagem"><span>✅ ${plural(imovel.garagem, 'vaga')}</span></div>
                 </div>
 
+                <div class="acoes-imovel">
+                    <a class="btn-agendar" target="_blank" rel="noopener" href="${escaparHtml(linkWhatsapp(
+                        `Olá! Gostaria de agendar uma visita ao imóvel Ref. ${imovel.idImovel} - ${imovel.titulo}.\n\n${window.location.href}`))}">
+                        Agendar visita
+                    </a>
+                    <span class="ref-imovel">Ref. ${escaparHtml(imovel.idImovel)}</span>
+                </div>
+
+                <!-- Só bairro e cidade: rua e número são passados pelo corretor no atendimento (protege o proprietário) -->
                 <div class="info-endereco">
-                    <p>Endereço</p>
-                    <span>${escaparHtml(endereco.rua)}, ${escaparHtml(endereco.bairro)} - ${escaparHtml(endereco.cidade)} ${escaparHtml(endereco.estado)}</span>
+                    <p>Localização</p>
+                    <span>${escaparHtml(endereco.bairro)} - ${escaparHtml(endereco.cidade)}/${escaparHtml(endereco.estado)}</span>
                 </div>
 
                 <div class="line">&nbsp;</div>
@@ -93,9 +110,17 @@ function renderizar(imovel) {
                     <p class="descricao">${escaparHtml(imovel.descricao)}</p>
                 </div>
 
+                ${mapaDaRegiao(endereco)}
+
                 <div class="info-contado">${escaparHtml(CONTACT_PHONE_DISPLAY)} · ${escaparHtml(CONTACT_EMAIL)}</div>
             </div>
         </div>`;
+
+    // Botão flutuante passa a citar o imóvel (antes da carga ele leva só o link)
+    document.getElementById('btn-whatsapp')?.setAttribute('href', linkWhatsapp(
+        `Olá! Tenho interesse no imóvel Ref. ${imovel.idImovel} - ${imovel.titulo}.\n\n${window.location.href}\n\nPoderia me passar mais informações, por favor?`));
+
+    carregarSemelhantes(imovel);
 
     // O Slick só pode ser iniciado depois que as imagens já estão no DOM
     const variasFotos = imovel.imagens?.length > 1;
@@ -111,12 +136,49 @@ function renderizar(imovel) {
     });
 }
 
-// Botão de WhatsApp com o link deste imóvel
-const mensagem =
-    `Olá! Tenho interesse neste imóvel.\n\n` +
-    `Link do imóvel: ${window.location.href}\n\n` +
-    `Poderia me passar mais informações, por favor?`;
-document.getElementById('btn-whatsapp')
-    ?.setAttribute('href', `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`);
+// Mapa pela região (bairro e cidade), nunca pelo endereço exato: protege o proprietário.
+// O embed do Google Maps por busca dispensa chave de API.
+function mapaDaRegiao(endereco) {
+    if (!endereco.cidade) return '';
+    const regiao = [endereco.bairro, `${endereco.cidade} - ${endereco.estado}`].filter(Boolean).join(', ');
+    const url = `https://www.google.com/maps?q=${encodeURIComponent(regiao)}&output=embed`;
+    return `
+        <div class="mapa-imovel">
+            <h2>Localização</h2>
+            <p>${escaparHtml(regiao)} <small>(localização aproximada)</small></p>
+            <iframe src="${escaparHtml(url)}" title="Mapa da região do imóvel" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>`;
+}
+
+// Imóveis semelhantes: mesma finalidade, primeiro na mesma cidade; se faltar, completa com outras cidades.
+// A API já põe os reservados no fim.
+const QTD_SEMELHANTES = 3;
+
+async function carregarSemelhantes(imovel) {
+    const secao = document.getElementById('semelhantes');
+    const container = document.getElementById('semelhantes-lista');
+    if (!secao || !container) return;
+
+    const base = `${API_BASE_URL}/imovel/filtros/avancados?finalidadeImovel=${imovel.finalidadeImovel}&size=${QTD_SEMELHANTES + 1}`;
+    const outros = lista => lista.filter(i => i.idImovel !== imovel.idImovel);
+
+    let semelhantes = outros((await buscarImoveisApi(`${base}&cidade=${encodeURIComponent(imovel.endereco?.cidade ?? '')}`)).content);
+    if (semelhantes.length < QTD_SEMELHANTES) {
+        const ids = new Set(semelhantes.map(i => i.idImovel));
+        const complemento = outros((await buscarImoveisApi(`${base}&ordenacao=recentes`)).content).filter(i => !ids.has(i.idImovel));
+        semelhantes = [...semelhantes, ...complemento];
+    }
+    semelhantes = semelhantes.slice(0, QTD_SEMELHANTES);
+
+    if (!semelhantes.length) return; // seção continua escondida
+    container.innerHTML = '';
+    semelhantes.forEach(i => container.appendChild(criarCardImovel(i, 'oportunidade')));
+    secao.hidden = false;
+}
+
+// Antes de carregar o imóvel, o botão flutuante já funciona com o link da página
+document.getElementById('btn-whatsapp')?.setAttribute('href', linkWhatsapp(
+    `Olá! Tenho interesse neste imóvel.\n\n${window.location.href}\n\nPoderia me passar mais informações, por favor?`));
 
 carregarImovel();

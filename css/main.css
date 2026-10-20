@@ -1284,7 +1284,8 @@ ul.icons-config {
 }
 
 .btn-whatsapp-texto,
-.btn-anuncie {
+.btn-anuncie,
+.btn-agendar {
   display: inline-block;
   margin-top: 8px;
   padding: 12px 24px;
@@ -1300,7 +1301,9 @@ ul.icons-config {
 }
 .btn-whatsapp-texto:hover, .btn-whatsapp-texto:focus,
 .btn-anuncie:hover,
-.btn-anuncie:focus {
+.btn-anuncie:focus,
+.btn-agendar:hover,
+.btn-agendar:focus {
   background-color: #17803f;
   color: #fff;
 }
@@ -1379,6 +1382,37 @@ ul.icons-config {
 }
 .anuncie .anuncie-form .btn-anuncie {
   width: 100%;
+}
+
+/*===== Página do imóvel: ações, mapa ===========*/
+.acoes-imovel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0;
+}
+.acoes-imovel .ref-imovel {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.mapa-imovel {
+  margin: 30px 0;
+}
+.mapa-imovel h2 {
+  margin-bottom: 6px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.mapa-imovel p {
+  margin-bottom: 12px;
+}
+.mapa-imovel iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: 10px;
 }
 
 body {
