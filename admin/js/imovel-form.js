@@ -182,7 +182,7 @@ function mostrarErros(erro) {
             const feedback = input.parentElement.querySelector('.invalid-feedback');
             if (feedback) feedback.textContent = mensagem;
         } else {
-            semCampo.push(`${campo}: ${mensagem}`);
+            semCampo.push(mensagem); // a mensagem da API já diz qual é o campo
         }
     });
 

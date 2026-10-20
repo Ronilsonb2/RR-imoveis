@@ -118,7 +118,8 @@ form.addEventListener('submit', async (evento) => {
         limparForm();
         await carregar();
     } catch (e) {
-        const detalhes = Object.entries(e.campos || {}).map(([campo, msg]) => `${campo}: ${msg}`);
+        // As mensagens da API já dizem o campo ("Informe o CPF", "E-mail inválido")
+        const detalhes = Object.values(e.campos || {});
         erroForm.textContent = [e.message, ...detalhes].join(' · ');
         erroForm.classList.remove('d-none');
     }
