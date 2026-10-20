@@ -1003,31 +1003,48 @@ body img {
   }
 }
 .box-contato .formulario #list-form-btn {
-  display: flex;
-  padding: 20px 20px;
-  gap: 15px;
+  padding: 20px 20px 30px;
 }
 .box-contato .formulario #list-form-btn #enviar-form {
-  color: #E5E5E5;
-  font-weight: bold;
-  font-size: 16px;
+  width: 100%;
+  padding: 12px;
   border: none;
-  background-color: #B9AC8F;
+  border-radius: 5px;
+  background-color: #1f9d55;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+.box-contato .formulario #list-form-btn #enviar-form:hover, .box-contato .formulario #list-form-btn #enviar-form:focus {
+  background-color: #17803f;
+}
+.box-contato .formulario label {
+  font-size: 14px;
+}
+.box-contato .formulario select {
+  height: 38px;
+  margin-top: 5px;
+  padding: 0 10px;
+  border: none;
   border-radius: 5px;
 }
-.box-contato .formulario #list-form-btn #enviar-form:hover {
-  background-color: #2b8d41;
+.box-contato .formulario .list-form-duplo {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
-.box-contato .formulario #list-form-btn #cancelar-form {
-  border: none;
-  color: #E5E5E5;
-  font-weight: bold;
-  font-size: 16px;
-  background-color: #E70A0D;
-  border-radius: 5px;
+.box-contato .formulario .list-form-duplo > div {
+  display: grid;
 }
-.box-contato .formulario #list-form-btn #cancelar-form:hover {
-  background-color: #c14a3d;
+@media (max-width: 520px) {
+  .box-contato .formulario .list-form-duplo {
+    grid-template-columns: 1fr;
+  }
+}
+.box-contato .formulario .contato-erro {
+  padding: 0 20px;
+  color: #ffb4a8;
+  font-size: 14px;
+  font-weight: normal;
 }
 .box-contato .anuncio {
   width: 100%;
@@ -1319,13 +1336,14 @@ ul.icons-config {
   color: #fff;
 }
 
-/*===== Anuncie seu imóvel (home) ===========*/
+/*===== Anuncie seu imóvel (home): faixa com chamada; o envio é pelo formulário "Fale com a gente" ===========*/
 .anuncie {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
+  align-items: center;
   gap: 40px;
   margin: 20px 0;
-  padding: 40px;
+  padding: 36px 40px;
   border-radius: 10px;
   background-color: #475569;
   color: #E5E5E5;
@@ -1333,66 +1351,41 @@ ul.icons-config {
 @media (max-width: 780px) {
   .anuncie {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
     padding: 28px 20px;
   }
 }
 .anuncie .anuncie-chamada h2 {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   font-size: 32px;
   font-weight: bold;
   line-height: 1.2;
 }
 .anuncie .anuncie-chamada p {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 18px;
   line-height: 1.5;
 }
 .anuncie .anuncie-chamada ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 .anuncie .anuncie-chamada li {
-  margin-bottom: 12px;
   font-size: 16px;
 }
 .anuncie .anuncie-chamada li::before {
   content: "✓";
-  margin-right: 10px;
+  margin-right: 8px;
   color: #7ee2a8;
   font-weight: bold;
 }
-.anuncie .anuncie-form {
-  display: grid;
-  gap: 14px;
-}
-.anuncie .anuncie-form .campo {
-  display: grid;
-  gap: 5px;
-}
-.anuncie .anuncie-form .campo-duplo {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-.anuncie .anuncie-form label {
-  font-size: 14px;
-}
-.anuncie .anuncie-form input,
-.anuncie .anuncie-form select,
-.anuncie .anuncie-form textarea {
-  width: 100%;
-  padding: 9px 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-}
-.anuncie .anuncie-form .anuncie-erro {
-  color: #ffb4a8;
-  font-size: 14px;
-}
-.anuncie .anuncie-form .btn-anuncie {
-  width: 100%;
+.anuncie .btn-anuncie {
+  padding: 14px 28px;
+  white-space: nowrap;
 }
 
 /*===== Página do imóvel: ações, mapa ===========*/
@@ -1424,6 +1417,46 @@ ul.icons-config {
   height: 320px;
   border: 0;
   border-radius: 10px;
+}
+
+.btn-duvida {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 2px solid #1f9d55;
+  border-radius: 6px;
+  color: #17803f;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.btn-duvida:hover, .btn-duvida:focus {
+  background-color: #e8f6ee;
+  color: #17803f;
+}
+
+.interesse-imovel {
+  margin: 30px 0;
+  padding: 28px;
+  border-radius: 10px;
+  background-color: #f1f5f9;
+  text-align: center;
+}
+.interesse-imovel h2 {
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.interesse-imovel p {
+  margin-bottom: 18px;
+}
+.interesse-imovel .interesse-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.interesse-imovel .btn-agendar {
+  margin-top: 0;
 }
 
 body {

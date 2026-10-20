@@ -112,6 +112,18 @@ function renderizar(imovel) {
 
                 ${mapaDaRegiao(endereco)}
 
+                <!-- No lugar do formulário de contato: as duas ações que importam nesta página -->
+                <div class="interesse-imovel">
+                    <h2>Ficou interessado?</h2>
+                    <p>Fale direto com o corretor. A mensagem já vai com o código do imóvel.</p>
+                    <div class="interesse-botoes">
+                        <a class="btn-agendar" target="_blank" rel="noopener" href="${escaparHtml(linkWhatsapp(
+                            `Olá! Gostaria de agendar uma visita ao imóvel Ref. ${imovel.idImovel} - ${imovel.titulo}.\n\n${window.location.href}`))}">Agendar visita</a>
+                        <a class="btn-duvida" target="_blank" rel="noopener" href="${escaparHtml(linkWhatsapp(
+                            `Olá! Tenho uma dúvida sobre o imóvel Ref. ${imovel.idImovel} - ${imovel.titulo}.\n\n${window.location.href}`))}">Tirar dúvidas no WhatsApp</a>
+                    </div>
+                </div>
+
                 <div class="info-contado">${escaparHtml(CONTACT_PHONE_DISPLAY)} · ${escaparHtml(CONTACT_EMAIL)}</div>
             </div>
         </div>`;

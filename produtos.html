@@ -403,31 +403,67 @@
 
     <section class="content" id="contato">
         <div class="box-contato">
-            <div class="formulario">
+            <form class="formulario" id="form-contato" novalidate>
+                <p>Fale com a gente</p>
+                <div class="list-form">
+                    <label for="contato-assunto">Assunto</label>
+                    <select id="contato-assunto">
+                        <option value="interesse">Quero comprar ou alugar</option>
+                        <option value="anunciar">Quero anunciar meu imóvel</option>
+                        <option value="duvida">Outra dúvida</option>
+                    </select>
+                </div>
+                <div class="list-form">
+                    <label for="contato-nome">Nome</label>
+                    <input id="contato-nome" type="text" autocomplete="name" placeholder="Nome completo">
+                </div>
+                <div class="list-form list-form-duplo">
+                    <div>
+                        <label for="contato-telefone">Telefone / WhatsApp</label>
+                        <input id="contato-telefone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000">
+                    </div>
+                    <div>
+                        <label for="contato-email">E-mail</label>
+                        <input id="contato-email" type="email" autocomplete="email" placeholder="voce@email.com">
+                    </div>
+                </div>
 
-                <p>Dúvidas? Entre em contato conosco</p>
-                <div class="list-form">
-                    Nome:
-                    <input id="contato-nome" class="" type="text" placeholder="Nome completo...">
+                <!-- Só para "Quero anunciar meu imóvel" (master.js mostra/esconde) -->
+                <div id="campos-anunciar" hidden>
+                    <div class="list-form list-form-duplo">
+                        <div>
+                            <label for="contato-finalidade">Quero</label>
+                            <select id="contato-finalidade">
+                                <option>Vender</option>
+                                <option>Alugar</option>
+                                <option>Vender ou alugar</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="contato-tipo">Tipo</label>
+                            <select id="contato-tipo">
+                                <option>Casa</option>
+                                <option>Apartamento</option>
+                                <option>Terreno</option>
+                                <option>Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="list-form">
+                        <label for="contato-local">Bairro e cidade do imóvel</label>
+                        <input id="contato-local" type="text" placeholder="Ex.: Centro, Taboão da Serra">
+                    </div>
                 </div>
+
                 <div class="list-form">
-                    Telefone:
-                    <input id="contato-telefone" class="" type="tel" placeholder="(00) 00000-0000">
+                    <label for="contato-mensagem" id="rotulo-mensagem">Mensagem</label>
+                    <textarea id="contato-mensagem" rows="4"></textarea>
                 </div>
-                <div class="list-form">
-                    Email:
-                    <input id="contato-email" class="" type="email" placeholder="contato@contato.com.br...">
-                </div>
-                <div class="list-form">
-                    Escreva sua dúvida:
-                    <textarea id="contato-duvida" name="textarea" rows="4" cols="10" placeholder="Escreva..."></textarea>
-                </div>
-                <span id="contato-erro" style="color:#c14a3d; display:none;"></span>
+                <p class="contato-erro" id="contato-erro" role="alert" hidden></p>
                 <div class="list-form" id="list-form-btn">
-                    <button class="btn" id="cancelar-form" type="button">Cancelar</button>
-                    <button class="btn" id="enviar-form" type="button">Enviar</button>
+                    <button class="btn" id="enviar-form" type="submit">Enviar pelo WhatsApp</button>
                 </div>
-            </div>
+            </form>
 
             <div class="anuncio">
                 <iframe src="banner-anuncio/index2.html" width="100%" height="100%" style="position: absolute; border: none;"></iframe>

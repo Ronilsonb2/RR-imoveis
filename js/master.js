@@ -34,7 +34,6 @@ document.getElementById("voltar-ao-topo").addEventListener("click", function () 
 
 // Os selects Estado / Cidade / Bairro são carregados por js/localizacao.js
 
-// Botão flutuante de WhatsApp (index.html e produtos.html)
 // Rodapé: ano atual e CRECI (a linha só aparece quando CRECI_NUMBER estiver preenchido no config.js)
 document.addEventListener("DOMContentLoaded", function () {
   const ano = document.getElementById("ano-atual");
@@ -54,42 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// "Quer vender ou alugar seu imóvel?" -> monta a mensagem e abre o WhatsApp do corretor
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("form-anuncie");
-  if (!form) return;
-
-  const erro = document.getElementById("anuncie-erro");
-  const valor = function (id) { return document.getElementById(id).value.trim(); };
-
-  form.addEventListener("submit", function (evento) {
-    evento.preventDefault();
-
-    const nome = valor("anuncie-nome");
-    const telefone = valor("anuncie-telefone");
-    const local = valor("anuncie-local");
-    if (!nome || !telefone || !local) {
-      erro.textContent = "Preencha seu nome, telefone e o bairro/cidade do imóvel.";
-      erro.hidden = false;
-      return;
-    }
-    erro.hidden = true;
-
-    const detalhes = valor("anuncie-detalhes");
-    const mensagem =
-      `Olá! Quero anunciar meu imóvel com a R&R Imóveis.\n\n` +
-      `Nome: ${nome}\n` +
-      `Telefone: ${telefone}\n` +
-      `Quero: ${valor("anuncie-finalidade")}\n` +
-      `Tipo: ${valor("anuncie-tipo")}\n` +
-      `Local: ${local}` +
-      (detalhes ? `\nDetalhes: ${detalhes}` : "");
-
-    window.open(`https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`, "_blank");
-    form.reset();
-  });
-});
-
+// Botão flutuante de WhatsApp (index.html e produtos.html)
 document.addEventListener("DOMContentLoaded", function () {
   const btnWhatsFlutuante = document.getElementById("btn-whatsapp-flutuante");
   if (!btnWhatsFlutuante) return;
@@ -98,49 +62,76 @@ document.addEventListener("DOMContentLoaded", function () {
   btnWhatsFlutuante.setAttribute("href", `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`);
 });
 
-// Formulário de contato -> envia via WhatsApp
+// "Fale com a gente": um formulário só, com assunto. "Anunciar meu imóvel" mostra os campos do imóvel.
+// O envio monta a mensagem e abre o WhatsApp do corretor.
 document.addEventListener("DOMContentLoaded", function () {
-  const btnEnviar = document.getElementById("enviar-form");
-  const btnCancelar = document.getElementById("cancelar-form");
-  if (!btnEnviar || !btnCancelar) return;
+  const form = document.getElementById("form-contato");
+  if (!form) return;
 
-  const campoNome = document.getElementById("contato-nome");
-  const campoTelefone = document.getElementById("contato-telefone");
-  const campoEmail = document.getElementById("contato-email");
-  const campoDuvida = document.getElementById("contato-duvida");
-  const erroMsg = document.getElementById("contato-erro");
+  const assunto = document.getElementById("contato-assunto");
+  const camposAnunciar = document.getElementById("campos-anunciar");
+  const rotuloMensagem = document.getElementById("rotulo-mensagem");
+  const erro = document.getElementById("contato-erro");
+  const valor = function (id) { return document.getElementById(id).value.trim(); };
 
-  function limparFormulario() {
-    campoNome.value = "";
-    campoTelefone.value = "";
-    campoEmail.value = "";
-    campoDuvida.value = "";
-    erroMsg.style.display = "none";
+  function ajustarAoAssunto() {
+    const anunciar = assunto.value === "anunciar";
+    camposAnunciar.hidden = !anunciar;
+    rotuloMensagem.textContent = anunciar ? "Detalhes do imóvel (opcional)" : "Mensagem";
+    document.getElementById("contato-mensagem").placeholder = anunciar
+      ? "Quartos, metragem, valor pretendido..."
+      : "Conte o que você procura ou qual é a sua dúvida";
   }
+  assunto.addEventListener("change", ajustarAoAssunto);
+  ajustarAoAssunto();
 
-  btnEnviar.addEventListener("click", function () {
-    const nome = campoNome.value.trim();
-    const telefone = campoTelefone.value.trim();
-    const email = campoEmail.value.trim();
-    const duvida = campoDuvida.value.trim();
-
-    if (!nome || !duvida || (!telefone && !email)) {
-      erroMsg.textContent = "Preencha nome, dúvida e ao menos um contato (telefone ou email).";
-      erroMsg.style.display = "block";
-      return;
-    }
-    erroMsg.style.display = "none";
-
-    const mensagem =
-      `Olá! Meu nome é ${nome}.\n` +
-      (telefone ? `Telefone: ${telefone}\n` : "") +
-      (email ? `Email: ${email}\n` : "") +
-      `Dúvida: ${duvida}`;
-
-    window.open(`https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`, "_blank");
-    limparFormulario();
+  // Botões como "Quero anunciar meu imóvel" (data-assunto) já abrem o formulário no assunto certo
+  document.querySelectorAll("[data-assunto]").forEach(function (botao) {
+    botao.addEventListener("click", function () {
+      assunto.value = botao.dataset.assunto;
+      ajustarAoAssunto();
+      setTimeout(function () { document.getElementById("contato-nome").focus({ preventScroll: true }); }, 400);
+    });
   });
 
-  btnCancelar.addEventListener("click", limparFormulario);
-});
+  form.addEventListener("submit", function (evento) {
+    evento.preventDefault();
 
+    const anunciar = assunto.value === "anunciar";
+    const nome = valor("contato-nome");
+    const telefone = valor("contato-telefone");
+    const email = valor("contato-email");
+    const mensagemTexto = valor("contato-mensagem");
+    const local = valor("contato-local");
+
+    let problema = "";
+    if (!nome || (!telefone && !email)) problema = "Preencha seu nome e ao menos um contato (telefone ou e-mail).";
+    else if (anunciar && !local) problema = "Informe o bairro e a cidade do imóvel.";
+    else if (!anunciar && !mensagemTexto) problema = "Escreva sua mensagem.";
+    if (problema) {
+      erro.textContent = problema;
+      erro.hidden = false;
+      return;
+    }
+    erro.hidden = true;
+
+    const contato = (telefone ? `Telefone: ${telefone}\n` : "") + (email ? `E-mail: ${email}\n` : "");
+    let mensagem;
+    if (anunciar) {
+      mensagem =
+        `Olá! Quero anunciar meu imóvel com a R&R Imóveis.\n\n` +
+        `Nome: ${nome}\n` + contato +
+        `Quero: ${valor("contato-finalidade")}\n` +
+        `Tipo: ${valor("contato-tipo")}\n` +
+        `Local: ${local}` +
+        (mensagemTexto ? `\nDetalhes: ${mensagemTexto}` : "");
+    } else {
+      const intro = assunto.value === "interesse" ? "Estou procurando um imóvel para comprar ou alugar." : "Tenho uma dúvida.";
+      mensagem = `Olá! Meu nome é ${nome}. ${intro}\n\n` + contato + `\n${mensagemTexto}`;
+    }
+
+    window.open(`https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`, "_blank");
+    form.reset();
+    ajustarAoAssunto();
+  });
+});

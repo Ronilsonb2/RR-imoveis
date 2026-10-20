@@ -1081,35 +1081,57 @@ body {
     }
 
     #list-form-btn {
-      display: flex;
-      padding: 20px 20px;
-      gap: 15px;
+      padding: 20px 20px 30px;
 
+      // Único botão: envio pelo WhatsApp, na cor de destaque
       #enviar-form {
-        color: $color-txt-geral;
-        font-weight: bold;
-        font-size: $ft-16;
+        width: 100%;
+        padding: 12px;
         border: none;
-        background-color: $color-verde;
         border-radius: 5px;
+        background-color: #1f9d55;
+        color: $color-branco;
+        font-size: $ft-16;
+        font-weight: bold;
 
-        &:hover {
-          background-color: #2b8d41;
+        &:hover,
+        &:focus {
+          background-color: #17803f;
         }
       }
+    }
 
-      #cancelar-form {
-        border: none;
-        color: $color-txt-geral;
-        font-weight: bold;
-        font-size: $ft-16;
-        background-color: $color-red;
-        border-radius: 5px;
+    label {
+      font-size: $ft-14;
+    }
 
-        &:hover {
-          background-color: #c14a3d;
-        }
+    select {
+      height: 38px;
+      margin-top: 5px;
+      padding: 0 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    // Dois campos lado a lado (telefone/e-mail, quero/tipo); empilha no celular
+    .list-form-duplo {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+
+      > div {
+        display: grid;
       }
+
+      @media (max-width: 520px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contato-erro {
+      padding: 0 20px;
+      color: #ffb4a8;
+      font-size: $ft-14;
+      font-weight: normal;
     }
   }
 
@@ -1424,92 +1446,62 @@ ul.icons-config {
     }
 }
 
-/*===== Anuncie seu imóvel (home) ===========*/
+/*===== Anuncie seu imóvel (home): faixa com chamada; o envio é pelo formulário "Fale com a gente" ===========*/
 .anuncie {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto;
+    align-items: center;
     gap: 40px;
     margin: 20px 0;
-    padding: 40px;
+    padding: 36px 40px;
     border-radius: 10px;
     background-color: $color-bg-itens;
     color: $color-txt-geral;
 
     @media (max-width: $medium-max) {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 20px;
         padding: 28px 20px;
     }
 
     .anuncie-chamada {
         h2 {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             font-size: $ft-32;
             font-weight: bold;
             line-height: 1.2;
         }
 
         p {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             font-size: $ft-18;
             line-height: 1.5;
         }
 
         ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 24px;
+            margin: 0;
             padding: 0;
             list-style: none;
         }
 
         li {
-            margin-bottom: 12px;
             font-size: $ft-16;
         }
 
         li::before {
             content: "✓";
-            margin-right: 10px;
+            margin-right: 8px;
             color: #7ee2a8;
             font-weight: bold;
         }
     }
 
-    .anuncie-form {
-        display: grid;
-        gap: 14px;
-
-        .campo {
-            display: grid;
-            gap: 5px;
-        }
-
-        .campo-duplo {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-
-        label {
-            font-size: $ft-14;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 9px 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: $ft-16;
-        }
-
-        .anuncie-erro {
-            color: #ffb4a8;
-            font-size: $ft-14;
-        }
-
-        .btn-anuncie {
-            width: 100%;
-        }
+    .btn-anuncie {
+        padding: 14px 28px;
+        white-space: nowrap;
     }
 }
 
@@ -1545,5 +1537,51 @@ ul.icons-config {
         height: 320px;
         border: 0;
         border-radius: 10px;
+    }
+}
+
+.btn-duvida {
+    display: inline-block;
+    padding: 10px 22px;
+    border: 2px solid #1f9d55;
+    border-radius: 6px;
+    color: #17803f;
+    font-size: $ft-16;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        background-color: #e8f6ee;
+        color: #17803f;
+    }
+}
+
+.interesse-imovel {
+    margin: 30px 0;
+    padding: 28px;
+    border-radius: 10px;
+    background-color: #f1f5f9;
+    text-align: center;
+
+    h2 {
+        margin-bottom: 8px;
+        font-size: $ft-24;
+        font-weight: bold;
+    }
+
+    p {
+        margin-bottom: 18px;
+    }
+
+    .interesse-botoes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .btn-agendar {
+        margin-top: 0;
     }
 }
