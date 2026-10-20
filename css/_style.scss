@@ -1680,3 +1680,54 @@ ul.icons-config {
         color: $color-bg-itens;
     }
 }
+
+/*===== Celular: cards e seções alinhados ao bloco de busca ===========*/
+// Mesma margem lateral do .btn-opcoes (padding 25px 20px) para tudo ficar na mesma largura.
+// A grade da busca (#show-imoveis-filtrados) já herda 20px da página e fica de fora para não somar.
+@media screen and (max-width: $medium-max) {
+    #show-container-imoveis,
+    .destaques-ofertas:not(#show-imoveis-filtrados) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    // Seções da home (e o formulário da busca) na mesma largura dos cards
+    #quem-somos,
+    #anuncie,
+    #contato {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    // Dicas: a faixa "Veja nossas dicas" continua de ponta a ponta (como "Oportunidades de Negócio");
+    // só as caixas de dicas seguem a largura dos cards
+    #dicas .nossas-dicas {
+        width: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .destaques-ofertas .slide {
+        max-width: none;
+    }
+
+    // Destaques: o card tinha 320px fixos (sobrava espaço dos lados) e 585px de altura (sobrava embaixo)
+    .container-imoveis .slide {
+        width: 100%;
+
+        .box-produto {
+            width: 100%;
+            height: auto;
+
+            .imagens-imovel,
+            .imagens-imovel img {
+                width: 100%;
+            }
+
+            .desc-oferta {
+                max-width: none;
+            }
+        }
+    }
+}
+

@@ -1528,6 +1528,42 @@ ul.icons-config {
   color: #475569;
 }
 
+/*===== Celular: cards e seções alinhados ao bloco de busca ===========*/
+@media screen and (max-width: 780px) {
+  #show-container-imoveis,
+  .destaques-ofertas:not(#show-imoveis-filtrados) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #quem-somos,
+  #anuncie,
+  #contato {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #dicas .nossas-dicas {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .destaques-ofertas .slide {
+    max-width: none;
+  }
+  .container-imoveis .slide {
+    width: 100%;
+  }
+  .container-imoveis .slide .box-produto {
+    width: 100%;
+    height: auto;
+  }
+  .container-imoveis .slide .box-produto .imagens-imovel,
+  .container-imoveis .slide .box-produto .imagens-imovel img {
+    width: 100%;
+  }
+  .container-imoveis .slide .box-produto .desc-oferta {
+    max-width: none;
+  }
+}
 body {
   background: #CBD5E1;
   transform: translateX();
