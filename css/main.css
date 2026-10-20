@@ -237,6 +237,11 @@ body img {
     justify-content: flex-end;
   }
 }
+@media (min-width: 779px) {
+  .header .nav-bar ul {
+    gap: clamp(12px, 2.2vw - 6px, 24px);
+  }
+}
 .header .nav-bar ul li {
   margin: 0;
 }
@@ -244,6 +249,12 @@ body img {
   font-size: 20px;
   color: #fff;
   font-weight: 600;
+  white-space: nowrap;
+}
+@media (min-width: 779px) {
+  .header .nav-bar ul li a {
+    font-size: clamp(13px, 1.2vw + 3px, 20px);
+  }
 }
 .header .nav-bar ul li a:hover {
   color: #e2c9c9;

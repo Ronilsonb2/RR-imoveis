@@ -274,6 +274,12 @@ body {
         justify-content: flex-end;
       }
 
+      // Menu horizontal: fonte e espaço crescem com a largura da tela (clamp = mínimo, fluido, máximo)
+      // para os 7 itens caberem em uma linha. O .nav-bar tem overflow: hidden: o que não cabe some.
+      @media (min-width: $medium-min) {
+        gap: clamp(12px, calc(2.2vw - 6px), 24px);
+      }
+
       li {
         margin: 0;
 
@@ -281,6 +287,11 @@ body {
           font-size: $ft-20;
           color: $color-branco;
           font-weight: 600;
+          white-space: nowrap; // "QUEM SOMOS" não quebra em duas linhas
+
+          @media (min-width: $medium-min) {
+            font-size: clamp(13px, calc(1.2vw + 3px), 20px);
+          }
 
           &:hover {
             color: #e2c9c9;
