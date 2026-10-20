@@ -1,9 +1,10 @@
-import { escaparHtml, precoExibicao, textoPuro, truncateText, urlImagem, usarFotoPadraoSeFalhar } from './utils.js';
+import { escaparHtml, precoExibicao, textoPuro, urlImagem, usarFotoPadraoSeFalhar } from './utils.js';
 
 let contadorCarrossel = 0; // Garante um ID único para cada carrossel da página
 
 // Monta o card de um imóvel. Usado na home (destaques e oportunidades) e na página de resultados.
-// variante: "home" | "oportunidade" | "resultado" — muda só a estrutura que o CSS de cada seção espera.
+// variante: "home" (horizontal, destaques da home) | "oportunidade" | "resultado" (verticais; o resultado da busca
+// abre o imóvel em outra aba para não perder a pesquisa).
 export function criarCardImovel(imovel, variante = 'resultado') {
     contadorCarrossel++;
     const carouselId = `imagens-imovel-${variante}-${contadorCarrossel}`;
@@ -14,8 +15,8 @@ export function criarCardImovel(imovel, variante = 'resultado') {
             <img src="${escaparHtml(urlImagem(imagem))}" class="d-block w-100" alt="Foto do imóvel ${escaparHtml(imovel.titulo)}">
         </div>`).join('');
 
-    // No card a descrição vira uma linha só (sem quebras nem HTML) e é cortada em 65 caracteres
-    const descricaoResumida = escaparHtml(truncateText(textoPuro(imovel.descricao).replace(/\s+/g, ' ').trim(), 65));
+    // No card a descrição vira uma linha só (sem quebras nem HTML); o CSS mostra 2 linhas e corta em palavra inteira
+    const descricaoResumida = escaparHtml(resumo(textoPuro(imovel.descricao)));
 
     // O preço mostrado segue a finalidade: aluguel mostra o valor mensal
     const ehLocacao = imovel.finalidadeImovel === 'LOCACAO';
@@ -29,9 +30,11 @@ export function criarCardImovel(imovel, variante = 'resultado') {
         ? '<span class="selo-reservado">Reservado</span>'
         : '';
 
-    const link = `<a ${variante === 'resultado' ? 'target="_blank" rel="noopener"' : ''} href="detalhes-imoveis.html?idImovel=${encodeURIComponent(imovel.idImovel)}" class="btn-2">Mais detalhes</a>`;
+    // stretched-link (Bootstrap): uma camada invisível do link cobre o card inteiro, então clicar na foto
+    // ou no título também abre o imóvel. As setas do carrossel ficam acima dela (CSS .card-imovel).
+    const link = `<a ${variante === 'resultado' ? 'target="_blank" rel="noopener"' : ''} href="detalhes-imoveis.html?idImovel=${encodeURIComponent(imovel.idImovel)}" class="btn-2 stretched-link">Mais detalhes</a>`;
 
-    const precoELink = variante === 'oportunidade'
+    const precoELink = variante !== 'home'
         ? `<div class="price-cta">
                <p class="price-imovel">${preco}</p>
                <div class="text-xs-center">${link}</div>
@@ -40,7 +43,7 @@ export function criarCardImovel(imovel, variante = 'resultado') {
            <div class="text-xs-center">${link}</div>`;
 
     const descricao = `
-        <div class="desc-oferta ${variante === 'resultado' ? '' : 'desc-oferta-carousel'}">
+        <div class="desc-oferta desc-oferta-carousel">
             <div>
                 <h2>${escaparHtml(imovel.titulo)}</h2>
                 <h3>${escaparHtml(imovel.endereco?.bairro)}, ${escaparHtml(imovel.endereco?.cidade)}</h3>
@@ -56,7 +59,7 @@ export function criarCardImovel(imovel, variante = 'resultado') {
         </div>`;
 
     const slide = document.createElement('div');
-    slide.classList.add('slide');
+    slide.classList.add('slide', 'card-imovel');
     slide.innerHTML = `
         <div class="box-produto">
             <div id="${carouselId}" class="imagens-imovel carousel slide" data-bs-ride="carousel">
@@ -72,11 +75,18 @@ export function criarCardImovel(imovel, variante = 'resultado') {
                     <span class="visually-hidden">Próxima</span>
                 </button>` : ''}
             </div>
-            ${variante === 'resultado' ? `<div class="desc-oferta-container">${descricao}</div>` : descricao}
+            ${descricao}
         </div>`;
 
     usarFotoPadraoSeFalhar(slide);
     return slide;
+}
+
+// Até ~180 caracteres, sem cortar palavra (o CSS limita a 2 linhas na tela)
+function resumo(texto, limite = 180) {
+    const limpo = texto.replace(/\s+/g, ' ').trim();
+    if (limpo.length <= limite) return limpo;
+    return limpo.slice(0, limpo.lastIndexOf(' ', limite)) + '…';
 }
 
 // Ícone + número + legenda ("3 quartos"): só o ícone não deixava claro o que era cada número

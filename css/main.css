@@ -462,17 +462,28 @@ body img {
 }
 .btn-opcoes #btn-comprar:hover,
 .btn-opcoes #btn-alugar:hover,
-.btn-opcoes #btn-codigo:hover,
-.btn-opcoes #btn-buscar:hover,
-.btn-opcoes #buscar:hover {
-  background-color: #877b7b;
+.btn-opcoes #btn-codigo:hover {
+  background-color: #334155;
   color: #fff;
-  border: 2px solid #fff;
 }
-.btn-opcoes .active {
-  background-color: #877b7b;
+.btn-opcoes .active,
+.btn-opcoes .active:hover {
+  background-color: #1f9d55;
+  border-color: #1f9d55;
   color: #fff;
-  border: 2px solid #fff;
+}
+.btn-opcoes #buscar,
+.btn-opcoes #btn-buscar {
+  background-color: #1f9d55;
+  border-color: #1f9d55;
+  color: #fff;
+  box-shadow: none;
+}
+.btn-opcoes #buscar:hover,
+.btn-opcoes #btn-buscar:hover {
+  background-color: #17803f;
+  border-color: #17803f;
+  color: #fff;
 }
 .btn-opcoes #btn-buscar {
   width: 190px;
@@ -1459,6 +1470,64 @@ ul.icons-config {
   margin-top: 0;
 }
 
+/*===== Card de imóvel: inteiro clicável ===========*/
+.card-imovel {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card-imovel .box-produto {
+  position: relative;
+}
+.card-imovel .carousel-control-prev,
+.card-imovel .carousel-control-next {
+  z-index: 2;
+}
+.card-imovel .selo-reservado {
+  z-index: 3;
+}
+.card-imovel:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18) !important;
+}
+.card-imovel .descricao-curta {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/*===== Cards verticais (Oportunidades, busca, semelhantes): altura pelo conteúdo ===========*/
+.destaques-ofertas .slide {
+  display: flex;
+}
+.destaques-ofertas .slide .box-produto {
+  height: auto;
+  flex: 1;
+}
+.destaques-ofertas .slide .box-produto .desc-oferta {
+  height: auto;
+  flex: 1;
+  gap: 12px;
+  justify-content: flex-start;
+}
+.destaques-ofertas .slide .box-produto .desc-oferta .price-cta {
+  margin-top: auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+.destaques-ofertas .slide .box-produto .desc-oferta .price-cta .price-imovel br {
+  display: none;
+}
+.destaques-ofertas .slide .box-produto .desc-oferta .price-cta .price-imovel span {
+  white-space: nowrap;
+}
+.destaques-ofertas .slide .box-produto .desc-oferta .price-cta .text-xs-center {
+  width: 100%;
+}
+.destaques-ofertas .slide .box-produto {
+  color: #475569;
+}
+
 body {
   background: #CBD5E1;
   transform: translateX();
@@ -1572,8 +1641,8 @@ body {
   }
 }
 .form-lateral .btn-active {
-  background-color: rgb(229, 229, 229) !important;
-  color: #475569 !important;
+  background-color: #1f9d55 !important;
+  color: #fff !important;
 }
 .form-lateral .btn-inactive {
   background-color: transparent !important;
@@ -1657,6 +1726,9 @@ body {
 .form-lateral .list-group #btn-buscar {
   height: 50px;
   width: 100%;
+  border: none;
+  background-color: #1f9d55;
+  color: #fff;
   font-size: 20px;
   margin: 10px 0px 0;
 }
@@ -1725,148 +1797,12 @@ body {
 }
 
 .box-produtos #show-imoveis-filtrados {
-  background-color: transparent;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  justify-items: center;
-  gap: 40px;
-  padding-bottom: 40px;
-}
-@media screen and (max-width: 780px) {
-  .box-produtos #show-imoveis-filtrados {
-    padding-top: 0;
-  }
-}
-@media (min-width: 779px) {
-  .box-produtos #show-imoveis-filtrados {
-    gap: 40px;
-    flex-direction: row;
-    grid-template-columns: 1fr; /* 3 colunas ajustáveis */
-  }
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 24px;
+  padding: 0 0 40px;
 }
 .box-produtos #show-imoveis-filtrados .slide {
-  width: 100%;
-  max-height: 350px;
-  border-radius: 10px;
-  overflow: hidden;
-  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-@media screen and (max-width: 780px) {
-  .box-produtos #show-imoveis-filtrados .slide {
-    width: auto;
-    max-height: 580px;
-  }
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto {
-  height: 350px;
-  display: grid;
-  font-size: 18px;
-  grid-template-columns: 1fr 2fr;
-  color: #475569;
-}
-@media screen and (max-width: 780px) {
-  .box-produtos #show-imoveis-filtrados .slide .box-produto {
-    height: 585px;
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    grid-template-columns: 1fr;
-  }
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .imagens-imovel {
-  width: 400px;
-  height: 350px;
-  overflow: hidden;
-  position: relative;
-  background-color: #000000;
-}
-@media screen and (max-width: 780px) {
-  .box-produtos #show-imoveis-filtrados .slide .box-produto .imagens-imovel {
-    width: 350px;
-    height: 300px;
-  }
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .imagens-imovel img {
-  height: 350px;
-  object-fit: cover;
-}
-@media screen and (max-width: 780px) {
-  .box-produtos #show-imoveis-filtrados .slide .box-produto .imagens-imovel img {
-    width: 350px;
-  }
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container {
-  background-color: #fff;
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta {
-  gap: 25px;
-  padding: 26px;
-  display: flex;
-  flex-direction: column;
-}
-@media screen and (max-width: 780px) {
-  .box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta {
-    max-width: 350px;
-    padding: 10px 20px;
-    gap: 10px;
-  }
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta h2 {
-  font-size: 18px;
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta h3 {
-  font-size: 14px;
-  font-weight: 400;
-  margin-top: 5px;
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta .descricao-curta {
-  font-size: 14px;
-  font-weight: 300;
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta .price-imovel {
-  font-size: 24px;
-  font-weight: bold;
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta .price-imovel br {
-  display: none;
-}
-@media screen and (max-width: 780px) {
-  .box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta .price-imovel {
-    font-size: 20px;
-  }
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta .price-imovel span {
-  font-size: 32px;
-  font-weight: bold;
-}
-@media screen and (max-width: 780px) {
-  .box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta .price-imovel span {
-    font-size: 32px;
-  }
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta .text-xs-center {
-  width: 260px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #475569;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-}
-@media screen and (max-width: 780px) {
-  .box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta .text-xs-center {
-    width: 100%;
-  }
-}
-.box-produtos #show-imoveis-filtrados .slide .box-produto .desc-oferta-container .desc-oferta .text-xs-center a {
-  color: #E5E5E5;
-  font-weight: bold;
+  max-width: none;
 }
 .box-produtos .paginas {
   display: flex;
@@ -1898,9 +1834,9 @@ body {
   border-color: #475569;
 }
 .box-produtos .paginas .pagina-btn.ativo {
-  background-color: #475569;
+  background-color: #1f9d55;
   color: #fff;
-  border-color: #475569;
+  border-color: #1f9d55;
   font-weight: bold;
   cursor: default;
 }

@@ -20,6 +20,10 @@ $ft-32: 32px;
 
 // cores do CTAs
 $bg-transparent: transparent;
+// Cor de destaque única: ações principais (buscar, enviar, agendar, anunciar) e itens selecionados
+$color-destaque: #1f9d55;
+$color-destaque-escuro: #17803f;
+$color-destaque-claro: #e8f6ee;
 $color-btn-bg-hover: #877b7b;
 $color-btn-hover: #a7a0a0;
 
@@ -135,8 +139,8 @@ body{
     }
 
     .btn-active {
-        background-color: rgb(229 229 229) !important;
-        color: #475569 !important;
+        background-color: $color-destaque !important;
+        color: $color-branco !important;
     }
 
     .btn-inactive {
@@ -236,6 +240,9 @@ body{
         #btn-buscar {
             height: 50px;
             width: 100%;
+            border: none;
+            background-color: $color-destaque;
+            color: $color-branco;
             font-size: $ft-20;
             margin: 10px 0px 0;
 
@@ -311,154 +318,15 @@ body{
 
 .box-produtos {
 
+    // Resultados em grade, com o mesmo card vertical das "Oportunidades" (classe .destaques-ofertas no HTML):
+    // 3 colunas no desktop, 2 em telas médias, 1 no celular
     #show-imoveis-filtrados {
-        background-color: $bg-transparent;
-        display: grid;
-        // Base = faixa "vertical" (até $medium-max). Deixa o card de 350px ocupar
-        // 1 ou 2 colunas dependendo do espaço, sem mexer no card horizontal do desktop.
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        justify-items: center;
-        gap: 40px;
-        padding-bottom: 40px;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 24px;
+        padding: 0 0 40px;
 
-        @media screen and (max-width: $medium-max){
-        padding-top: 0;
-        }
-
-
-        @media (min-width: $medium-min) {
-        gap: 40px;
-        flex-direction: row;
-        grid-template-columns: 1fr; /* 3 colunas ajustáveis */
-        }
-
-        .slide{
-        width: 100%;
-        max-height: 350px;
-        border-radius: 10px;
-        overflow: hidden;
-        -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
-        box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
-
-        @media screen and (max-width: $medium-max){
-            width: auto;
-            max-height: 580px;
-        }
-
-        .box-produto {
-            height: 350px;
-            display: grid;
-            font-size: $ft-18;
-            grid-template-columns: 1fr 2fr;
-            color: $color-bg-itens;
-
-            @media screen and (max-width: $medium-max){
-            height: 585px;
-            width: 350px;
-            display: flex;
-            flex-direction: column;
-            background-color: $color-branco;
-            grid-template-columns: 1fr;
-            }
-
-            .imagens-imovel {
-            width: 400px;
-            height: 350px;
-            overflow: hidden;
-            position: relative;
-            background-color: $color-black;
-
-            @media screen and (max-width: $medium-max){
-                width: 350px;
-                height: 300px;
-            }
-
-            img{
-                height: 350px;
-                object-fit: cover;
-
-                @media screen and (max-width: $medium-max){
-                width: 350px;
-                }
-            }
-            }
-
-            .desc-oferta-container{
-                background-color: $color-branco;
-
-                .desc-oferta {
-                    gap: 25px;
-                    padding: 26px;
-                    display: flex;
-                    flex-direction: column;
-
-                    @media screen and (max-width: $medium-max){
-                        max-width: 350px;
-                        padding: 10px 20px;
-                        gap: 10px;
-                    }
-
-                    h2{
-                        font-size: $ft-18;
-                    }
-                    h3{
-                        font-size: $ft-14;
-                        font-weight: 400;
-                        margin-top: 5px;
-                    }
-                    .descricao-curta{
-                        font-size: $ft-14;
-                        font-weight: 300;
-                    }
-
-                    .price-imovel {
-                        font-size: $ft-24;
-                        font-weight: bold;
-
-                        br{
-                            display: none;
-                        }
-
-                        @media screen and (max-width: $medium-max){
-                        font-size: $ft-20;
-                        }
-                    }
-                    .price-imovel span{
-                        font-size: $ft-32;
-                        font-weight: bold;
-
-                        @media screen and (max-width: $medium-max){
-                        font-size: $ft-32;
-                        }
-                    }
-
-                    .text-xs-center {
-                        width: 260px;
-                        height: 40px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: $color-bg-itens;
-                        border-radius: 10px;
-                        -webkit-border-radius: 10px;
-                        -moz-border-radius: 10px;
-                        -ms-border-radius: 10px;
-                        -o-border-radius: 10px;
-
-                        @media screen and (max-width: $medium-max){
-                        width: 100%;
-                        }
-
-                        a{
-                        color: $color-txt-geral;
-                        font-weight: bold;
-                        }
-                    }
-                    }
-            }
-
-
-        }
+        .slide {
+            max-width: none;
         }
     }
 
@@ -494,9 +362,9 @@ body{
         }
 
         .pagina-btn.ativo {
-            background-color: $color-bg-itens;
+            background-color: $color-destaque;
             color: $color-branco;
-            border-color: $color-bg-itens;
+            border-color: $color-destaque;
             font-weight: bold;
             cursor: default;
         }
