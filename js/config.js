@@ -8,7 +8,7 @@ const CONTACT_WHATSAPP_NUMBER = "5513996308174"; // Formato internacional, só d
 const CONTACT_PHONE_DISPLAY = "(13) 99630-8174";
 const CONTACT_EMAIL = "rafabotelho73@gmail.com";
 const CONTACT_ADDRESS = "Taboão da Serra - SP";
-const CRECI_NUMBER = null; // null = ainda não informado, exibe placeholder de pendência
+const CRECI_NUMBER = null; // null = ainda não informado: a linha do CRECI fica escondida no rodapé. Ex.: "12345-F"
 const SOCIAL_LINKS = {
     facebook: null,
     instagram: null,

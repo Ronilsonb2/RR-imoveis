@@ -35,6 +35,18 @@ document.getElementById("voltar-ao-topo").addEventListener("click", function () 
 // Os selects Estado / Cidade / Bairro são carregados por js/localizacao.js
 
 // Botão flutuante de WhatsApp (index.html e produtos.html)
+// Rodapé: ano atual e CRECI (a linha só aparece quando CRECI_NUMBER estiver preenchido no config.js)
+document.addEventListener("DOMContentLoaded", function () {
+  const ano = document.getElementById("ano-atual");
+  if (ano) ano.textContent = new Date().getFullYear();
+
+  const creci = document.getElementById("creci");
+  if (creci && CRECI_NUMBER) {
+    creci.textContent = `CRECI: ${CRECI_NUMBER}`;
+    creci.hidden = false;
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const btnWhatsFlutuante = document.getElementById("btn-whatsapp-flutuante");
   if (!btnWhatsFlutuante) return;
