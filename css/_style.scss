@@ -1286,3 +1286,50 @@ body {
     letter-spacing: .5px;
     text-transform: uppercase;
 }
+
+/*===== Características do card (ícone + número + legenda) ===========*/
+// O ::before (ícone) e o número ficam lado a lado; a legenda ocupa a linha de baixo
+ul.icons-config {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.icons-config .icons {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+        "icone numero"
+        "legenda legenda";
+    align-items: center;
+    justify-content: start;
+    column-gap: 2px;
+
+    // Todos os ícones com a mesma caixa (o de quarto tinha 21px e desalinhava o número)
+    &::before {
+        grid-area: icone;
+        height: 25px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+    }
+
+    .numero {
+        grid-area: numero;
+        line-height: 25px;
+    }
+
+    .legenda {
+        grid-area: legenda;
+        margin-top: 3px;
+        font-size: 11px;
+        line-height: 1;
+        color: #64748b;
+    }
+}
+
+/*===== Preço do card ===========*/
+.price-imovel span small {
+    font-size: .5em;
+    font-weight: 400;
+}

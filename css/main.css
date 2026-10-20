@@ -1192,6 +1192,46 @@ body img {
   text-transform: uppercase;
 }
 
+/*===== Características do card (ícone + número + legenda) ===========*/
+ul.icons-config {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.icons-config .icons {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas: "icone numero" "legenda legenda";
+  align-items: center;
+  justify-content: start;
+  column-gap: 2px;
+}
+.icons-config .icons::before {
+  grid-area: icone;
+  height: 25px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+.icons-config .icons .numero {
+  grid-area: numero;
+  line-height: 25px;
+}
+.icons-config .icons .legenda {
+  grid-area: legenda;
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 1;
+  color: #64748b;
+}
+
+/*===== Preço do card ===========*/
+.price-imovel span small {
+  font-size: 0.5em;
+  font-weight: 400;
+}
+
 body {
   background: #CBD5E1;
   transform: translateX();

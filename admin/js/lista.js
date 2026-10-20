@@ -1,5 +1,5 @@
 import { api, avisar, exigirLogin, iniciarMenu, ROTULOS, VISIVEIS_NO_SITE } from './api-admin.js';
-import { escaparHtml, formatarMoeda, urlImagem } from '../../js/utils.js';
+import { escaparHtml, formatarMoeda, urlImagem, usarFotoPadraoSeFalhar } from '../../js/utils.js';
 
 exigirLogin();
 iniciarMenu();
@@ -11,6 +11,8 @@ const total = document.getElementById('total');
 const anterior = document.getElementById('pagina-anterior');
 const proxima = document.getElementById('pagina-proxima');
 let pagina = 0;
+
+usarFotoPadraoSeFalhar(corpo, '../img/sem-foto.svg');
 
 // Preço exibido conforme a finalidade (aluguel mostra o valor mensal)
 function precoDoImovel(imovel) {
@@ -27,7 +29,7 @@ function opcoesDeStatus(atual) {
 }
 
 function linha(imovel) {
-    const capa = imovel.imagens?.length ? urlImagem(imovel.imagens[0]) : '../img/sem-foto.jpeg';
+    const capa = imovel.imagens?.length ? urlImagem(imovel.imagens[0]) : '../img/sem-foto.svg';
     const endereco = imovel.endereco || {};
     const linkSite = VISIVEIS_NO_SITE.includes(imovel.status)
         ? `<a class="btn btn-sm btn-outline-secondary" href="../detalhes-imoveis.html?idImovel=${imovel.idImovel}" target="_blank" rel="noopener">Ver no site</a>`

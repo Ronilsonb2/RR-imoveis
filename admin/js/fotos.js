@@ -1,7 +1,7 @@
 // Fotos do imóvel: envio, exclusão e ordem (a primeira é a capa).
 // Reordenar: arrastar com o mouse ou usar as setas (o arraste do HTML5 não funciona no celular).
 import { api, avisar } from './api-admin.js';
-import { urlImagem } from '../../js/utils.js';
+import { urlImagem, usarFotoPadraoSeFalhar } from '../../js/utils.js';
 
 const LIMITE_ARQUIVO = 5 * 1024 * 1024;   // spring.servlet.multipart.max-file-size
 const LIMITE_ENVIO = 25 * 1024 * 1024;    // spring.servlet.multipart.max-request-size
@@ -13,6 +13,8 @@ let arrastada = null;
 const secao = document.getElementById('secao-fotos');
 const grade = document.getElementById('grade-fotos');
 const inputFotos = document.getElementById('input-fotos');
+
+usarFotoPadraoSeFalhar(grade, '../img/sem-foto.svg');
 
 export function iniciarFotos(id, imagens) {
     idImovel = id;

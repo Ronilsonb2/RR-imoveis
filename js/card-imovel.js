@@ -1,4 +1,4 @@
-import { escaparHtml, formatarMoeda, textoPuro, truncateText, urlImagem } from './utils.js';
+import { escaparHtml, precoExibicao, textoPuro, truncateText, urlImagem, usarFotoPadraoSeFalhar } from './utils.js';
 
 let contadorCarrossel = 0; // Garante um ID único para cada carrossel da página
 
@@ -17,9 +17,12 @@ export function criarCardImovel(imovel, variante = 'resultado') {
     // No card a descrição vira uma linha só (sem quebras nem HTML) e é cortada em 65 caracteres
     const descricaoResumida = escaparHtml(truncateText(textoPuro(imovel.descricao).replace(/\s+/g, ' ').trim(), 65));
 
-    const preco = imovel.precoVenda != null
-        ? `Venda<br> <span> ${formatarMoeda(imovel.precoVenda)}</span>`
-        : `Locação<br> <span> ${formatarMoeda(imovel.precoLocacao)}</span>`;
+    // O preço mostrado segue a finalidade: aluguel mostra o valor mensal
+    const ehLocacao = imovel.finalidadeImovel === 'LOCACAO';
+    const valor = ehLocacao ? imovel.precoLocacao : imovel.precoVenda;
+    const preco = valor != null
+        ? `${ehLocacao ? 'Aluguel' : 'Venda'}<br> <span>${precoExibicao(valor)}${ehLocacao ? '<small>/mês</small>' : ''}</span>`
+        : `${ehLocacao ? 'Aluguel' : 'Venda'}<br> <span>Consulte</span>`;
 
     // Reservado continua no site (no fim da busca), com selo sobre as fotos
     const seloReservado = imovel.status === 'RESERVADO'
@@ -43,12 +46,12 @@ export function criarCardImovel(imovel, variante = 'resultado') {
                 <h3>${escaparHtml(imovel.endereco?.bairro)}, ${escaparHtml(imovel.endereco?.cidade)}</h3>
             </div>
             <p class="descricao-curta">${descricaoResumida}</p>
-            <div class="icons-config">
-                <div class="icons metragem">${escaparHtml(imovel.areaConstruida ?? '-')}</div>
-                <div class="icons quarto">${escaparHtml(imovel.quartos)}</div>
-                <div class="icons banheiro">${escaparHtml(imovel.banheiros)}</div>
-                <div class="icons garagem">${escaparHtml(imovel.garagem)}</div>
-            </div>
+            <ul class="icons-config">
+                ${caracteristica('metragem', imovel.areaConstruida, 'área', 'área')}
+                ${caracteristica('quarto', imovel.quartos, 'quarto', 'quartos')}
+                ${caracteristica('banheiro', imovel.banheiros, 'banheiro', 'banheiros')}
+                ${caracteristica('garagem', imovel.garagem, 'vaga', 'vagas')}
+            </ul>
             ${precoELink}
         </div>`;
 
@@ -59,6 +62,7 @@ export function criarCardImovel(imovel, variante = 'resultado') {
             <div id="${carouselId}" class="imagens-imovel carousel slide" data-bs-ride="carousel">
                 ${seloReservado}
                 <div class="carousel-inner">${imagensHTML}</div>
+                ${imagens.length > 1 ? `
                 <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Anterior</span>
@@ -66,10 +70,21 @@ export function criarCardImovel(imovel, variante = 'resultado') {
                 <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Próxima</span>
-                </button>
+                </button>` : ''}
             </div>
             ${variante === 'resultado' ? `<div class="desc-oferta-container">${descricao}</div>` : descricao}
         </div>`;
 
+    usarFotoPadraoSeFalhar(slide);
     return slide;
+}
+
+// Ícone + número + legenda ("3 quartos"): só o ícone não deixava claro o que era cada número
+function caracteristica(classe, quantidade, singular, plural) {
+    const legenda = quantidade === 1 ? singular : plural;
+    const numero = quantidade ?? '-';
+    return `<li class="icons ${classe}" title="${escaparHtml(`${numero} ${legenda}`)}">
+                <span class="numero">${escaparHtml(numero)}</span>
+                <span class="legenda">${legenda}</span>
+            </li>`;
 }

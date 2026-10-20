@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Imóvel sem foto">
+  <rect width="800" height="600" fill="#e6ebf1"/>
+  <!-- Desenho centralizado: o card recorta a imagem (object-fit: cover) e não pode cortar o texto -->
+  <g fill="none" stroke="#9aa8ba" stroke-width="12" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M310 285 L400 210 L490 285"/>
+    <path d="M330 270 V360 H470 V270"/>
+    <path d="M380 360 V315 H420 V360"/>
+  </g>
+  <text x="400" y="408" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="30" font-weight="500" fill="#7a889b">Sem foto</text>
+</svg>

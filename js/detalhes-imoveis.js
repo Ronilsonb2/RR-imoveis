@@ -1,6 +1,7 @@
-import { escaparHtml, formatarMoeda, textoPuro, truncateText, urlImagem } from './utils.js';
+import { escaparHtml, formatarMoeda, precoExibicao, textoPuro, truncateText, urlImagem, usarFotoPadraoSeFalhar } from './utils.js';
 
 const resultImovel = document.getElementById('show-imovel');
+usarFotoPadraoSeFalhar(resultImovel);
 const idImovel = new URLSearchParams(window.location.search).get('idImovel');
 
 function mostrarMensagem(texto) {
@@ -45,7 +46,7 @@ function renderizar(imovel) {
         .map(imagem => `<img src="${escaparHtml(urlImagem(imagem))}" alt="Foto do imóvel ${escaparHtml(imovel.titulo)}">`)
         .join('');
 
-    const ehVenda = imovel.finalidadeImovel === 'VENDA';
+    const ehVenda = imovel.finalidadeImovel !== 'LOCACAO'; // venda e permuta usam o preço de venda
     const endereco = imovel.endereco || {};
 
     // A descrição é texto puro com quebras de linha: escapada aqui e exibida com
@@ -60,8 +61,8 @@ function renderizar(imovel) {
                     : ''}
                 <div class="info-price">
                     <div class="price">
-                        <p>${ehVenda ? 'Venda' : 'Locação'}</p>
-                        <span>R$ ${formatarMoeda(ehVenda ? imovel.precoVenda : imovel.precoLocacao)}
+                        <p>${ehVenda ? 'Venda' : 'Aluguel'}</p>
+                        <span>${precoExibicao(ehVenda ? imovel.precoVenda : imovel.precoLocacao)}
                             ${imovel.finalidadeImovel === 'LOCACAO' ? '<span class="dinamica">/mês</span>' : ''}</span>
                     </div>
                     <div class="info-condominio">
