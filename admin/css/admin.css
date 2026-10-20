@@ -1,0 +1,127 @@
+/* Painel administrativo: Bootstrap 5 + ajustes pontuais */
+:root {
+    --cor-marca: #c14a3d;
+    --cor-marca-escura: #9e3a2f;
+    --cor-fundo: #f4f5f7;
+}
+
+body {
+    background: var(--cor-fundo);
+    font-family: 'Roboto', system-ui, sans-serif;
+}
+
+.btn-marca {
+    background: var(--cor-marca);
+    border-color: var(--cor-marca);
+    color: #fff;
+}
+
+.btn-marca:hover,
+.btn-marca:focus {
+    background: var(--cor-marca-escura);
+    border-color: var(--cor-marca-escura);
+    color: #fff;
+}
+
+.navbar-painel {
+    background: #2b2d33;
+}
+
+.navbar-painel .nav-link.active {
+    color: #fff;
+    border-bottom: 2px solid var(--cor-marca);
+}
+
+/* ---------- Login ---------- */
+.login-caixa {
+    max-width: 380px;
+    margin: 10vh auto 0;
+}
+
+.login-caixa img {
+    max-width: 180px;
+}
+
+/* ---------- Lista de imóveis ---------- */
+.miniatura {
+    width: 72px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: #ddd;
+}
+
+.tabela-imoveis td {
+    vertical-align: middle;
+}
+
+.tabela-imoveis .select-status {
+    min-width: 115px;
+}
+
+/* ---------- Formulário ---------- */
+.secao-form {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .06);
+}
+
+.secao-form h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Fotos ---------- */
+.grade-fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: .75rem;
+}
+
+.foto {
+    position: relative;
+    background: #fff;
+    border: 2px solid #e2e2e2;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: grab;
+}
+
+.foto img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    pointer-events: none; /* o arraste é do card, não da imagem */
+}
+
+.foto.arrastando {
+    opacity: .4;
+}
+
+.foto.alvo {
+    border-color: var(--cor-marca);
+}
+
+.foto .selo-capa {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+
+.foto .acoes {
+    display: flex;
+    justify-content: space-between;
+    padding: .25rem;
+}
+
+/* ---------- Avisos ---------- */
+.avisos {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 1080;
+    max-width: 360px;
+}
