@@ -685,7 +685,7 @@ body img {
 }
 .container-imoveis .slide .box-produto .desc-oferta .descricao-curta {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
 }
 .container-imoveis .slide .box-produto .desc-oferta .price-imovel {
   font-size: 16px;
@@ -702,11 +702,6 @@ body img {
 .container-imoveis .slide .box-produto .desc-oferta .price-imovel span {
   font-size: 24px;
   font-weight: bold;
-}
-@media screen and (max-width: 780px) {
-  .container-imoveis .slide .box-produto .desc-oferta .price-imovel span {
-    font-size: 32px;
-  }
 }
 .container-imoveis .slide .box-produto .desc-oferta .text-xs-center {
   width: 260px;
@@ -733,16 +728,11 @@ body img {
 
 .tit-oportunidades {
   background-color: #475569;
-  font-size: 40px;
+  font-size: clamp(24px, 1.2vw + 19px, 34px);
   padding: 36px 0;
   text-align: center;
   color: #E5E5E5;
   font-weight: bold;
-}
-@media screen and (max-width: 780px) {
-  .tit-oportunidades {
-    font-size: 20px;
-  }
 }
 
 .destaques-ofertas {
@@ -819,7 +809,7 @@ body img {
 }
 .destaques-ofertas .slide .box-produto .desc-oferta .descricao-curta {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   text-align: left;
   padding: 0;
 }
@@ -876,7 +866,7 @@ body img {
 
 /* Dicas para compra e locação */
 .tit-dicas {
-  font-size: 40px;
+  font-size: clamp(24px, 1.2vw + 19px, 34px);
   margin-top: 20px;
   margin-bottom: 7px;
   padding: 36px 0;
@@ -903,7 +893,7 @@ body img {
   font-weight: bold;
   padding: 0px 0 30px;
   text-align: center;
-  font-size: 24px;
+  font-size: clamp(20px, 0.4vw + 18.5px, 24px);
 }
 .nossas-dicas .box-dicas {
   width: 50%;
@@ -965,14 +955,9 @@ body img {
   }
 }
 .box-contato .formulario p {
-  font-size: 24px;
+  font-size: clamp(24px, 1.2vw + 19px, 34px);
   font-weight: bold;
   padding: 35px 20px 18px 20px;
-}
-@media (max-width: 520px) {
-  .box-contato .formulario p {
-    font-size: 22px;
-  }
 }
 .box-contato .formulario .list-form {
   position: relative;
@@ -1310,12 +1295,12 @@ ul.icons-config {
 }
 .quem-somos .quem-somos-texto h2 {
   margin-bottom: 16px;
-  font-size: 32px;
+  font-size: clamp(24px, 1.2vw + 19px, 34px);
   font-weight: bold;
 }
 .quem-somos .quem-somos-texto p {
   margin-bottom: 12px;
-  font-size: 18px;
+  font-size: clamp(16px, 0.2vw + 15.2px, 18px);
 }
 .quem-somos .quem-somos-texto .quem-somos-creci {
   font-size: 14px;
@@ -1368,13 +1353,13 @@ ul.icons-config {
 }
 .anuncie .anuncie-chamada h2 {
   margin-bottom: 12px;
-  font-size: 32px;
+  font-size: clamp(24px, 1.2vw + 19px, 34px);
   font-weight: bold;
   line-height: 1.2;
 }
 .anuncie .anuncie-chamada p {
   margin-bottom: 16px;
-  font-size: 18px;
+  font-size: clamp(16px, 0.2vw + 15.2px, 18px);
   line-height: 1.5;
 }
 .anuncie .anuncie-chamada ul {
@@ -1417,7 +1402,7 @@ ul.icons-config {
 }
 .mapa-imovel h2 {
   margin-bottom: 6px;
-  font-size: 24px;
+  font-size: clamp(20px, 0.4vw + 18.5px, 24px);
   font-weight: bold;
 }
 .mapa-imovel p {
@@ -1454,7 +1439,7 @@ ul.icons-config {
 }
 .interesse-imovel h2 {
   margin-bottom: 8px;
-  font-size: 24px;
+  font-size: clamp(20px, 0.4vw + 18.5px, 24px);
   font-weight: bold;
 }
 .interesse-imovel p {
@@ -1594,14 +1579,13 @@ body {
 .qtd-imoveis-disponiveis {
   width: 100%;
   margin-top: 35px;
-  font-size: 40px;
+  font-size: clamp(24px, 1.2vw + 19px, 34px);
   color: #475569;
 }
 @media (max-width: 520px) {
   .qtd-imoveis-disponiveis {
     padding: 0;
     margin: 0;
-    font-size: 24px;
   }
 }
 
@@ -1960,7 +1944,7 @@ body {
   font-weight: 400;
 }
 #show-imovel .container-detalhes-imovel .info-price .price span {
-  font-size: 40px;
+  font-size: clamp(32px, 0.9vw + 28.5px, 40px);
   font-weight: bold;
 }
 #show-imovel .container-detalhes-imovel .info-price .price .dinamica {
@@ -2034,7 +2018,8 @@ body {
 }
 #show-imovel .container-detalhes-imovel .descricao-imovel .titulo-imovel {
   font-weight: bold;
-  font-size: 20px;
+  font-size: clamp(24px, 1.2vw + 19px, 34px);
+  line-height: 1.2;
   padding-bottom: 20px;
 }
 #show-imovel .container-detalhes-imovel .descricao-imovel .descricao {

@@ -1,0 +1,13 @@
+// Escala tipográfica única do site: todo título e texto usa uma destas variáveis.
+// Os tamanhos que mudam com a tela usam clamp(mínimo, fluido, máximo):
+// no celular (390px) ficam no mínimo; no desktop (≥ 1366px), no máximo.
+
+$fs-titulo-secao: clamp(24px, 1.2vw + 19px, 34px);       // faixas e títulos de bloco (Oportunidades, Quem somos...)
+$fs-titulo-pagina: $fs-titulo-secao;                      // título do imóvel (h1) na página de detalhe
+$fs-subtitulo: clamp(20px, .4vw + 18.5px, 24px);          // "A fim de comprar?", "Localização", "Ficou interessado?"
+$fs-texto-destaque: clamp(16px, .2vw + 15.2px, 18px);     // parágrafo de abertura de uma seção
+$fs-texto: 16px;                                          // texto corrido
+$fs-texto-pequeno: 14px;                                  // resumo do card, rótulos
+$fs-card-titulo: 18px;
+$fs-card-preco: 24px;
+$fs-preco-principal: clamp(32px, .9vw + 28.5px, 40px);    // preço na página do imóvel

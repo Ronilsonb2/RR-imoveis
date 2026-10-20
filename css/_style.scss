@@ -744,7 +744,7 @@ body {
         }
 
         h2{
-          font-size: $ft-18;
+          font-size: $fs-card-titulo;
         }
         h3{
           font-size: $ft-14;
@@ -752,8 +752,8 @@ body {
           margin-top: 5px;
         }
         .descricao-curta{
-          font-size: $ft-14;
-          font-weight: 300;
+          font-size: $fs-texto-pequeno;
+          font-weight: 400;
         }
 
         .price-imovel {
@@ -769,12 +769,8 @@ body {
           }
         }
         .price-imovel span{
-          font-size: $ft-24;
+          font-size: $fs-card-preco;
           font-weight: bold;
-
-          @media screen and (max-width: $medium-max){
-            font-size: $ft-32;
-          }
         }
 
         .text-xs-center {
@@ -806,15 +802,11 @@ body {
 
 .tit-oportunidades {
   background-color: $color-bg-itens;
-  font-size: 40px;
+  font-size: $fs-titulo-secao;
   padding: 36px 0;
   text-align: center;
   color: $color-txt-geral;
   font-weight: bold;
-
-  @media screen and (max-width: $medium-max){
-    font-size: $ft-20;
-  }
 }
 
 .destaques-ofertas {
@@ -879,7 +871,7 @@ body {
         }
 
         h2{
-          font-size: $ft-18;
+          font-size: $fs-card-titulo;
           text-align: left;
         }
         h3{
@@ -889,8 +881,8 @@ body {
           text-align: left;
         }
         .descricao-curta{
-          font-size: $ft-14;
-          font-weight: 300;
+          font-size: $fs-texto-pequeno;
+          font-weight: 400;
           text-align: left;
           padding: 0;
         }
@@ -917,7 +909,7 @@ body {
             }
           }
           .price-imovel span{
-            font-size: $ft-24;
+            font-size: $fs-card-preco;
             font-weight: bold;
           }
   
@@ -957,7 +949,7 @@ body {
 /* Dicas para compra e locação */
 
 .tit-dicas {
-  font-size: 40px;
+  font-size: $fs-titulo-secao;
   margin-top: 20px;
   margin-bottom: 7px;
   padding: 36px 0;
@@ -983,7 +975,7 @@ body {
     font-weight: bold;
     padding: 0px 0 30px;
     text-align: center;
-    font-size: $ft-24;
+    font-size: $fs-subtitulo;
   }
 
   .box-dicas {
@@ -1045,13 +1037,9 @@ body {
     }
 
     p {
-      font-size: 24px;
+      font-size: $fs-titulo-secao;
       font-weight: bold;
       padding: 35px 20px 18px 20px;
-
-      @media (max-width: 520px) {
-        font-size: 22px;
-      }
     }
 
     .list-form {
@@ -1424,13 +1412,13 @@ ul.icons-config {
 
         h2 {
             margin-bottom: 16px;
-            font-size: $ft-32;
+            font-size: $fs-titulo-secao;
             font-weight: bold;
         }
 
         p {
             margin-bottom: 12px;
-            font-size: $ft-18;
+            font-size: $fs-texto-destaque;
         }
 
         .quem-somos-creci {
@@ -1485,14 +1473,14 @@ ul.icons-config {
     .anuncie-chamada {
         h2 {
             margin-bottom: 12px;
-            font-size: $ft-32;
+            font-size: $fs-titulo-secao;
             font-weight: bold;
             line-height: 1.2;
         }
 
         p {
             margin-bottom: 16px;
-            font-size: $ft-18;
+            font-size: $fs-texto-destaque;
             line-height: 1.5;
         }
 
@@ -1542,7 +1530,7 @@ ul.icons-config {
 
     h2 {
         margin-bottom: 6px;
-        font-size: $ft-24;
+        font-size: $fs-subtitulo;
         font-weight: bold;
     }
 
@@ -1584,7 +1572,7 @@ ul.icons-config {
 
     h2 {
         margin-bottom: 8px;
-        font-size: $ft-24;
+        font-size: $fs-subtitulo;
         font-weight: bold;
     }
 

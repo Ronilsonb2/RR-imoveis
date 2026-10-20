@@ -2,6 +2,7 @@
 $color-bg: #a7a0a0;
 $color-btn: #a7a0a0;
 
+@import 'tipografia'; // primeiro: as variáveis de fonte valem para todos os arquivos
 @import 'style';
 @import 'produtos';
 @import 'detalhes-imovel';

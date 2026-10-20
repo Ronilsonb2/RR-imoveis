@@ -94,7 +94,7 @@ $ft-32: 32px;
                 font-weight: 400;
             }
             .price span {
-                font-size: 40px;
+                font-size: $fs-preco-principal;
                 font-weight: bold;
             }
 
@@ -172,7 +172,8 @@ $ft-32: 32px;
 
             .titulo-imovel{
                 font-weight: bold;
-                font-size: 20px;
+                font-size: $fs-titulo-pagina;
+                line-height: 1.2;
                 padding-bottom: 20px;
             }
 

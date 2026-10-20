@@ -60,13 +60,12 @@ body{
 .qtd-imoveis-disponiveis{
     width: 100%;
     margin-top: 35px;
-    font-size: 40px;
+    font-size: $fs-titulo-secao;
     color: $color-bg-itens;
 
     @media (max-width: 520px){
         padding: 0;
         margin: 0;
-        font-size: $ft-24;
     }
 }
 
