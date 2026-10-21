@@ -606,8 +606,8 @@ body img {
 @media (min-width: 779px) {
   .container-imoveis {
     gap: 40px;
-    flex-direction: row;
-    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)); /* 3 colunas ajustáveis */
+    justify-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(max(340px, (100% - 40px) / 2), 1fr));
   }
 }
 .container-imoveis .slide {
@@ -1579,6 +1579,62 @@ ul.icons-config {
   line-height: 1.2;
 }
 
+/*===== Telas médias (780px–1279px): conteúdo fluido e bem agrupado ===========*/
+@media (min-width: 779px) and (max-width: 1279px) {
+  .content,
+  .content-conteudo {
+    width: 100%;
+    padding-left: clamp(20px, 3vw, 40px);
+    padding-right: clamp(20px, 3vw, 40px);
+  }
+}
+.destaques-ofertas .slide {
+  max-width: none;
+}
+
+@media (min-width: 779px) {
+  .container-imoveis > .card-imovel {
+    container-type: inline-size;
+  }
+  .container-imoveis > .card-imovel .box-produto {
+    width: 100%;
+  }
+  .container-imoveis > .card-imovel .box-produto .imagens-imovel {
+    width: 100%;
+  }
+}
+@container (max-width: 559px) {
+  .container-imoveis .slide .box-produto {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .container-imoveis .slide .box-produto .imagens-imovel,
+  .container-imoveis .slide .box-produto .imagens-imovel img {
+    width: 100%;
+    height: 260px;
+  }
+  .container-imoveis .slide .box-produto .desc-oferta {
+    max-width: none;
+    flex: 1;
+    gap: 12px;
+  }
+  .container-imoveis .slide .box-produto .desc-oferta .price-cta {
+    margin-top: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .container-imoveis .slide .box-produto .desc-oferta .price-cta .price-imovel br {
+    display: none;
+  }
+  .container-imoveis .slide .box-produto .desc-oferta .text-xs-center {
+    width: 100%;
+  }
+  .container-imoveis .slide .box-produto .desc-oferta .price-imovel br {
+    display: none;
+  }
+}
 body {
   background: #CBD5E1;
   transform: translateX();
@@ -1622,6 +1678,12 @@ body {
 .opcoes-filtros {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+@media (max-width: 1023px) {
+  .opcoes-filtros {
+    justify-content: space-between;
+  }
 }
 @media (max-width: 520px) {
   .opcoes-filtros {
@@ -1658,9 +1720,16 @@ body {
   position: relative;
   clear: both;
 }
-@media (max-width: 780px) {
+@media (max-width: 1023px) {
   .content-resultado-pesquisa {
     flex-direction: column;
+  }
+}
+@media (min-width: 779px) and (max-width: 1279px) {
+  .content-resultado-pesquisa {
+    width: 100%;
+    padding-left: clamp(20px, 3vw, 40px);
+    padding-right: clamp(20px, 3vw, 40px);
   }
 }
 
@@ -1681,7 +1750,7 @@ body {
   color: #E5E5E5;
   border-radius: 10px;
 }
-@media (max-width: 780px) {
+@media (max-width: 1023px) {
   .form-lateral {
     max-width: 350px;
     display: none;
@@ -1782,7 +1851,7 @@ body {
   font-size: 20px;
   margin: 10px 0px 0;
 }
-@media (max-width: 780px) {
+@media (max-width: 1023px) {
   .form-lateral .list-group #btn-buscar {
     margin: 0;
   }
@@ -1810,7 +1879,7 @@ body {
 .filtro {
   display: none;
 }
-@media (max-width: 780px) {
+@media (max-width: 1023px) {
   .filtro {
     display: block;
     padding: 5px 10px;

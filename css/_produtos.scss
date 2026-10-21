@@ -1,6 +1,9 @@
 $small: 380px;
 $medium-min: 779px;
 $medium-max: 780px;
+// Até esta largura o filtro lateral vira o botão "Filtro" (como no celular) e a grade usa a largura toda:
+// com o filtro fixo de 240px, entre 780 e 950px sobrava espaço para um card só por linha
+$filtro-recolhido: 1023px;
 
 $color-bg-geral: #CBD5E1;
 $color-txt-geral: #E5E5E5;
@@ -72,6 +75,12 @@ body{
 .opcoes-filtros {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+
+    // Com o filtro recolhido, o botão "Filtro" fica à esquerda e a ordenação à direita (como no celular)
+    @media (max-width: $filtro-recolhido) {
+        justify-content: space-between;
+    }
 
     @media (max-width: 520px){
         padding: 20px 0px 10px;
@@ -107,8 +116,15 @@ body{
     position: relative;
     clear: both;
 
-    @media (max-width: $medium-max) {
+    @media (max-width: $filtro-recolhido) {
         flex-direction: column;
+    }
+
+    // Telas médias: mesma margem lateral fluida do resto do site (ver _style.scss)
+    @media (min-width: $medium-min) and (max-width: 1279px) {
+        width: 100%;
+        padding-left: clamp(20px, 3vw, 40px);
+        padding-right: clamp(20px, 3vw, 40px);
     }
 }
 
@@ -129,7 +145,7 @@ body{
     color: $color-txt-geral;
     border-radius: 10px;
 
-    @media (max-width: $medium-max) {
+    @media (max-width: $filtro-recolhido) {
         max-width: 350px;
         display: none;
         position: relative;
@@ -245,7 +261,7 @@ body{
             font-size: $ft-20;
             margin: 10px 0px 0;
 
-            @media (max-width: $medium-max) {
+            @media (max-width: $filtro-recolhido) {
                 margin: 0;
             }
         }
@@ -276,7 +292,7 @@ body{
 .filtro{
     display: none;
 
-    @media (max-width: $medium-max){
+    @media (max-width: $filtro-recolhido){
         display: block;
         padding: 5px 10px;
         text-align: center;

@@ -673,10 +673,12 @@ body {
   }
 
 
+  // Desktop: até 2 colunas fluidas (cada uma com pelo menos 340px). O card decide sozinho se fica
+  // horizontal ou vertical pela largura que recebe (container query no fim deste arquivo).
   @media (min-width: $medium-min) {
     gap: 40px;
-    flex-direction: row;
-    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)); /* 3 colunas ajustáveis */
+    justify-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(max(340px, calc((100% - 40px) / 2)), 1fr));
   }
 
   .slide{
@@ -1755,4 +1757,79 @@ ul.icons-config {
     font-size: $fs-subtitulo;
     font-weight: bold;
     line-height: 1.2;
+}
+
+/*===== Telas médias (780px–1279px): conteúdo fluido e bem agrupado ===========*/
+// Abaixo de 1240px o container (max-width 1240px) encostava nas bordas: margem lateral fluida.
+@media (min-width: $medium-min) and (max-width: 1279px) {
+    .content,
+    .content-conteudo {
+        width: 100%;
+        padding-left: clamp(20px, 3vw, 40px);
+        padding-right: clamp(20px, 3vw, 40px);
+    }
+}
+
+// Oportunidades e semelhantes: o card ocupa a coluna inteira (antes: máximo 400px, sobrava espaço)
+.destaques-ofertas .slide {
+    max-width: none;
+}
+
+// Destaques (card da home): largura vem da grade, não mais 600px fixos
+@media (min-width: $medium-min) {
+    // "> .card-imovel" e não ".slide": o carrossel do Bootstrap também tem a classe "slide"
+    // e viraria um container estreito (a foto encolhia para o tamanho do card vertical)
+    .container-imoveis > .card-imovel {
+        container-type: inline-size; // permite ao card se adaptar à própria largura (@container abaixo)
+
+        .box-produto {
+            width: 100%;
+
+            .imagens-imovel {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Coluna estreita (menos de 560px): o card de destaque fica vertical, igual às Oportunidades
+@container (max-width: 559px) {
+    .container-imoveis .slide .box-produto {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+
+        .imagens-imovel,
+        .imagens-imovel img {
+            width: 100%;
+            height: 260px;
+        }
+
+        .desc-oferta {
+            max-width: none;
+            flex: 1;
+            gap: 12px;
+
+            // Preço e botão como nos outros cards verticais: botão na largura toda, no pé do card
+            .price-cta {
+                margin-top: auto;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+
+                .price-imovel br {
+                    display: none;
+                }
+            }
+
+            .text-xs-center {
+                width: 100%;
+            }
+
+            // No card da home o preço fica fora do .price-cta: "Venda R$ 600.000" numa linha só
+            .price-imovel br {
+                display: none;
+            }
+        }
+    }
 }
