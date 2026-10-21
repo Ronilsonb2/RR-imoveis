@@ -1151,10 +1151,6 @@ body {
     display: block;
     border-radius: 10px;
     overflow: hidden;
-
-    @media (max-width: 520px) {
-      display: none;
-    }
   }
 }
 
@@ -1833,3 +1829,105 @@ ul.icons-config {
         }
     }
 }
+
+/*===== Banner animado (ao lado do "Fale com a gente") ===========*/
+// A cena é um SVG com animação própria; aqui só as mensagens por cima.
+// Ciclo de 15s: cada mensagem fica 5s. visibility também anima, para o botão escondido não receber clique.
+.banner-imoveis {
+    aspect-ratio: 1 / 1;
+
+    // Celular: um pouco mais alto, para a mensagem e o botão caberem acima dos prédios
+    @media (max-width: 520px) {
+        aspect-ratio: 4 / 5;
+    }
+    align-self: flex-start;
+    background-color: #0f172a;
+
+    .banner-cena {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .banner-mensagens {
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 48%;
+    }
+
+    .banner-msg {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 clamp(20px, 6%, 40px);
+        color: $color-branco;
+        opacity: 0;
+        visibility: hidden;
+        animation: banner-msg 15s infinite;
+
+        &:nth-child(2) { animation-delay: 5s; }
+        &:nth-child(3) { animation-delay: 10s; }
+    }
+
+    .banner-titulo {
+        margin: 0;
+        font-size: $fs-titulo-secao;
+        font-weight: bold;
+        line-height: 1.15;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+    }
+
+    .banner-texto {
+        margin: 0;
+        font-size: $fs-texto-destaque;
+        opacity: .9;
+    }
+
+    .banner-cta {
+        margin-top: 6px;
+        padding: 10px 22px;
+        border-radius: 6px;
+        background-color: $color-destaque;
+        color: $color-branco;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            background-color: $color-destaque-escuro;
+            color: $color-branco;
+        }
+    }
+
+    // Passando o mouse ou navegando pelo teclado, a mensagem para (dá tempo de clicar)
+    &:hover .banner-msg,
+    &:focus-within .banner-msg {
+        animation-play-state: paused;
+    }
+}
+
+@keyframes banner-msg {
+    0% { opacity: 0; visibility: visible; transform: translateY(14px); }
+    4%, 30% { opacity: 1; visibility: visible; transform: translateY(0); }
+    33.33%, 100% { opacity: 0; visibility: hidden; transform: translateY(-10px); }
+}
+
+// Sem animação: fica a primeira mensagem
+@media (prefers-reduced-motion: reduce) {
+    .banner-imoveis .banner-msg {
+        animation: none;
+
+        &:first-child {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+

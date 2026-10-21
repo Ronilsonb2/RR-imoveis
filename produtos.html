@@ -465,9 +465,27 @@
                 </div>
             </form>
 
-            <div class="anuncio">
-                <iframe src="banner-anuncio/index2.html" width="100%" height="100%" style="position: absolute; border: none;"></iframe>
-                <img src="banner-anuncio/bg.png" alt="">
+            <!-- Banner: cena em SVG (img/banner-cena.svg) + mensagens em HTML que se alternam a cada 5s (CSS).
+                 Os botões usam os mesmos ganchos do resto do site: data-assunto (formulário ao lado) e data-whatsapp-msg. -->
+            <div class="anuncio banner-imoveis">
+                <img class="banner-cena" src="img/banner-cena.svg" alt="" aria-hidden="true">
+                <div class="banner-mensagens">
+                    <div class="banner-msg">
+                        <p class="banner-titulo">Encontre o imóvel certo para você</p>
+                        <p class="banner-texto">Casas e apartamentos para comprar ou alugar.</p>
+                        <a class="banner-cta" href="produtos.html">Ver imóveis</a>
+                    </div>
+                    <div class="banner-msg">
+                        <p class="banner-titulo">Quer vender ou alugar seu imóvel?</p>
+                        <p class="banner-texto">Anuncie com a gente e fale com quem está procurando.</p>
+                        <a class="banner-cta" href="#contato" data-assunto="anunciar">Anunciar meu imóvel</a>
+                    </div>
+                    <div class="banner-msg">
+                        <p class="banner-titulo">Atendimento direto pelo WhatsApp</p>
+                        <p class="banner-texto">Tire dúvidas e agende visitas sem complicação.</p>
+                        <a class="banner-cta" data-whatsapp-msg="Olá! Vim pelo site e gostaria de atendimento." target="_blank" rel="noopener">Falar no WhatsApp</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
