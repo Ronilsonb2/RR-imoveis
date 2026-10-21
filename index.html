@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R&amp;R Imóveis — Compra, venda e locação de imóveis</title>
-    <meta name="description" content="Encontre casas, apartamentos e imóveis para comprar ou alugar com a R&amp;R Imóveis. Busque por localização, preço e tipo de imóvel.">
+    <title>Compra, venda e locação de imóveis</title>
+    <meta name="description" content="Encontre casas, apartamentos e imóveis para comprar ou alugar. Busque por localização, preço e tipo de imóvel.">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
-    <meta property="og:site_name" content="R&amp;R Imóveis">
-    <meta property="og:title" content="R&amp;R Imóveis — Compra, venda e locação de imóveis">
-    <meta property="og:description" content="Encontre casas, apartamentos e imóveis para comprar ou alugar com a R&amp;R Imóveis.">
+    <meta property="og:site_name" content="Imobiliária">
+    <meta property="og:title" content="Compra, venda e locação de imóveis">
+    <meta property="og:description" content="Encontre casas, apartamentos e imóveis para comprar ou alugar.">
     <meta property="og:image" content="img/logo-marca-footer3.png">
 
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
@@ -34,7 +34,7 @@
         <div class="content content-header">
 
             <div class="grid-logo">
-                <img class="logo-desc" src="img/logo-marca-footer3.png" alt="Logo ">
+                <img class="logo-desc" data-empresa-logo alt="">
             </div>
             <div class="grid-menu">
 
@@ -350,27 +350,18 @@
         </div>
     </section>
 
-    <!-- RASCUNHO: revisar o texto e trocar o logo por uma foto do corretor (img/corretor.jpg) -->
+    <!-- Textos em EMPRESA_SOBRE (js/config.js); logo em EMPRESA_LOGO -->
     <section class="content" id="quem-somos">
         <div class="quem-somos">
             <div class="quem-somos-foto">
-                <img src="img/logo-marca-footer3.png" alt="R&amp;R Imóveis">
+                <img data-empresa-logo alt="">
             </div>
             <div class="quem-somos-texto">
                 <h2>Quem somos</h2>
-                <p>
-                    A R&amp;R Imóveis nasceu da parceria entre os irmãos <strong>Rafael</strong> e <strong>Ronilson</strong>,
-                    e o nome vem da inicial de cada um.
-                </p>
-                <p>
-                    O Rafael é corretor de imóveis e faz o seu atendimento pessoalmente: você fala direto com quem
-                    conhece o imóvel, sem central de atendimento.
-                </p>
-                <p>Estamos em Taboão da Serra - SP.</p>
-                <!-- Preenchido pelo master.js com o CRECI_NUMBER do config.js (escondido enquanto for null) -->
+                <div data-empresa-sobre></div>
                 <p class="quem-somos-creci" data-creci hidden></p>
-                <a class="btn-whatsapp-texto" data-whatsapp-msg="Olá, Rafael! Vim pelo site da R&amp;R Imóveis e gostaria de conversar."
-                   target="_blank" rel="noopener">Fale com o Rafael no WhatsApp</a>
+                <a class="btn-whatsapp-texto" data-whatsapp-msg="Olá! Vim pelo site e gostaria de conversar."
+                   target="_blank" rel="noopener">Fale com a gente no WhatsApp</a>
             </div>
         </div>
     </section>
@@ -379,7 +370,7 @@
         <div class="anuncie">
             <div class="anuncie-chamada">
                 <h2>Quer vender ou alugar seu imóvel?</h2>
-                <p>Anuncie com a R&amp;R Imóveis. Conte um pouco sobre o imóvel e o Rafael entra em contato pelo WhatsApp.</p>
+                <p>Anuncie com a gente. Conte um pouco sobre o imóvel e entramos em contato pelo WhatsApp.</p>
                 <ul>
                     <li>Avaliação do valor de venda ou aluguel</li>
                     <li>Anúncio com fotos aqui no site</li>
@@ -465,7 +456,7 @@
                     </div>
                     <div class="list-form">
                         <label for="contato-local">Bairro e cidade do imóvel</label>
-                        <input id="contato-local" type="text" placeholder="Ex.: Centro, Taboão da Serra">
+                        <input id="contato-local" type="text" placeholder="Ex.: Centro" data-placeholder-cidade>
                     </div>
                 </div>
 
@@ -502,41 +493,43 @@
         <section class="content">
             <div class="footer">
                 <div class="endereco">
-                    <p>Taboão da Serra - SP</p>
-                    <p>Email: <a href="mailto:rafabotelho73@gmail.com">rafabotelho73@gmail.com</a></p>
-                    <p>Fone: <a href="https://wa.me/5513996308174" target="_blank" rel="noopener">(13) 99630-8174</a></p>
+                    <!-- Contatos do js/config.js, preenchidos pelo js/empresa.js -->
+                    <p data-contato="endereco"></p>
+                    <p>Email: <a data-contato="email"></a></p>
+                    <p>Fone: <a data-contato="telefone" target="_blank" rel="noopener"></a></p>
                 </div>
 
                 <div class="logo-empresa">
-                    <img src="img/logo-marca-footer3.png" alt="Logo ">
+                    <img data-empresa-logo alt="">
                 </div>
 
                 <div class="info-redes" id="siga-nos">
-                    <!-- Preenchido pelo master.js a partir do CRECI_NUMBER do config.js (escondido enquanto for null) -->
-                    <div class="doc-indent" id="creci" hidden></div>
+                    <!-- CRECI_NUMBER do js/config.js (escondido enquanto for null) -->
+                    <div class="doc-indent" id="creci" data-creci hidden></div>
                     <div class="line_redes"></div>
-                    <d class="redes-sociais">
+                    <div class="redes-sociais">
                         <p>Acesse nossas redes sociais</p>
                         <div class="icons-sociais">
                             <div></div>
-                            <div><a href="#" onclick="event.preventDefault();" title="Link ainda não configurado" style="opacity:.4"><img src="/img/facebook.png" alt="Facebook"></a></div>
-                            <div><a href="#" onclick="event.preventDefault();" title="Link ainda não configurado" style="opacity:.4"><img src="/img/tiktok.png" alt="TikTok"></a></div>
-                            <div><a href="#" onclick="event.preventDefault();" title="Link ainda não configurado" style="opacity:.4"><img src="/img/instagram.png" alt="Instagram"></a></div>
+                            <div><a href="#" data-rede="facebook"><img src="img/facebook.png" alt="Facebook"></a></div>
+                            <div><a href="#" data-rede="tiktok"><img src="img/tiktok.png" alt="TikTok"></a></div>
+                            <div><a href="#" data-rede="instagram"><img src="img/instagram.png" alt="Instagram"></a></div>
                             <div></div>
                         </div>
-                    </d>
+                    </div>
                 </div>
             </div>
 
             <div class="faixa_footer"></div>
 
             <div class="desc-ano">
-                <p style="text-align: center; margin-top: 30px;">&copy; <span id="ano-atual">2026</span> R&amp;R Imóveis</p>
+                <p style="text-align: center; margin-top: 30px;">&copy; <span id="ano-atual">2026</span> <span data-empresa-nome></span></p>
             </div>
         </section>
     </footer>
     
     <script src="js/config.js"></script>
+    <script src="js/empresa.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 

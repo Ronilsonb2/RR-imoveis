@@ -39,18 +39,10 @@ botaoTopo.addEventListener("click", function () {
 
 // Os selects Estado / Cidade / Bairro são carregados por js/localizacao.js
 
-// Rodapé: ano atual e CRECI (a linha só aparece quando CRECI_NUMBER estiver preenchido no config.js)
+// Rodapé: ano atual (nome, contatos, CRECI e redes sociais vêm do js/empresa.js)
 document.addEventListener("DOMContentLoaded", function () {
   const ano = document.getElementById("ano-atual");
   if (ano) ano.textContent = new Date().getFullYear();
-
-  // Rodapé (#creci) e "Quem somos" ([data-creci])
-  if (CRECI_NUMBER) {
-    document.querySelectorAll("#creci, [data-creci]").forEach(function (elemento) {
-      elemento.textContent = `CRECI: ${CRECI_NUMBER}`;
-      elemento.hidden = false;
-    });
-  }
 
   // Links de WhatsApp com mensagem pronta: <a data-whatsapp-msg="...">
   document.querySelectorAll("[data-whatsapp-msg]").forEach(function (link) {
@@ -68,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // "Fale com a gente": um formulário só, com assunto. "Anunciar meu imóvel" mostra os campos do imóvel.
-// O envio monta a mensagem e abre o WhatsApp do corretor.
+// O envio monta a mensagem e abre o WhatsApp da imobiliária (CONTACT_WHATSAPP_NUMBER do config.js).
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("form-contato");
   if (!form) return;
@@ -124,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let mensagem;
     if (anunciar) {
       mensagem =
-        `Olá! Quero anunciar meu imóvel com a R&R Imóveis.\n\n` +
+        `Olá! Vim pelo site e quero anunciar meu imóvel.\n\n` +
         `Nome: ${nome}\n` + contato +
         `Quero: ${valor("contato-finalidade")}\n` +
         `Tipo: ${valor("contato-tipo")}\n` +

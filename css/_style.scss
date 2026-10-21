@@ -1742,3 +1742,17 @@ ul.icons-config {
     }
 }
 
+/*===== Rede social sem link no config.js (SOCIAL_LINKS) ===========*/
+.rede-pendente {
+    opacity: .4;
+    cursor: default;
+}
+
+// Nome da empresa no lugar do logo, quando o arquivo de EMPRESA_LOGO não existe (js/empresa.js)
+.logo-texto {
+    display: inline-block;
+    color: $color-branco;
+    font-size: $fs-subtitulo;
+    font-weight: bold;
+    line-height: 1.2;
+}

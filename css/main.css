@@ -1565,6 +1565,20 @@ ul.icons-config {
     max-width: none;
   }
 }
+/*===== Rede social sem link no config.js (SOCIAL_LINKS) ===========*/
+.rede-pendente {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.logo-texto {
+  display: inline-block;
+  color: #fff;
+  font-size: clamp(20px, 0.4vw + 18.5px, 24px);
+  font-weight: bold;
+  line-height: 1.2;
+}
+
 body {
   background: #CBD5E1;
   transform: translateX();

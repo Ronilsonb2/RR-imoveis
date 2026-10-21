@@ -10,7 +10,7 @@ function mostrarMensagem(texto) {
     resultImovel.innerHTML = `<p class="msg-info" style="display:block; text-align:center; padding:40px 0;">${escaparHtml(texto)}</p>`;
 }
 
-// Link do WhatsApp com mensagem pronta; o código (Ref.) deixa o corretor achar o imóvel no painel na hora
+// Link do WhatsApp com mensagem pronta; o código (Ref.) deixa a imobiliária achar o imóvel no painel na hora
 function linkWhatsapp(mensagem) {
     return `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
 }
@@ -44,7 +44,7 @@ async function carregarImovel() {
 
 function renderizar(imovel) {
     // Título da aba com o nome do imóvel (não muda o preview de link no WhatsApp/redes, que não executa JS)
-    document.title = `${imovel.titulo} — R&R Imóveis`;
+    document.title = `${imovel.titulo} — ${EMPRESA_NOME}`;
     document.getElementById('detalhes-description')
         ?.setAttribute('content', truncateText(textoPuro(imovel.descricao).replace(/\s+/g, ' '), 150));
 
@@ -97,7 +97,7 @@ function renderizar(imovel) {
                     <span class="ref-imovel">Ref. ${escaparHtml(imovel.idImovel)}</span>
                 </div>
 
-                <!-- Só bairro e cidade: rua e número são passados pelo corretor no atendimento (protege o proprietário) -->
+                <!-- Só bairro e cidade: rua e número são passados no atendimento (protege o proprietário) -->
                 <div class="info-endereco">
                     <p>Localização</p>
                     <span>${escaparHtml(endereco.bairro)} - ${escaparHtml(endereco.cidade)}/${escaparHtml(endereco.estado)}</span>
@@ -115,7 +115,7 @@ function renderizar(imovel) {
                 <!-- No lugar do formulário de contato: as duas ações que importam nesta página -->
                 <div class="interesse-imovel">
                     <h2>Ficou interessado?</h2>
-                    <p>Fale direto com o corretor. A mensagem já vai com o código do imóvel.</p>
+                    <p>Fale direto com a gente pelo WhatsApp. A mensagem já vai com o código do imóvel.</p>
                     <div class="interesse-botoes">
                         <a class="btn-agendar" target="_blank" rel="noopener" href="${escaparHtml(linkWhatsapp(
                             `Olá! Gostaria de agendar uma visita ao imóvel Ref. ${imovel.idImovel} - ${imovel.titulo}.\n\n${window.location.href}`))}">Agendar visita</a>

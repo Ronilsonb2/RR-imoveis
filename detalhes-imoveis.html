@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do imóvel — R&amp;R Imóveis</title>
-    <meta id="detalhes-description" name="description" content="Confira todos os detalhes deste imóvel: fotos, preço, localização e mais na R&amp;R Imóveis.">
+    <title>Detalhes do imóvel</title>
+    <meta id="detalhes-description" name="description" content="Confira todos os detalhes deste imóvel: fotos, preço, localização e mais.">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
-    <meta property="og:site_name" content="R&amp;R Imóveis">
-    <meta property="og:title" content="Detalhes do imóvel — R&amp;R Imóveis">
-    <meta property="og:description" content="Confira todos os detalhes deste imóvel na R&amp;R Imóveis.">
+    <meta property="og:site_name" content="Imobiliária">
+    <meta property="og:title" content="Detalhes do imóvel">
+    <meta property="og:description" content="Confira todos os detalhes deste imóvel.">
     <meta property="og:image" content="img/logo-marca-footer3.png">
 
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
@@ -35,7 +35,7 @@
         <div class="content content-header">
 
             <div class="grid-logo">
-                <img class="logo-desc" src="img/logo-marca-footer3.png" alt="Logo ">
+                <img class="logo-desc" data-empresa-logo alt="">
             </div>
             <div class="grid-menu">
 
@@ -158,41 +158,43 @@
         <section class="content">
             <div class="footer">
                 <div class="endereco">
-                    <p>Taboão da Serra - SP</p>
-                    <p>Email: <a href="mailto:rafabotelho73@gmail.com">rafabotelho73@gmail.com</a></p>
-                    <p>Fone: <a href="https://wa.me/5513996308174" target="_blank" rel="noopener">(13) 99630-8174</a></p>
+                    <!-- Contatos do js/config.js, preenchidos pelo js/empresa.js -->
+                    <p data-contato="endereco"></p>
+                    <p>Email: <a data-contato="email"></a></p>
+                    <p>Fone: <a data-contato="telefone" target="_blank" rel="noopener"></a></p>
                 </div>
 
                 <div class="logo-empresa">
-                    <img src="img/logo-marca-footer3.png" alt="Logo ">
+                    <img data-empresa-logo alt="">
                 </div>
 
                 <div class="info-redes" id="siga-nos">
-                    <!-- Preenchido pelo master.js a partir do CRECI_NUMBER do config.js (escondido enquanto for null) -->
-                    <div class="doc-indent" id="creci" hidden></div>
+                    <!-- CRECI_NUMBER do js/config.js (escondido enquanto for null) -->
+                    <div class="doc-indent" id="creci" data-creci hidden></div>
                     <div class="line_redes"></div>
-                    <d class="redes-sociais">
+                    <div class="redes-sociais">
                         <p>Acesse nossas redes sociais</p>
                         <div class="icons-sociais">
                             <div></div>
-                            <div><a href="#" onclick="event.preventDefault();" title="Link ainda não configurado" style="opacity:.4"><img src="/img/facebook.png" alt="Facebook"></a></div>
-                            <div><a href="#" onclick="event.preventDefault();" title="Link ainda não configurado" style="opacity:.4"><img src="/img/tiktok.png" alt="TikTok"></a></div>
-                            <div><a href="#" onclick="event.preventDefault();" title="Link ainda não configurado" style="opacity:.4"><img src="/img/instagram.png" alt="Instagram"></a></div>
+                            <div><a href="#" data-rede="facebook"><img src="img/facebook.png" alt="Facebook"></a></div>
+                            <div><a href="#" data-rede="tiktok"><img src="img/tiktok.png" alt="TikTok"></a></div>
+                            <div><a href="#" data-rede="instagram"><img src="img/instagram.png" alt="Instagram"></a></div>
                             <div></div>
                         </div>
-                    </d>
+                    </div>
                 </div>
             </div>
 
             <div class="faixa_footer"></div>
 
             <div class="desc-ano">
-                <p style="text-align: center; margin-top: 30px;">&copy; <span id="ano-atual">2026</span> R&amp;R Imóveis</p>
+                <p style="text-align: center; margin-top: 30px;">&copy; <span id="ano-atual">2026</span> <span data-empresa-nome></span></p>
             </div>
         </section>
     </footer>
 
     <script src="js/config.js"></script>
+    <script src="js/empresa.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./js/slick-1.8.1/slick/slick.min.js"></script>
