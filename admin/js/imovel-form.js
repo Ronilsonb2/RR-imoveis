@@ -75,9 +75,15 @@ campoCep.addEventListener('blur', async () => {
 // ---------- Proprietário ----------
 
 async function carregarProprietarios() {
-    // O select comporta a carteira de uma imobiliária pequena; para milhares, trocar por busca
-    const pagina = await api('/proprietario?size=200&page=0');
-    pagina.content.forEach(adicionarOpcaoProprietario);
+    // A API limita cada página a 50; busca todas até acabar
+    let pagina = 0;
+    let totalPaginas = 1;
+    while (pagina < totalPaginas) {
+        const resposta = await api(`/proprietario?size=50&page=${pagina}`);
+        resposta.content.forEach(adicionarOpcaoProprietario);
+        totalPaginas = resposta.page.totalPages;
+        pagina++;
+    }
 }
 
 function adicionarOpcaoProprietario(proprietario) {
