@@ -18,6 +18,18 @@ function tokenValido() {
     }
 }
 
+// E-mail de quem está logado (campo "sub" do JWT), para destacar "você" na lista de usuários
+export function emailLogado() {
+    const token = tokenValido();
+    if (!token) return null;
+    try {
+        const payload = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+        return JSON.parse(atob(payload)).sub;
+    } catch {
+        return null;
+    }
+}
+
 // Chamada no topo de cada página do painel: sem login válido, volta para a tela de login
 export function exigirLogin() {
     if (!tokenValido()) irParaLogin();
