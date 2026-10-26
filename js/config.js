@@ -22,7 +22,7 @@ const EMPRESA_SOBRE = [
 const CONTACT_WHATSAPP_NUMBER = "5511911108572"; // Formato internacional, só dígitos (usado nos links wa.me)
 const CONTACT_PHONE_DISPLAY = "(11) 91110-8572";
 const CONTACT_EMAIL = "rafabotelho73@gmail.com";
-const CONTACT_ADDRESS = "Taboão da Serra - SP"; // "Cidade - UF": a cidade também aparece nos exemplos dos formulários
+const CONTACT_ADDRESS = "São Paulo - SP"; // "Cidade - UF": a cidade também aparece nos exemplos dos formulários
 const CRECI_NUMBER = "240359"; // null = ainda não informado: a linha do CRECI fica escondida. Ex.: "12345-J"
 const SOCIAL_LINKS = {
     facebook: null,
