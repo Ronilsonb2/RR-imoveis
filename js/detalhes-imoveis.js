@@ -25,6 +25,10 @@ async function carregarImovel() {
         return;
     }
 
+    mostrarMensagem('Carregando imóvel...');
+    // A API gratuita "dorme" quando ninguém acessa; se demorar, avisamos em vez de parecer travado
+    const avisoLento = setTimeout(() => mostrarMensagem('Carregando imóvel... o servidor está acordando, pode levar alguns segundos.'), 4000);
+
     try {
         const response = await fetch(`${API_BASE_URL}/imovel/${encodeURIComponent(idImovel)}`);
         if (response.status === 404) {
@@ -39,14 +43,59 @@ async function carregarImovel() {
     } catch (error) {
         console.error('Erro ao buscar imóvel:', error);
         mostrarMensagem('Não foi possível carregar o imóvel. Verifique sua conexão.');
+    } finally {
+        clearTimeout(avisoLento);
     }
+}
+
+// Prévia de link e dados estruturados do imóvel. Quem executa JS (Google) lê isto; o WhatsApp e o Facebook não
+// executam, e continuam mostrando as tags genéricas do HTML.
+function atualizarMetaTags(imovel, resumo) {
+    const titulo = `${imovel.titulo} — ${EMPRESA_NOME}`;
+    const url = `${SITE_URL}/detalhes-imoveis.html?idImovel=${encodeURIComponent(imovel.idImovel)}`;
+    const foto = imovel.imagens?.length ? urlImagem(imovel.imagens[0]) : null;
+    const meta = (seletor, valor) => valor && document.querySelector(seletor)?.setAttribute('content', valor);
+
+    meta('meta[property="og:title"]', titulo);
+    meta('meta[property="og:description"]', resumo);
+    meta('meta[property="og:url"]', url);
+    meta('meta[property="og:image"]', foto);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', url);
+
+    const ehLocacao = imovel.finalidadeImovel === 'LOCACAO';
+    const preco = ehLocacao ? imovel.precoLocacao : imovel.precoVenda;
+    const dados = {
+        '@context': 'https://schema.org',
+        '@type': 'RealEstateListing',
+        name: imovel.titulo,
+        description: resumo,
+        url,
+        ...(foto && { image: (imovel.imagens || []).map(urlImagem) }),
+        ...(imovel.endereco && {
+            contentLocation: {
+                '@type': 'Place',
+                address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: imovel.endereco.cidade,
+                    addressRegion: imovel.endereco.estado,
+                    addressCountry: 'BR',
+                },
+            },
+        }),
+        ...(preco != null && { offers: { '@type': 'Offer', price: preco, priceCurrency: 'BRL' } }),
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(dados);
+    document.head.appendChild(script);
 }
 
 function renderizar(imovel) {
     // Título da aba com o nome do imóvel (não muda o preview de link no WhatsApp/redes, que não executa JS)
     document.title = `${imovel.titulo} — ${EMPRESA_NOME}`;
-    document.getElementById('detalhes-description')
-        ?.setAttribute('content', truncateText(textoPuro(imovel.descricao).replace(/\s+/g, ' '), 150));
+    const resumo = truncateText(textoPuro(imovel.descricao).replace(/\s+/g, ' '), 150);
+    document.getElementById('detalhes-description')?.setAttribute('content', resumo);
+    atualizarMetaTags(imovel, resumo);
 
     const imagens = imovel.imagens?.length ? imovel.imagens : [null];
     const imagensHTML = imagens

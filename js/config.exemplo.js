@@ -4,6 +4,9 @@
 // Endereço base da API Spring (em produção, o domínio da API com https).
 const API_BASE_URL = "http://localhost:8080";
 
+// Endereço público do site, sem barra no final (canonical, prévias de link e dados estruturados do Google)
+const SITE_URL = "https://www.suaimobiliaria.com.br";
+
 // ---------- Empresa ----------
 const EMPRESA_NOME = "Nome da Imobiliária";
 const EMPRESA_LOGO = "img/logo.png"; // caminho a partir da raiz do site (versão clara, para fundo escuro)
