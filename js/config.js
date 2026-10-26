@@ -9,7 +9,7 @@ const API_BASE_URL = "https://imobiliaria-production-3e42.up.railway.app";
 const SITE_URL = "https://rafael-imoveis.netlify.app";
 
 // ---------- Empresa ----------
-const EMPRESA_NOME = "R&R Imóveis";
+const EMPRESA_NOME = "Rafael Alves Imóveis";
 const EMPRESA_LOGO = "img/logo-rafael-imoveis.webp"; // caminho a partir da raiz do site (versão clara, para fundo escuro)
 
 // Parágrafos da seção "Quem somos" (home). Um item por parágrafo.
