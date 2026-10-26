@@ -1166,6 +1166,20 @@ body img {
 .desc-ano a {
   color: inherit;
 }
+@media (max-width: 780px) {
+  .desc-ano .separador-privacidade {
+    display: none;
+  }
+  .desc-ano .link-privacidade {
+    display: block;
+    margin-top: 6px;
+  }
+}
+
+/* Selo flutuante injetado pela hospedagem (Netlify, plano gratuito); não faz parte do site */
+#nl-badge-frame {
+  display: none !important;
+}
 
 .botao-topo {
   position: fixed;

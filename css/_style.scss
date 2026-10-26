@@ -1280,6 +1280,18 @@ body {
   a{
     color: inherit;
   }
+
+  // No celular a política de privacidade fica sozinha na linha de baixo
+  @media (max-width: $medium-max){
+    .separador-privacidade{
+      display: none;
+    }
+
+    .link-privacidade{
+      display: block;
+      margin-top: 6px;
+    }
+  }
 }
 
 // Voltar ao topo: botão redondo acima do WhatsApp (mesma coluna da direita).
@@ -1944,3 +1956,8 @@ ul.icons-config {
     }
 }
 
+
+// Selo flutuante injetado pela hospedagem (Netlify, plano gratuito); não faz parte do site
+#nl-badge-frame{
+  display: none !important;
+}
