@@ -9,6 +9,7 @@ Copie `js/config.exemplo.js` por cima de `js/config.js` e preencha:
 
 | Constante | O que é | Onde aparece |
 |---|---|---|
+| `SITE_URL` | Endereço público do site, sem barra no final | canonical, prévias de link, dados estruturados e sitemap |
 | `API_BASE_URL` | Endereço da API (em produção, com `https://`) | Todas as buscas e o painel |
 | `EMPRESA_NOME` | Nome da imobiliária | Título das abas, rodapé, painel |
 | `EMPRESA_LOGO` | Caminho do logo a partir da raiz do site (versão clara, para fundo escuro) | Topo, rodapé, "Quem somos", login do painel |
@@ -27,7 +28,7 @@ As páginas trazem só marcadores (`data-empresa-nome`, `data-empresa-logo`, `da
 
 - **Logo**: coloque o arquivo em `img/` e aponte `EMPRESA_LOGO` para ele.
 - **Favicon**: substitua `img/favicon.svg`.
-- **Banner da home** (`img/banner*.jpg`) e imagens de `img/slide/`: troque se quiser fotos próprias.
+- **Banner da home** (`img/banner2.webp` e `img/banner-mobile.webp`; use WebP, ~100 KB) troque se quiser fotos próprias.
 
 ## 3. Prévia de link (WhatsApp, Facebook)
 
@@ -40,6 +41,14 @@ ajustadas à mão:
 
 ## 4. Publicação
 
-- `sitemap.xml` e `robots.txt`: trocar `[SEU-DOMINIO]` pelo domínio do site.
+- **Sitemap e robots**: com `SITE_URL` e `API_BASE_URL` corretos no `js/config.js`, rode
+  `node scripts/gerar-sitemap.mjs` (Node 18+). Ele lista todos os imóveis publicados em `sitemap.xml` e refaz o
+  `robots.txt`. Rode de novo quando cadastrar imóveis novos. O `robots.txt` só vale na raiz do domínio
+  (em `usuario.github.io/projeto/` os buscadores o ignoram; com domínio próprio funciona).
+- **Metatags estáticas**: troque o endereço antigo em `og:image`, `og:url` e `canonical` dos três HTMLs
+  (`index.html`, `produtos.html`, `detalhes-imoveis.html`) e em `404.html` (links e favicon, que usam o
+  caminho `/imobiliaria/`).
+- **Política de privacidade**: `politica-privacidade.html` é um modelo padrão para a LGPD; revise o texto
+  com a imobiliária (idealmente com um advogado).
 - API: liberar o domínio do site no CORS (`CORS_ORIGINS`) e criar o usuário do painel
   (`ADMIN_EMAIL` / `ADMIN_SENHA`), conforme o ROTEIRO da API.

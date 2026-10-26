@@ -17,8 +17,14 @@ async function buscarComReserva(filtro, quantidade) {
 
 function renderizar(imoveis, container, variante) {
     container.innerHTML = '';
+    if (imoveis.length === 0) {
+        container.innerHTML = '<p class="msg-info" style="display:block; text-align:center; padding:30px 0;">Não foi possível carregar os imóveis agora. Atualize a página em instantes.</p>';
+        return;
+    }
     imoveis.forEach(imovel => container.appendChild(criarCardImovel(imovel, variante)));
 }
+
+containerDestaques.innerHTML = containerOportunidades.innerHTML = '<p class="msg-info" style="display:block; text-align:center; padding:30px 0;">Carregando imóveis...</p>';
 
 // Carrossel principal = destaques; Oportunidades = os demais (sem repetir)
 buscarComReserva('imovelDestaque=true', 4).then(imoveis => renderizar(imoveis, containerDestaques, 'home'));

@@ -1,6 +1,3 @@
-<a href="https://ronilsonb2.github.io/imobiliaria/">
-		<img src="https://github.com/Ronilsonb2/imobiliaria/blob/main/img/logo-marca.png" alt="Logo" width="20%" height="20%" style="max-width: 100%;">
-	</a>
 
 ## Esta e a [R&R Imóveis](https://ronilsonb2.github.io/imobiliaria/) 😀
 <br/>

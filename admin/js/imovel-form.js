@@ -97,6 +97,29 @@ function mostrarNovoProprietario() {
 }
 selectProprietario.addEventListener('change', mostrarNovoProprietario);
 
+// ---------- Campos de dinheiro ----------
+// Digitar 12345903 mostra "12.345.903"; a vírgula abre os centavos (até 2 dígitos): "1.800,50".
+function formatarMoedaDigitada(texto) {
+    const [inteiros, ...resto] = texto.replace(/[^\d,]/g, '').split(',');
+    const comMilhar = inteiros.replace(/^0+(?=\d)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return resto.length ? `${comMilhar},${resto.join('').slice(0, 2)}` : comMilhar;
+}
+
+// 1800.5 (da API) -> "1.800,50"; 600000 -> "600.000"
+function numeroParaCampo(numero) {
+    const centavos = Number.isInteger(Number(numero)) ? 0 : 2;
+    return Number(numero).toLocaleString('pt-BR', { minimumFractionDigits: centavos, maximumFractionDigits: centavos });
+}
+
+// "12.345.903,50" -> 12345903.5
+function campoParaNumero(texto) {
+    return Number(texto.replace(/\./g, '').replace(',', '.'));
+}
+
+form.querySelectorAll('[data-moeda]').forEach(campo => {
+    campo.addEventListener('input', () => { campo.value = formatarMoedaDigitada(campo.value); });
+});
+
 // ---------- Preencher (edição) e montar o JSON ----------
 
 function preencher(imovel) {
@@ -104,7 +127,7 @@ function preencher(imovel) {
         const input = form.elements[campo];
         if (!input || valor === null || typeof valor === 'object') return;
         if (input.type === 'checkbox') input.checked = Boolean(valor);
-        else input.value = valor;
+        else input.value = input.dataset.moeda !== undefined ? numeroParaCampo(valor) : valor;
     });
     Object.entries(imovel.endereco || {}).forEach(([campo, valor]) => {
         const input = form.elements[`endereco.${campo}`];
@@ -123,6 +146,7 @@ function valor(nome) {
     if (input.type === 'checkbox') return input.checked;
     const texto = input.value.trim();
     if (texto === '') return null;
+    if (input.dataset.moeda !== undefined) return campoParaNumero(texto);
     return input.type === 'number' ? Number(texto) : texto;
 }
 

@@ -12,7 +12,7 @@ export function criarCardImovel(imovel, variante = 'resultado') {
     const imagens = imovel.imagens?.length ? imovel.imagens : [null];
     const imagensHTML = imagens.map((imagem, index) => `
         <div class="carousel-item ${index === 0 ? 'active' : ''}">
-            <img src="${escaparHtml(urlImagem(imagem))}" class="d-block w-100" alt="Foto do imóvel ${escaparHtml(imovel.titulo)}">
+            <img src="${escaparHtml(urlImagem(imagem))}" loading="lazy" class="d-block w-100" alt="Foto do imóvel ${escaparHtml(imovel.titulo)}">
         </div>`).join('');
 
     // No card a descrição vira uma linha só (sem quebras nem HTML); o CSS mostra 2 linhas e corta em palavra inteira

@@ -128,7 +128,18 @@ async function buscar(params, atualizarUrl = true) {
         window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
     }
 
+    totalImoveis.innerHTML = '<p>Buscando imóveis...</p>';
+    // A API gratuita "dorme" quando ninguém acessa; se a primeira resposta demorar, avisamos em vez de parecer travado
+    const avisoLento = setTimeout(() => {
+        totalImoveis.innerHTML = '<p>Buscando imóveis... o servidor está acordando, pode levar alguns segundos.</p>';
+    }, 4000);
     const pagina = await buscarImoveisApi(`${API_BASE_URL}/imovel/filtros/avancados?${params.toString()}`);
+    clearTimeout(avisoLento);
+
+    if (pagina.erro) {
+        mostrarErro(params);
+        return;
+    }
 
     if (pagina.totalElements === 0) {
         mostrarSugestoes();
@@ -143,6 +154,20 @@ async function buscar(params, atualizarUrl = true) {
 
 function realizarBusca(pagina = 0) {
     buscar(montarFiltros(pagina));
+}
+
+function mostrarErro(params) {
+    totalImoveis.innerHTML = '';
+    document.querySelector('#paginacao').innerHTML = '';
+    resultadoImoveis.innerHTML = `
+        <div class="msg-info" style="display: flex;">
+            <h3>Não foi possível carregar os imóveis agora.</h3>
+            <br>
+            <p>Verifique sua conexão e tente novamente.</p>
+            <br>
+            <button type="button" class="btn" id="tentar-novamente">Tentar novamente</button>
+        </div>`;
+    document.getElementById('tentar-novamente').addEventListener('click', () => buscar(params, false));
 }
 
 async function mostrarSugestoes() {

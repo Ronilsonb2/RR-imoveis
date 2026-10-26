@@ -4,6 +4,9 @@
 (function () {
     const overlay = document.createElement('div');
     overlay.className = 'lightbox-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Fotos do imóvel');
     overlay.innerHTML = `
         <button class="lightbox-fechar" aria-label="Fechar">&times;</button>
         <button class="lightbox-anterior" aria-label="Foto anterior">&lsaquo;</button>
@@ -19,6 +22,7 @@
 
     let imagens = [];
     let indiceAtual = 0;
+    let focoAnterior = null; // elemento que abriu o lightbox, para devolver o foco ao fechar
 
     function coletarImagens(container) {
         // Ignora clones do Slick (usados no modo "infinite"), senão a mesma foto entra duplicada
@@ -41,13 +45,16 @@
         const indiceInicial = imagens.indexOf(imagemClicada.src);
         mostrarImagem(indiceInicial === -1 ? 0 : indiceInicial);
 
+        focoAnterior = document.activeElement;
         overlay.classList.add('_open');
         document.body.style.overflow = 'hidden';
+        btnFechar.focus();
     }
 
     function fechar() {
         overlay.classList.remove('_open');
         document.body.style.overflow = '';
+        focoAnterior?.focus?.();
     }
 
     btnFechar.addEventListener('click', fechar);
@@ -63,6 +70,12 @@
         if (event.key === 'Escape') fechar();
         if (event.key === 'ArrowLeft') mostrarImagem(indiceAtual - 1);
         if (event.key === 'ArrowRight') mostrarImagem(indiceAtual + 1);
+        if (event.key === 'Tab') { // mantém o foco dentro do lightbox enquanto ele está aberto
+            const botoes = [btnFechar, btnAnterior, btnProxima].filter(b => b.style.display !== 'none');
+            const primeiro = botoes[0], ultimo = botoes[botoes.length - 1];
+            if (event.shiftKey && document.activeElement === primeiro) { event.preventDefault(); ultimo.focus(); }
+            else if (!event.shiftKey && document.activeElement === ultimo) { event.preventDefault(); primeiro.focus(); }
+        }
     });
 
     document.addEventListener('click', function (event) {
