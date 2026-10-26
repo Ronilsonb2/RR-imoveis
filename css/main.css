@@ -283,7 +283,7 @@ body img {
 }
 .header .menu .menu-line {
   height: 5px;
-  background-color: white;
+  background-color: #fce580;
   margin: 3px 3px;
   float: right;
   transition: all 0.4s linear;
