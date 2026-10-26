@@ -14,8 +14,8 @@ const EMPRESA_LOGO = "img/logo-rafael-imoveis.webp"; // caminho a partir da raiz
 
 // Parágrafos da seção "Quem somos" (home). Um item por parágrafo.
 const EMPRESA_SOBRE = [
-    "A R&R Imóveis é uma imobiliária de Taboão da Serra - SP que cuida da compra, venda e locação de imóveis.",
-    "O atendimento é feito diretamente pelo corretor: você fala com quem conhece o imóvel, sem central de atendimento.",
+    "Com uma trajetória dedicada à excelência no setor imobiliário em São Paulo e região, Rafael Alves atua com foco na realização de negócios seguros e transparentes em compra, venda e locação.",
+    "Valorizamos o seu tempo: nosso atendimento é direto, sem intermediários ou centrais, proporcionando uma experiência consultiva única e sob medida para o seu perfil.",
 ];
 
 // ---------- Contato ----------
@@ -23,9 +23,9 @@ const CONTACT_WHATSAPP_NUMBER = "5511911108572"; // Formato internacional, só d
 const CONTACT_PHONE_DISPLAY = "(11) 91110-8572";
 const CONTACT_EMAIL = "rafabotelho73@gmail.com";
 const CONTACT_ADDRESS = "Taboão da Serra - SP"; // "Cidade - UF": a cidade também aparece nos exemplos dos formulários
-const CRECI_NUMBER = null; // null = ainda não informado: a linha do CRECI fica escondida. Ex.: "12345-J"
+const CRECI_NUMBER = "240359"; // null = ainda não informado: a linha do CRECI fica escondida. Ex.: "12345-J"
 const SOCIAL_LINKS = {
     facebook: null,
-    instagram: null,
-    tiktok: null,
+    instagram: "https://www.instagram.com/rafaelalves_s.p?rpxt=MWZkNDg4bnJkZjRkcQ%3D%3D&utm_source=qr",
+    tiktok: "https://www.tiktok.com/@imoveisrafael?_r=1&_t=ZS-9AsiWym3bXQ",
 }; // null = link ainda não informado (o ícone aparece apagado)
