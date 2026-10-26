@@ -46,8 +46,8 @@ ajustadas à mão:
   `robots.txt`. Rode de novo quando cadastrar imóveis novos. O `robots.txt` só vale na raiz do domínio
   (em `usuario.github.io/projeto/` os buscadores o ignoram; com domínio próprio funciona).
 - **Metatags estáticas**: troque o endereço antigo em `og:image`, `og:url` e `canonical` dos três HTMLs
-  (`index.html`, `produtos.html`, `detalhes-imoveis.html`) e em `404.html` (links e favicon, que usam o
-  caminho `/imobiliaria/`).
+  (`index.html`, `produtos.html`, `detalhes-imoveis.html`). O `404.html` usa caminhos a partir da raiz (`/`),
+  então só funciona com o site na raiz do domínio (Netlify, domínio próprio).
 - **Política de privacidade**: `politica-privacidade.html` é um modelo padrão para a LGPD; revise o texto
   com a imobiliária (idealmente com um advogado).
 - API: liberar o domínio do site no CORS (`CORS_ORIGINS`) e criar o usuário do painel

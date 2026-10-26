@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://ronilsonb2.github.io/imobiliaria/sitemap.xml
+Sitemap: https://rafael-imoveis.netlify.app/sitemap.xml
