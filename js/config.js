@@ -14,8 +14,8 @@ const EMPRESA_LOGO = "img/logo-rafael-imoveis.webp"; // caminho a partir da raiz
 
 // Parágrafos da seção "Quem somos" (home). Um item por parágrafo.
 const EMPRESA_SOBRE = [
-    "Com uma trajetória dedicada à excelência no setor imobiliário em São Paulo e região, Rafael Alves atua com foco na realização de negócios seguros e transparentes em compra, venda e locação.",
-    "Valorizamos o seu tempo: nosso atendimento é direto, sem intermediários ou centrais, proporcionando uma experiência consultiva única e sob medida para o seu perfil.",
+    "Com uma trajetória dedicada à excelência no setor imobiliário em São Paulo e região, atuo com foco na realização de negócios seguros e transparentes em compra, venda e locação.",
+    "Valorizo o seu tempo: meu atendimento é direto, sem intermediários ou centrais, proporcionando uma experiência consultiva única e sob medida para o seu perfil.",
 ];
 
 // ---------- Contato ----------
@@ -26,6 +26,6 @@ const CONTACT_ADDRESS = "Taboão da Serra - SP"; // "Cidade - UF": a cidade tamb
 const CRECI_NUMBER = "240359"; // null = ainda não informado: a linha do CRECI fica escondida. Ex.: "12345-J"
 const SOCIAL_LINKS = {
     facebook: null,
-    instagram: "https://www.instagram.com/rafaelalves_s.p?rpxt=MWZkNDg4bnJkZjRkcQ%3D%3D&utm_source=qr",
-    tiktok: "https://www.tiktok.com/@imoveisrafael?_r=1&_t=ZS-9AsiWym3bXQ",
+    instagram: "https://www.instagram.com/rafaelalves_s.p",
+    tiktok: "https://www.tiktok.com/@imoveisrafael",
 }; // null = link ainda não informado (o ícone aparece apagado)
