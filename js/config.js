@@ -1,8 +1,8 @@
 // Configuração DESTA imobiliária. O resto do site é genérico: tudo o que muda de uma empresa
 // para outra está aqui (modelo em js/config.exemplo.js; passo a passo em PERSONALIZAR.md).
 
-// Endereço base da API Spring. Quando publicar a API em produção, troque apenas esta linha.
-const API_BASE_URL = "http://localhost:8080";
+// Endereço base da API Spring (publicada no Railway). Para testar com a API local, use "http://localhost:8080".
+const API_BASE_URL = "https://imobiliaria-production-3e42.up.railway.app";
 
 // ---------- Empresa ----------
 const EMPRESA_NOME = "R&R Imóveis";
