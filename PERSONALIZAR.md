@@ -37,7 +37,8 @@ tags ficam no `<head>` de `index.html`, `produtos.html` e `detalhes-imoveis.html
 ajustadas à mão:
 
 - `og:site_name`: nome da imobiliária;
-- `og:image`: endereço completo de uma imagem (ex.: `https://www.suaimobiliaria.com.br/img/logo.png`).
+- `og:image`: endereço completo de uma imagem **1200x630 com fundo sólido** (ex.: `https://www.suaimobiliaria.com.br/img/og.jpg`).
+  Não use logo PNG transparente: o WhatsApp mostra o transparente com fundo branco.
 
 ## 4. Publicação
 
