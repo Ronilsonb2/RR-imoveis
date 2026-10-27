@@ -6,7 +6,7 @@ const API_BASE_URL = "https://imobiliaria-production-3e42.up.railway.app";
 
 // Endereço público do site, sem barra no final (usado em canonical, prévias de link e dados estruturados do Google).
 // Ao trocar de domínio, atualize aqui e rode: node scripts/gerar-sitemap.mjs (veja PERSONALIZAR.md).
-const SITE_URL = "https://rafael-imoveis.netlify.app";
+const SITE_URL = "https://www.rafaelalvesimoveis.com.br";
 
 // ---------- Empresa ----------
 const EMPRESA_NOME = "Rafael Alves Imóveis";
