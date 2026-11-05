@@ -129,8 +129,25 @@ grade.addEventListener('dragend', () => {
 
 // ---------- Envio ----------
 
+// A API não lê WebP (não consegue carimbar a marca d'água): converte para JPG aqui, no navegador
+async function webpParaJpg(arquivo) {
+    if (arquivo.type !== 'image/webp') return arquivo;
+    const imagem = await createImageBitmap(arquivo); // já aplica a orientação do EXIF
+    const canvas = document.createElement('canvas');
+    canvas.width = imagem.width;
+    canvas.height = imagem.height;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#fff'; // JPG não tem transparência
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(imagem, 0, 0);
+    imagem.close();
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.92));
+    if (!blob) throw new Error(`Não foi possível converter "${arquivo.name}". Envie em JPG ou PNG.`);
+    return new File([blob], arquivo.name.replace(/\.webp$/i, '') + '.jpg', { type: 'image/jpeg' });
+}
+
 inputFotos.addEventListener('change', async () => {
-    const arquivos = [...inputFotos.files];
+    let arquivos = [...inputFotos.files];
     inputFotos.value = ''; // permite escolher o mesmo arquivo de novo depois
     if (!arquivos.length) return;
 
@@ -142,6 +159,17 @@ inputFotos.addEventListener('change', async () => {
     }
     if (arquivos.reduce((soma, arquivo) => soma + arquivo.size, 0) > LIMITE_ENVIO) {
         avisar('Envio acima de 25 MB. Mande as fotos em partes.', 'danger');
+        return;
+    }
+
+    try {
+        arquivos = await Promise.all(arquivos.map(webpParaJpg));
+    } catch (e) {
+        avisar(e.message, 'danger');
+        return;
+    }
+    if (arquivos.some(arquivo => arquivo.size > LIMITE_ARQUIVO)) {
+        avisar('Uma foto convertida passou de 5 MB. Reduza a foto e tente de novo.', 'danger');
         return;
     }
 
