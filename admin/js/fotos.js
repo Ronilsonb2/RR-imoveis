@@ -81,7 +81,6 @@ grade.addEventListener('click', async (evento) => {
     }
 
     if (botao.hasAttribute('data-excluir')) {
-        if (!confirm('Excluir esta foto?')) return;
         try {
             await api(`/imovel/${idImovel}/imagens/${id}`, { metodo: 'DELETE' });
             fotos = fotos.filter(f => f.id !== id);
