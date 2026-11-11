@@ -1475,6 +1475,11 @@ ul.icons-config {
   color: #17803f;
 }
 
+.btn-compartilhar {
+  background: none;
+  cursor: pointer;
+}
+
 .interesse-imovel {
   margin: 30px 0;
   padding: 28px;

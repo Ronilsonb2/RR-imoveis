@@ -35,6 +35,11 @@ function linha(imovel) {
         ? `<a class="btn btn-sm btn-outline-secondary" href="../detalhes-imoveis.html?idImovel=${imovel.idImovel}" target="_blank" rel="noopener">Ver no site</a>`
         : '';
 
+    // Link da API que devolve a prévia com a foto do imóvel (o WhatsApp lê as tags e depois leva o cliente ao site)
+    const linkCompartilhar = VISIVEIS_NO_SITE.includes(imovel.status)
+        ? `<button class="btn btn-sm btn-outline-success btn-copiar-link" title="Copia o link com a foto do imóvel para enviar ao cliente">Copiar link</button>`
+        : '';
+
     return `
         <tr data-id="${imovel.idImovel}">
             <td><img class="miniatura" src="${escaparHtml(capa)}" alt="" loading="lazy"></td>
@@ -53,6 +58,7 @@ function linha(imovel) {
                 </select>
             </td>
             <td class="text-end text-nowrap">
+                ${linkCompartilhar}
                 ${linkSite}
                 <a class="btn btn-sm btn-outline-primary" href="imovel.html?id=${imovel.idImovel}">Editar</a>
                 <button class="btn btn-sm btn-outline-danger btn-excluir">Excluir</button>
@@ -100,6 +106,17 @@ corpo.addEventListener('change', async (evento) => {
 });
 
 corpo.addEventListener('click', async (evento) => {
+    if (evento.target.matches('.btn-copiar-link')) {
+        const link = `${API_BASE_URL}/compartilhar/${evento.target.closest('tr').dataset.id}`;
+        try {
+            await navigator.clipboard.writeText(link);
+            avisar('Link copiado! Cole na conversa do WhatsApp.');
+        } catch {
+            // Navegador sem permissão de área de transferência: mostra o link para copiar na mão
+            window.prompt('Copie o link:', link);
+        }
+        return;
+    }
     if (!evento.target.matches('.btn-excluir')) return;
     const tr = evento.target.closest('tr');
     const titulo = tr.querySelector(".titulo-imovel").textContent;

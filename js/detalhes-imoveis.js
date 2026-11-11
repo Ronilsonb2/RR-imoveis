@@ -144,6 +144,7 @@ function renderizar(imovel) {
                         `Olá! Gostaria de agendar uma visita ao imóvel Ref. ${imovel.idImovel} - ${imovel.titulo}.\n\n${window.location.href}`))}">
                         Agendar visita
                     </a>
+                    <button type="button" class="btn-duvida btn-compartilhar" data-id-imovel="${escaparHtml(imovel.idImovel)}" data-titulo="${escaparHtml(imovel.titulo)}">Compartilhar</button>
                     <span class="ref-imovel">Ref. ${escaparHtml(imovel.idImovel)}</span>
                 </div>
 
@@ -244,3 +245,25 @@ document.getElementById('btn-whatsapp')?.setAttribute('href', linkWhatsapp(
     `Olá! Tenho interesse neste imóvel.\n\n${window.location.href}\n\nPoderia me passar mais informações, por favor?`));
 
 carregarImovel();
+
+// Compartilhar: usa o link da API (prévia com a foto do imóvel no WhatsApp). No celular abre o menu de
+// compartilhar; no computador copia o link.
+document.addEventListener('click', async (evento) => {
+    const botao = evento.target.closest('.btn-compartilhar');
+    if (!botao) return;
+
+    const link = `${API_BASE_URL}/compartilhar/${encodeURIComponent(botao.dataset.idImovel)}`;
+    if (navigator.share) {
+        try {
+            await navigator.share({ title: botao.dataset.titulo, url: link });
+        } catch { /* a pessoa fechou o menu de compartilhar */ }
+        return;
+    }
+    try {
+        await navigator.clipboard.writeText(link);
+        botao.textContent = 'Link copiado!';
+        setTimeout(() => { botao.textContent = 'Compartilhar'; }, 2500);
+    } catch {
+        window.prompt('Copie o link:', link);
+    }
+});
