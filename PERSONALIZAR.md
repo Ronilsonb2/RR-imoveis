@@ -38,6 +38,22 @@ ajustadas à mão:
 
 - `og:site_name`: nome da imobiliária;
 - `og:image`: endereço completo de uma imagem **1200x630 com fundo sólido** (ex.: `https://www.suaimobiliaria.com.br/img/og.jpg`).
+
+### Prévia com a foto de cada imóvel
+
+Nas páginas de detalhes, o `og:image` acima é só o padrão. Na **Netlify**, a Edge Function
+`netlify/edge-functions/previa-imovel.js` troca a prévia pela foto de capa, o título e o preço do imóvel quando
+quem abre o link é o WhatsApp ou outro robô de compartilhamento. Pessoas e buscadores veem a página normal, e se
+a API estiver fora do ar ou o imóvel não tiver foto, vale a imagem padrão. Nada para configurar: o endereço da API
+vem do `API_BASE_URL` do `js/config.js`, e a API precisa da variável `SITE_URL` (ver README da API).
+
+Para conferir depois de publicar:
+
+```
+curl -A "WhatsApp/2.23" "https://www.suaimobiliaria.com.br/detalhes-imoveis.html?idImovel=12" | grep og:image
+```
+
+Em outra hospedagem (que não a Netlify) a função não roda; use o link `API/compartilhar/{id}` (botão "Copiar link" do painel).
   Não use logo PNG transparente: o WhatsApp mostra o transparente com fundo branco.
 
 ## 4. Publicação
