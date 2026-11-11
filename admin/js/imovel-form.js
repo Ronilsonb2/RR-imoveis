@@ -1,4 +1,4 @@
-import { api, avisar, exigirLogin, iniciarMenu, ROTULOS } from './api-admin.js';
+import { api, avisar, exigirLogin, iniciarMenu, ROTULOS, FAMILIA_DO_TIPO } from './api-admin.js';
 
 const COR_STATUS = { ATIVO: 'bg-success', RESERVADO: 'bg-warning text-dark' };
 import { iniciarFotos } from './fotos.js';
@@ -24,9 +24,13 @@ const proprietarios = new Map();
 
 // Campos escondidos ficam desabilitados: o navegador não valida nem envia campo desabilitado
 function mostrarCamposDoTipo() {
-    const ehCasa = tipo.value === 'CASA';
-    document.querySelectorAll('.so-casa').forEach(bloco => alternar(bloco, ehCasa));
-    document.querySelectorAll('.so-apartamento').forEach(bloco => alternar(bloco, !ehCasa));
+    const familia = FAMILIA_DO_TIPO[tipo.value];
+    document.querySelectorAll('.so-casa').forEach(bloco => alternar(bloco, familia === 'casa'));
+    document.querySelectorAll('.so-apartamento').forEach(bloco => alternar(bloco, familia === 'apartamento'));
+    // Prédio e terreno não têm quartos, banheiros nem vagas: deixam de ser obrigatórios (a API grava 0)
+    ['quartos', 'banheiros', 'garagem'].forEach(id => {
+        form.elements[id].required = familia !== 'generico';
+    });
 }
 
 function alternar(bloco, visivel) {
@@ -151,9 +155,9 @@ function valor(nome) {
 }
 
 function montarJson() {
-    const ehCasa = tipo.value === 'CASA';
+    const familia = FAMILIA_DO_TIPO[tipo.value];
     const json = {
-        type: ehCasa ? 'casa' : 'apartamento', // a API escolhe CasaDTO ou ApartamentoDTO por este campo
+        type: familia, // a API escolhe CasaDTO, ApartamentoDTO ou ImovelGenericoDTO por este campo
         tipoDeImovel: tipo.value,
         imovelDestaque: valor('imovelDestaque'),
         titulo: valor('titulo'),
@@ -189,9 +193,9 @@ function montarJson() {
             },
     };
 
-    if (ehCasa) {
+    if (familia === 'casa') {
         Object.assign(json, { jardim: valor('jardim'), piscina: valor('piscina'), andares: valor('andares') });
-    } else {
+    } else if (familia === 'apartamento') {
         Object.assign(json, { numeroApto: valor('numeroApto'), andar: valor('andar') });
     }
     return json;
@@ -273,9 +277,13 @@ async function iniciar() {
                 `<span class="badge ${COR_STATUS[imovel.status] || 'bg-secondary'}">${ROTULOS.status[imovel.status]}</span>`;
 
             preencher(imovel);
-            // A API não converte casa em apartamento: o tipo fica travado na edição
-            tipo.disabled = true;
-            document.getElementById('aviso-tipo').textContent = 'O tipo não muda depois do cadastro.';
+            // A API não troca de família (casa, apartamento, prédio/terreno): só aparecem os tipos da mesma família
+            [...tipo.options].forEach(op => {
+                const outraFamilia = FAMILIA_DO_TIPO[op.value] !== FAMILIA_DO_TIPO[imovel.tipoDeImovel];
+                op.hidden = outraFamilia;
+                op.disabled = outraFamilia;
+            });
+            document.getElementById('aviso-tipo').textContent = 'Só é possível trocar por tipos parecidos (ex.: casa por casa de condomínio).';
 
             adicionarOpcaoProprietario(dono);
             selectProprietario.value = dono.id;

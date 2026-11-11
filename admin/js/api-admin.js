@@ -114,5 +114,15 @@ export const VISIVEIS_NO_SITE = ['ATIVO', 'RESERVADO'];
 export const ROTULOS = {
     status: { ATIVO: 'Ativo', RESERVADO: 'Reservado', INATIVO: 'Inativo', VENDIDO: 'Vendido', ALUGADO: 'Alugado' },
     finalidade: { VENDA: 'Venda', LOCACAO: 'Locação', PERMUTA: 'Permuta' },
-    tipo: { CASA: 'Casa', APARTAMENTO: 'Apartamento', TERRENO: 'Terreno' },
+    tipo: {
+        APARTAMENTO: 'Apartamento', CASA: 'Casa', CASA_CONDOMINIO: 'Casa de condomínio', CASA_VILA: 'Casa de vila',
+        FAZENDA: 'Fazenda', FLAT: 'Flat', KITNET: 'Kitnet', LOFT: 'Loft', STUDIO: 'Studio', PREDIO: 'Prédio', TERRENO: 'Terreno',
+    },
+};
+
+// Família de cada tipo (mesma regra de TipoDeImovel.Familia na API): define o formulário e o endereço do cadastro
+export const FAMILIA_DO_TIPO = {
+    CASA: 'casa', CASA_CONDOMINIO: 'casa', CASA_VILA: 'casa', FAZENDA: 'casa',
+    APARTAMENTO: 'apartamento', FLAT: 'apartamento', KITNET: 'apartamento', LOFT: 'apartamento', STUDIO: 'apartamento',
+    PREDIO: 'generico', TERRENO: 'generico',
 };

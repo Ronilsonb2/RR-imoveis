@@ -133,10 +133,10 @@ function renderizar(imovel) {
                 </div>
                 <div class="info-detalhes-imovel">
                     <div class="qtd-metros"><span>✅ ${escaparHtml(imovel.areaConstruida ?? '-')} m²</span></div>
-                    <div class="qtd-quartos"><span>✅ ${plural(imovel.quartos, 'quarto')}</span></div>
+                    ${imovel.quartos > 0 ? `<div class="qtd-quartos"><span>✅ ${plural(imovel.quartos, 'quarto')}</span></div>` : ''}
                     ${imovel.suites > 0 ? `<div class="qtd-suites"><span>✅ ${plural(imovel.suites, 'suíte')}</span></div>` : ''}
-                    <div class="info-banheiros"><span>✅ ${plural(imovel.banheiros, 'banheiro')}</span></div>
-                    <div class="info-garagem"><span>✅ ${plural(imovel.garagem, 'vaga')}</span></div>
+                    ${imovel.banheiros > 0 ? `<div class="info-banheiros"><span>✅ ${plural(imovel.banheiros, 'banheiro')}</span></div>` : ''}
+                    ${imovel.garagem > 0 ? `<div class="info-garagem"><span>✅ ${plural(imovel.garagem, 'vaga')}</span></div>` : ''}
                 </div>
 
                 <div class="acoes-imovel">

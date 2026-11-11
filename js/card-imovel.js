@@ -51,10 +51,10 @@ export function criarCardImovel(imovel, variante = 'resultado') {
             <p class="descricao-curta">${descricaoResumida}</p>
             <ul class="icons-config">
                 ${caracteristica('metragem', imovel.areaConstruida, 'área', 'área')}
-                ${caracteristica('quarto', imovel.quartos, 'quarto', 'quartos')}
+                ${imovel.quartos > 0 ? caracteristica('quarto', imovel.quartos, 'quarto', 'quartos') : ''}
                 ${imovel.suites > 0 ? caracteristica('suite', imovel.suites, 'suíte', 'suítes') : ''}
-                ${caracteristica('banheiro', imovel.banheiros, 'banheiro', 'banheiros')}
-                ${caracteristica('garagem', imovel.garagem, 'vaga', 'vagas')}
+                ${imovel.banheiros > 0 ? caracteristica('banheiro', imovel.banheiros, 'banheiro', 'banheiros') : ''}
+                ${imovel.garagem > 0 ? caracteristica('garagem', imovel.garagem, 'vaga', 'vagas') : ''}
             </ul>
             ${precoELink}
         </div>`;
