@@ -2,9 +2,7 @@
 // Reordenar: arrastar com o mouse ou usar as setas (o arraste do HTML5 não funciona no celular).
 import { api, avisar } from './api-admin.js';
 import { urlImagem, usarFotoPadraoSeFalhar } from '../../js/utils.js';
-
-const LIMITE_ARQUIVO = 5 * 1024 * 1024;   // spring.servlet.multipart.max-file-size
-const LIMITE_ENVIO = 25 * 1024 * 1024;    // spring.servlet.multipart.max-request-size
+import { prepararFoto, dividirEmLotes } from './preparar-fotos.js';
 
 let idImovel;
 let fotos = []; // [{ id, url }] na ordem atual
@@ -128,60 +126,41 @@ grade.addEventListener('dragend', () => {
 
 // ---------- Envio ----------
 
-// A API não lê WebP (não consegue carimbar a marca d'água): converte para JPG aqui, no navegador
-async function webpParaJpg(arquivo) {
-    if (arquivo.type !== 'image/webp') return arquivo;
-    const imagem = await createImageBitmap(arquivo); // já aplica a orientação do EXIF
-    const canvas = document.createElement('canvas');
-    canvas.width = imagem.width;
-    canvas.height = imagem.height;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#fff'; // JPG não tem transparência
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(imagem, 0, 0);
-    imagem.close();
-    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.92));
-    if (!blob) throw new Error(`Não foi possível converter "${arquivo.name}". Envie em JPG ou PNG.`);
-    return new File([blob], arquivo.name.replace(/\.webp$/i, '') + '.jpg', { type: 'image/jpeg' });
-}
-
 inputFotos.addEventListener('change', async () => {
-    let arquivos = [...inputFotos.files];
+    const escolhidas = [...inputFotos.files];
     inputFotos.value = ''; // permite escolher o mesmo arquivo de novo depois
-    if (!arquivos.length) return;
+    if (!escolhidas.length) return;
 
-    // Confere os limites antes de enviar: evita esperar um upload grande só para receber 413
-    const grande = arquivos.find(arquivo => arquivo.size > LIMITE_ARQUIVO);
-    if (grande) {
-        avisar(`"${grande.name}" passa de 5 MB. Reduza a foto e tente de novo.`, 'danger');
-        return;
-    }
-    if (arquivos.reduce((soma, arquivo) => soma + arquivo.size, 0) > LIMITE_ENVIO) {
-        avisar('Envio acima de 25 MB. Mande as fotos em partes.', 'danger');
-        return;
-    }
-
+    // Reduz o peso no navegador (originais de celular/câmera passam de 5 MB). Uma por vez, para não encher a memória.
+    const prontas = [];
     try {
-        arquivos = await Promise.all(arquivos.map(webpParaJpg));
+        for (const [i, arquivo] of escolhidas.entries()) {
+            avisar(`Preparando foto ${i + 1} de ${escolhidas.length}…`, 'info');
+            prontas.push(await prepararFoto(arquivo));
+        }
     } catch (e) {
         avisar(e.message, 'danger');
         return;
     }
-    if (arquivos.some(arquivo => arquivo.size > LIMITE_ARQUIVO)) {
-        avisar('Uma foto convertida passou de 5 MB. Reduza a foto e tente de novo.', 'danger');
-        return;
-    }
 
-    const dados = new FormData();
-    arquivos.forEach(arquivo => dados.append('files', arquivo)); // "files" = @RequestPart da API
-
-    avisar(`Enviando ${arquivos.length} foto(s)…`, 'info');
+    // Muitas fotos não cabem numa requisição só (25 MB): vão em lotes, na ordem escolhida
+    const lotes = dividirEmLotes(prontas);
+    let enviadas = 0;
     try {
-        const criadas = await api(`/imovel/${idImovel}/imagens`, { metodo: 'POST', corpo: dados });
-        fotos = [...fotos, ...criadas];
-        desenhar();
-        avisar(`${criadas.length} foto(s) adicionada(s).`);
+        for (const [i, lote] of lotes.entries()) {
+            avisar(lotes.length > 1
+                ? `Enviando lote ${i + 1} de ${lotes.length} (${lote.length} fotos)…`
+                : `Enviando ${lote.length} foto(s)…`, 'info');
+            const dados = new FormData();
+            lote.forEach(arquivo => dados.append('files', arquivo)); // "files" = @RequestPart da API
+            const criadas = await api(`/imovel/${idImovel}/imagens`, { metodo: 'POST', corpo: dados });
+            fotos = [...fotos, ...criadas];
+            enviadas += criadas.length;
+            desenhar();
+        }
+        avisar(`${enviadas} foto(s) adicionada(s).`);
     } catch (e) {
-        avisar(e.message, 'danger');
+        // Os lotes anteriores já foram gravados: diz quantas entraram para o usuário reenviar só o resto
+        avisar(enviadas ? `${e.message} (${enviadas} de ${prontas.length} fotos já foram enviadas)` : e.message, 'danger');
     }
 });
