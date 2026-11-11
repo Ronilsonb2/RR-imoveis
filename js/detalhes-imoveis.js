@@ -134,6 +134,7 @@ function renderizar(imovel) {
                 <div class="info-detalhes-imovel">
                     <div class="qtd-metros"><span>✅ ${escaparHtml(imovel.areaConstruida ?? '-')} m²</span></div>
                     <div class="qtd-quartos"><span>✅ ${plural(imovel.quartos, 'quarto')}</span></div>
+                    ${imovel.suites > 0 ? `<div class="qtd-suites"><span>✅ ${plural(imovel.suites, 'suíte')}</span></div>` : ''}
                     <div class="info-banheiros"><span>✅ ${plural(imovel.banheiros, 'banheiro')}</span></div>
                     <div class="info-garagem"><span>✅ ${plural(imovel.garagem, 'vaga')}</span></div>
                 </div>

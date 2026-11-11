@@ -165,6 +165,8 @@ function montarJson() {
         areaTotal: valor('areaTotal'),
         areaConstruida: valor('areaConstruida'),
         quartos: valor('quartos'),
+        suites: valor('suites'),
+        taxaCondominio: valor('taxaCondominio'),
         banheiros: valor('banheiros'),
         garagem: valor('garagem'),
         zoneamento: valor('zoneamento'),
@@ -190,7 +192,7 @@ function montarJson() {
     if (ehCasa) {
         Object.assign(json, { jardim: valor('jardim'), piscina: valor('piscina'), andares: valor('andares') });
     } else {
-        Object.assign(json, { numeroApto: valor('numeroApto'), andar: valor('andar'), taxaCondominio: valor('taxaCondominio') });
+        Object.assign(json, { numeroApto: valor('numeroApto'), andar: valor('andar') });
     }
     return json;
 }

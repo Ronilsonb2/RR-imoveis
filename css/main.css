@@ -572,6 +572,17 @@ body img {
   margin-right: 2px;
   position: relative;
 }
+.icons-config .suite::before {
+  content: "";
+  display: block;
+  background-image: url(../img/icon-quartos.png);
+  background-size: 100% auto;
+  background-position: bottom;
+  width: 25px;
+  height: 21px;
+  margin-right: 2px;
+  position: relative;
+}
 .icons-config .banheiro::before {
   content: "";
   display: block;

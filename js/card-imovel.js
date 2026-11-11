@@ -52,6 +52,7 @@ export function criarCardImovel(imovel, variante = 'resultado') {
             <ul class="icons-config">
                 ${caracteristica('metragem', imovel.areaConstruida, 'área', 'área')}
                 ${caracteristica('quarto', imovel.quartos, 'quarto', 'quartos')}
+                ${imovel.suites > 0 ? caracteristica('suite', imovel.suites, 'suíte', 'suítes') : ''}
                 ${caracteristica('banheiro', imovel.banheiros, 'banheiro', 'banheiros')}
                 ${caracteristica('garagem', imovel.garagem, 'vaga', 'vagas')}
             </ul>

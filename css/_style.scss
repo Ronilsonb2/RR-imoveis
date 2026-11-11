@@ -643,6 +643,17 @@ body {
     margin-right: 2px;
     position: relative;
   }
+  .suite::before {
+    content: "";
+    display: block;
+    background-image: url(../img/icon-quartos.png);
+    background-size: 100% auto;
+    background-position: bottom;
+    width: 25px;
+    height: 21px;
+    margin-right: 2px;
+    position: relative;
+  }
   .banheiro::before {
     content: "";
     display: block;
